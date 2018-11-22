@@ -2,6 +2,7 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.index.index.index);
+  router.get('/home', controller.index.index.index);
   router.get('/client', controller.index.index.client);
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);

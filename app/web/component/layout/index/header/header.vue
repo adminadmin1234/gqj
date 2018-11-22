@@ -1,27 +1,10 @@
 <template>
 <div>
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header page-scroll">
-                <button type="button" @click="menuBtn" class="navbar-toggle" :class="{ 'collapsed': collapsed }" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">IBlog</a>
-            </div>
-            <div class="collapse navbar-collapse" :class="{ 'collapse in': collapsed }" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">{{$t('menu.home')}}</a>
-                    </li>
-                    <li>
-                        <a href="/category">{{$t('menu.category')}}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <nav class="nav header-wrap">
+        <a class="nav-link header-nav-link active" href="#">{{$t('menu.home')}}</a>
+        <a class="nav-link header-nav-link" href="/category">{{$t('menu.category')}}</a>
+        <a class="nav-link header-nav-link" href="#">旁门</a>
+        <a class="nav-link header-nav-link" href="#">收藏</a>
     </nav>
 </div>
 </template>
