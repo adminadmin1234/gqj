@@ -1,37 +1,31 @@
 <template>
-  <layout>
-    <img src="../../asset/images/logo.png"/>
-    <div> {{message}}</div>
-    <div class="fontawesome"> {{message}} </div>
-    <img src="../../asset/images/egg-vue-webpack-dev.png"/>
+  <layout description='vue server side render' keywords='egg, vue, webpack, server side render'>
+     <div class='container'>
+        <h2>IBlog: About</h2>
+     </div>
   </layout>
 </template>
 <style>
-@font-face {
- font-family: "fontawesome";
- src: url("./font/fontawesome-webfont.ttf");
-}
-.fontawesome
-{
-  font-family:fontawesome;
-}
-@import "about.css";
-
+  @import 'about.css';
 </style>
-<script type="text/babel">
-
-  import { Toast } from 'mint-ui';
-  //import 'mint-ui/lib/style.css';
+<script type='babel'>
+  
   export default {
-    components: {},
-    computed: {},
-    methods: {},
+    components: {
+      
+    },
+    data(){
+      return {
+      }
+    },
+    computed: {
+      
+    },
+    methods: {
+     
+    },
     mounted() {
-      Toast({
-        message: 'Upload Complete',
-        position: 'bottom',
-        duration: 5000
-      });
+    
     }
   }
 </script>

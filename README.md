@@ -1,26 +1,57 @@
 # egg-vue-webpack-boilerplate
 
-基于 Egg + Vue + Webpack3/Webpack2 多页面和单页面服务端客户端渲染同构工程骨架项目.
+基于 Egg + Vue + Webpack 工程项目，包括前台系统和后台管理系统
+
+## 系统功能
+
+### 前台博客系统 http://localhost:7001
+
+**采用 Egg + Vue 服务端渲染**
+
+![](https://github.com/easy-team/egg-vue-webpack-boilerplate/blob/master/docs/images/iblog.png?raw=true)
+
+- 博客首页
+- 文章列表
+- 文章详情
+
+### 后台管理系统 http://localhost:7001/admin
+
+**采用 Egg + Vue + Vue-Router + Element 单页面服务端同构渲染**
+
+![](https://github.com/hubcarl/egg-vue-webpack-boilerplate/blob/master/docs/images/admin.png?raw=true)
+
+- Dashboard
+- Markdown
+- 文章管理
+
+## 纯净版
+
+因该项目包含了多种实现, 提供多种例子实现，为防干扰, 特提供了两个纯净版本分支用于实际项目开发, 请自行选用。
+
+- Egg + Vue + Axios 多页面服务端渲染分支 [feature/green/multi](https://github.com/easy-team/egg-vue-webpack-boilerplate/tree/feature/green/multi)
+- Egg + Vue + vue-router + vuex + axios 单页面服务端渲染分支 [feature/green/spa](https://github.com/easy-team/egg-vue-webpack-boilerplate/tree/feature/green/spa)
+- Egg + Vue + vue-router + vuex + axios 单页面前端渲染分支 [element-admin](https://github.com/easy-team/egg-vue-webpack-boilerplate/tree/element-admin)
+- Egg + Vue + TypeScript 项目，请见项目 [ves-admin](https://github.com/easy-team/ves-admin) 
+
+以上项目，你可以通过 [easywebpack-cli](https://github.com/easy-team/easywebpack-cli) 初始化
 
 ## 版本
 
 - Egg 版本： ^2.x.x
-- Node 版本: Node ^8.x.x+,  Node 6.x.x 版本请见 [Egg 1.0 + Node6分支](https://github.com/hubcarl/egg-vue-webpack-boilerplate/tree/node6)
-- Webpack 版本: ^3.8.1, 对应 `easywebpack-vue` 版本为 ^3.5.0
+- Node 版本: ^8.x.x+
 - Vue 版本: ^2.5.0
+- Webpack 版本: ^4.x.x, 对应 `easywebpack-vue` 版本为 ^4.x.x; Webpack3 版本项目骨架请见 `webpack3` 分支, 对应 `easywebpack-react` 版本为 3.x.x
 
 ## 说明 
 
-- Egg + TypeScript 已初步支持， 包括 Node 端 typescript 编写 和 前端 TypeScript编写, 具体请见 [typescript-egg](https://github.com/hubcarl/egg-vue-webpack-boilerplate/tree/typescript-egg) 分支
-- 项目开发之前, 请阅读[Egg + Vue 服务端渲染开发指南](https://zhuanlan.zhihu.com/p/30445536) 和 [Egg + Vue 服务端渲染工程化实现](https://zhuanlan.zhihu.com/p/29838551)
-- 版本变更情况请看发布版本说明[RELEASE](RELEASE.md) 
-- 如果你需要了解 Egg+Vue+Webpack 项目更多信息，请扫以下二维码加好友，请备注：Node.js
+- 项目开发之前, 请阅读[Egg + Vue 解决方案](https://www.yuque.com/easy-team/egg-vue)
+- 如果你需要了解 Egg+ Vue + Webpack 项目更多信息，请扫以下二维码加好友，请备注：Node.js。 骨架功能性需求或者 Bug 问题, 欢迎大家 PR 完善。
 
 ![hubcarl](https://avatars3.githubusercontent.com/u/4983042?v=4&u=0befb64a57a7911c630b7f97df5632385b08da2a&s=250)
 
 ## 文档
 
-- http://hubcarl.github.io/easywebpack/vue/rule
+- https://www.yuque.com/easy-team/egg-vue
 - https://zhuanlan.zhihu.com/easywebpack
 
 
@@ -30,41 +61,36 @@
 
 - 支持单页面, 多页面服务端渲染, 前端渲染模式
 
-- 支持 server 和 client 端代码修改, webpack 时时编译和热更新, `npm start` 一键启动应用
+- 支持 server 和 client 端代码修改, webpack 时时编译和热更新, `npm run dev` 一键启动应用
 
 - 基于 vue + axios 多页面服务端渲染, 客户端渲染同构实现
 
 - 基于 vue + vuex + vue-router + axios 单页面服务器客户端同构实现
 
-- 基于 easywebpack 基础配置, 使用 es6 class 继承方式编写webpack配置 和 cli 构建
+- 基于 easywebpack 基础配置, 使用 es6 class 继承方式编写 webpack 配置 和 cli 构建
 
-- 支持开发环境, 测试环境，正式环境 webpack 编译
+- 支持 js/css/image 资源依赖, 内置支持CDN特性, 支持 css/sass/less 样式编写
 
-- 支持 js/css/image 资源依赖, 内置支持CDN特性
+- 支持根据 .vue 文件自动创建 Webpack Entry 入口文件
 
-- 支持 css/sass/less 样式编写
-
-- 支持根据 .vue 文件自动创建 webpack entry 入口文件
-
-- egg-webpack ^3.2.4 版本开始支持多进程编译
-
-- easywebpack ^3.5.0 版本开始支持 webpack dll 自动化构建, 与多进程编译结合，构建速度减少 2/3
+- 开始支持多进程编译， 支持 webpack dll 自动化构建, 与多进程编译结合，构建速度减少 2/3
 
 - 支持Vue组件异步加载, 具体实例请看[app/web/page/dynamic](app/web/page/dynamic)
 
-- Node 8 版本的async和await特性, Controller 采用 class 方式编写
+- Node 8 版本的 async 和 await 特性, Controller 采用 class 方式编写
 
-- 支持vue 2.3 官方VueSSRPlugin实现方案,代码分支[feature/VueSSRPlugin](https://github.com/hubcarl/egg-vue-webpack-boilerplate/tree/feature/VueSSRPlugin)
+- 支持 service worker 构建和使用
 
- 
+- 提供 i18n 多语言示例
+
 
 ## 2.依赖
 
-- [easywebpack](https://github.com/hubcarl/easywebpack) ^3.5.2
-- [easywebpack-vue](https://github.com/hubcarl/easywebpack) ^3.5.0
-- [egg-view-vue-ssr](https://github.com/hubcarl/egg-view-vue-ssr) ^3.0.2
-- [egg-webpack](https://github.com/hubcarl/egg-webpack) ^3.2.6
-- [egg-webpack-vue](https://github.com/hubcarl/egg-webpack-vue) ^2.0.0
+- [easywebpack](https://github.com/easy-team/easywebpack) ^4.x.x
+- [easywebpack-vue](https://github.com/easy-team/easywebpack) ^4.x.x
+- [egg-view-vue-ssr](https://github.com/easy-team/egg-view-vue-ssr) ^3.x.x
+- [egg-webpack](https://github.com/easy-team/egg-webpack) ^4.x.x
+- [egg-webpack-vue](https://github.com/easy-team/egg-webpack-vue) ^2.x.x
 
 
 ## 3. 使用
@@ -81,14 +107,13 @@ npm install easywebpack-cli -g
 
 ```bash
 npm install
-npm start
 ```
 
 
-#### 3.3 启动应用
+#### 3.3 本地开发启动应用
 
 ```bash
-npm start
+npm run dev
 ```
 
 应用访问: http://127.0.0.1:7001
@@ -96,19 +121,22 @@ npm start
 ![npm start启动](https://github.com/hubcarl/egg-vue-webpack-boilerplate/blob/master/docs/images/webpack-build.png)
 
 
-#### 3.4 项目构建
+#### 3.4 发布模式启动应用
+
+- 首先在本地或者ci构建好jsbundle文件
 
 ```bash
-// 直接运行(编译文件全部在内存里面,本地开发使用)
-npm start
-
-// 编译文件到磁盘打包使用(发布测试环境)
-npm run build:dev 或者 easywebpack build dev
-
-// 编译文件到磁盘打包使用(发布正式环境)
-npm run build 或者 easywebpack build prod
-
+npm run build 
 ```
+
+- 然后,启动应用
+
+```bash
+npm start 
+```
+
+
+详细打包部署请见： http://hubcarl.github.io/easywebpack/vue/dev/
 
 ## 4. 配置说明(支持三种方式)
 
@@ -118,8 +146,8 @@ npm run build 或者 easywebpack build prod
 `config/config.local.js` 
 const EasyWebpack = require('easywebpack-vue');
 exports.webpack = {
-    webpackConfigList:EasyWebpack.getWebpackConfig() 
-  };
+  webpackConfigList:EasyWebpack.getWebpackConfig() 
+};
 ```
 
 #### 4.2 方式二: 自己编写Webpack配置
@@ -129,11 +157,11 @@ exports.webpack = {
 ```js
 `config/config.local.js` 
 exports.webpack = {
-    webpackConfigList: [
-      require(path.join(app.baseDir, 'build/client')), // http://127.0.0.1:9000
-      require(path.join(app.baseDir, 'build/server')), // http://127.0.0.1:9001
-    ]
-  };
+  webpackConfigList: [
+    require(path.join(app.baseDir, 'build/client')), // http://127.0.0.1:9000
+    require(path.join(app.baseDir, 'build/server')), // http://127.0.0.1:9001
+  ]
+};
 ```
 
 #### 4.3 方式三: 开启多进程编译
@@ -393,39 +421,6 @@ exports.index = function* (ctx) {
 ```javascript
   app.get('/app(/.+)?', app.controller.app.app.index);
 ```
-
-
-## 7. 工程实例
-
-
-- 基于vue + axios 多页面服务器客户端同构入口: http://127.0.0.1:7001
-
-![多页面服务器渲染](https://github.com/hubcarl/egg-vue-webpack-boilerplate/blob/master/docs/images/vue-mutil-page.png)
-
-
-- 基于vue + vuex + vue-router + axios 单页面服务器客户端同构入口: http://127.0.0.1:7001/app
-
-![单页面服务器](https://github.com/hubcarl/egg-vue-webpack-boilerplate/blob/master/docs/images/vue-single-page.png)
-
-
-## 8. 实现原理
-
-### 8.1 本地`npm start`启动流程
-
-![本地启动流程](http://hubcarl.github.io/img/webpack/npm-start.png)
-
-### 8.2 服务端渲染页面访问流程
-
-![服务端渲染页面访问流程](http://hubcarl.github.io/img/webpack/egg-webpack-vue-ssr.png)
-
-
-### 8.3 详细资料
-
-- [Egg+Vue解决方案开发流程](http://hubcarl.github.io/easywebpack/vue/dev/)
-
-- [基于webpack的前端工程解决方案和egg+vue服务端渲染项目实践](http://hubcarl.github.io/blog/2017/04/15/webpack-project/)
-
-- [koa和egg项目webpack内存编译和热更新实现](http://hubcarl.github.io/blog/2017/04/15/egg-webpack/)
 
 
 ## License
