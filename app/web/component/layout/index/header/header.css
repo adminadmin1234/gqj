@@ -9,6 +9,8 @@
   top:0;
   transform-origin: center center ;
   animation: btnRotate 10s infinite linear;
+  z-index: 999;
+  cursor:pointer;
 }
 @-webkit-keyframes btnRotate {
   from {
@@ -31,7 +33,7 @@
   }
 }
 .header-wrap{
-  background: white;
+  background: #fbfbfb;
   padding: 10px 150px!important;
 }
 .header-wrap:after{
