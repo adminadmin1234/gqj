@@ -3,7 +3,8 @@ body {
   line-height: 1.7;
   font-size: 16px;
   color: #404040;
-  overflow-x: hidden;
+  overflow: hidden;
+  background: #fbfbfb;
 }
 p {
   margin: 30px 0;
