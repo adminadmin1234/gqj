@@ -1,155 +1,75 @@
-.main{
-  margin-top: -80px;
-  padding: 80px 0 120px;
-  box-sizing: border-box;
+.content-wrap{
+  background: white;
+  width: 96%;
+  margin-left: 2%;
+  margin-top: 2%;
 }
-.page-container{
-  width: 1140px;
-  padding: 0 30px;
-  margin: 36 auto;
+.content-left{
+  width: 60%;
+  float:left;
+  padding: 1%;
+  background: white;
 }
-.page-component {
-  padding-bottom: 95px;
-  box-sizing: border-box
+.head-pic{
+  width: 300px;
+  margin-left: 90px;
 }
-
-.page-component .content {
-  margin-left: -1px
+.site-name{
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-left: 91px;
 }
-
-.page-component .content > h3 {
-  margin: 45px 0 15px
+.content-down{
+  margin-left: 90px;
 }
-
-.page-component .content > table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: #fff;
-  color: #5e6d82;
-  font-size: 14px;
-  margin-bottom: 45px
+.content-desc{
+  margin-left: 91px;
+  margin-top: 10px;
 }
-
-.page-component .content > table strong {
-  font-weight: 400
+.content-right{
+  width:38%;
+  margin-left: 2%;
+  float:left;
+  background: white;
 }
-
-.page-component .content > table th {
-  text-align: left;
-  border-top: 1px solid #eaeefb;
-  background-color: #eff2f7;
-  white-space: nowrap
-}
-
-.page-component .content > table td, .page-component .content > table th {
-  border-bottom: 1px solid #eaeefb;
-  padding: 10px;
-  max-width: 250px
-}
-
-.page-component .content > table td:first-child, .page-component .content > table th:first-child {
-  padding-left: 10px
-}
-
-.page-component .page-component-up {
-  background-color: #58b7ff;
-  position: fixed;
-  right: 100px;
-  bottom: 150px;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  cursor: pointer;
-  opacity: .4;
-  transition: .3s
-}
-
-.page-component .page-component-up i {
-  color: #fff;
-  display: block;
-  line-height: 50px;
+.code-wrap{
+  height: 200px;
+  padding: 20px 10px 0 10px;
   text-align: center;
-  font-size: 22px
+  background: #fbfbfb;
 }
-
-.page-component .page-component-up.hover {
-  opacity: 1
+.code-wrap img{
+  margin: auto;
+  height: 150px;
+  width:150px;
 }
-
-.page-component .back-top-fade-enter, .page-component .back-top-fade-leave-active {
-  transform: translateY(-30px);
-  opacity: 0
+.content-wrap-ul li{
+  height: 80px;
+  padding: 5px 1px;
 }
-
-.page-component {
-  padding-bottom: 95px;
-  box-sizing: border-box
+.content-li-picture{
+  height: 70px;
+  width: 100px;
+  float: left;
 }
-
-.page-component .content {
-  margin-left: -1px
+.content-detail-wrap{
+  float: left;
+  width: 325px;
+  margin-left:20px;
+  height: 70px;
+  position: relative;
 }
-
-.page-component .content > h3 {
-  margin: 45px 0 15px
-}
-
-.page-component .content > table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: #fff;
-  color: #5e6d82;
+.content-detail-date{
   font-size: 14px;
-  margin-bottom: 45px
+  position: absolute;
+  bottom: 0;
+  left: 2px;
 }
-
-.page-component .content > table strong {
-  font-weight: 400
-}
-
-.page-component .content > table th {
-  text-align: left;
-  border-top: 1px solid #eaeefb;
-  background-color: #eff2f7;
-  white-space: nowrap
-}
-
-.page-component .content > table td, .page-component .content > table th {
-  border-bottom: 1px solid #eaeefb;
-  padding: 10px;
-  max-width: 250px
-}
-
-.page-component .content > table td:first-child, .page-component .content > table th:first-child {
-  padding-left: 10px
-}
-
-.page-component .page-component-up {
-  background-color: #58b7ff;
-  position: fixed;
-  right: 100px;
-  bottom: 150px;
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  cursor: pointer;
-  opacity: .4;
-  transition: .3s
-}
-
-.page-component .page-component-up i {
-  color: #fff;
-  display: block;
-  line-height: 50px;
-  text-align: center;
-  font-size: 22px
-}
-
-.page-component .page-component-up.hover {
-  opacity: 1
-}
-
-.page-component .back-top-fade-enter, .page-component .back-top-fade-leave-active {
-  transform: translateY(-30px);
-  opacity: 0
+.content-detail-label{
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  color: blue;
 }

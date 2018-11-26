@@ -1,13 +1,47 @@
+
+a, abbr, acronym, address, applet, article, aside, audio,
+b, blockquote, big, body,
+center, canvas, caption, cite, code, command,
+datalist, dd, del, details, dfn, dl, div, dt,
+em, embed,
+fieldset, figcaption, figure, font, footer, form,
+h1, h2, h3, h4, h5, h6, header, hgroup, html,
+i, iframe, img, ins,
+kbd,
+keygen,
+label, legend, li,
+meter,
+nav,
+object, ol, output,
+p, pre, progress,
+q,
+s, samp, section, small, span, source, strike, strong, sub, sup,
+table, tbody, tfoot, thead, th, tr, tt,
+u, ul,
+var { background: transparent; border: 0 none; margin: 0;padding: 0; border: 0;outline:0;vertical-align: top; -webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing: antialiased;}
+blockquote, q { quotes: none;}
+table, table td { padding: 0; border: none; border-collapse: collapse;}
+img {border: 0;}
+select {white-space: nowrap}
+caption {text-align: left;}
+embed {vertical-align: top;}
+div, ul, li, ol, dl, dd, p { word-wrap: break-word;}
+ul, li, ol, dl, dd{ list-style-type: none;}
+input, textarea, select { font-family: inherit; outline: none; font-size: inherit; font-weight: inherit; padding: 0; margin: 0;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight:normal;}
+body { text-align: left;color: #828282;overflow-x: hidden;}
+a{text-decoration: none;white-space:nowrap; color: #828282;}
+input,input[type="button"], input[type="submit"], input[type="reset"],input[type="number"] {-webkit-appearance: none; }
+input::-webkit-inner-spin-button { -webkit-appearance: none;}
+input::-webkit-outer-spin-button { -webkit-appearance: none;}
+form{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
   color: #404040;
   overflow: hidden;
-  background: white;
-}
-p {
-  margin: 30px 0;
+  background: #fbfbfb;
 }
 h1,
 h2,
