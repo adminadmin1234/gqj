@@ -10,8 +10,11 @@
         <el-input class="long-input" clearable v-model="article.tag" placeholder="标签,多个用空格隔开"></el-input>
       </el-row>
     </div>
-    <div class="editor-container" v-if="isShowEditor">
+    <!--<div class="editor-container" v-if="isShowEditor">
       <markdown-editor id="contentEditor" ref="contentEditor" v-model="article.content" :height="500" :zIndex="20"></markdown-editor>
+    </div>-->
+    <div id="editor">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
     </div>
   </div>
 </template>
@@ -21,6 +24,7 @@
 }
 </style>
 <script type="babel">
+import wangeditor from 'wangeditor'
 import { SET_SAVE_ARTICLE } from '../../store/app/mutation-type';
 export default {
   components: {
@@ -53,6 +57,11 @@ export default {
   },
   mounted() {
     this.isShowEditor = true;
+        var editor = new wangeditor('#editor');
+        editor.customConfig.uploadImgServer = '/upload';
+        editor.create()
+        editor.txt.html('<p>用 JS 设置的内容</p>')
+        console.log('editor.txt.text()',editor.txt.text())
   }
 };
 </script>

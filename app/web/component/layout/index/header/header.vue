@@ -26,7 +26,7 @@ export default {
     menuBtn() {
       this.collapsed = !this.collapsed;
     },
-    effect1(options){
+    effect(options){
             const chartMap = ['❄','❤️','🌹','💃','🔥'],
                   chartColor = ['#64dbfb','#4e3099','#27a8e1','#4e0157','#d601d6'];
             let chartIndex = parseInt(Math.random()*chartMap.length);
@@ -65,7 +65,7 @@ export default {
     },
     onOffChart(){
         if(!this.isDown){
-            this.effect1({
+            this.effect({
                 minSize: 8,		//雪花的最小尺寸
                 maxSize: 40, 	//雪花的最大尺寸
                 newOn: 600		//雪花出现的频率 这个数值越小雪花越多
