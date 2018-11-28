@@ -1,0 +1,17 @@
+#创建数据库
+create database blog;
+#选择数据库
+use blog;
+#创建表
+create table user(
+   user_id INT NOT NULL AUTO_INCREMENT,
+   user_name VARCHAR(100),
+   PRIMARY KEY ( user_id )
+);
+#查看表结构
+desc user;
+#向表中插入数据
+INSERT INTO user(user_id, user_name)
+VALUES(1, '姚明'), (2, '比尔.盖茨'), (3, '火星人');
+#查看表数据
+select * from user;

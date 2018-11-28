@@ -16,9 +16,11 @@ module.exports = class ArticeService extends egg.Service {
     query.like.title = title;
     query.pageIndex = pageIndex;
     query.pageSize = pageSize;
+    console.log('service-getArtilceList');
     return this.colllection.getPager(query);
   }
   saveArticle(json) {
+    console.log('saveArticle-json', json);
     if (json.id) {
       return this.colllection.update({ id: json.id }, json);
     }
@@ -28,5 +30,10 @@ module.exports = class ArticeService extends egg.Service {
   }
   deleteArticle(id) {
     return this.colllection.delete({ id });
+  }
+  async find(uid) {
+    // 假如 我们拿到用户 id 从数据库获取用户详细信息
+    const user = await this.app.mysql.get('user', { user_id: 1 });
+    return { user };
   }
 };

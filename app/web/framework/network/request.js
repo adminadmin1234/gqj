@@ -12,6 +12,9 @@ export default {
       headers['x-csrf-token'] = state.csrf;
       headers.Cookie = `csrfToken=${state.csrf}`;
     }
+    console.log('`${state.origin}${url}`', `${state.origin}${url}`);
+    console.log('axios-json', json);
+    console.log('axios-headers', { headers });
     return axios.post(`${state.origin}${url}`, json, { headers });
   },
   get(url, store = {}) {

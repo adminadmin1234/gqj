@@ -8,10 +8,10 @@ import request from 'framework/network/request';
 Vue.use(Vuex);
 
 const actions = {
-
   SET_ARTICLE_LIST: (store, json) => {
     return request.post('/admin/api/article/list', json, store).then(response => {
       store.commit(Type.SET_ARTICLE_LIST, response.data);
+      console.log('response.data', response.data);
     });
   },
   SET_ARTICLE_DETAIL: (store, { id }) => {
@@ -23,6 +23,7 @@ const actions = {
   },
   SET_SAVE_ARTICLE: (store, json) => {
     const { commit, dispatch, state } = store;
+    console.log('SET_SAVE_ARTICLE-json', json);
     return request.post('/admin/api/article/add', json, store).then(response => {
       commit(Type.SET_SAVE_ARTICLE, json);
     });

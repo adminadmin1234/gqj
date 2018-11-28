@@ -9,6 +9,9 @@ module.exports = class AdminController extends egg.Controller {
     await ctx.render('admin/home/home.js', { ctx, url });
   }
   async list(ctx) {
+    const user = await ctx.service.article.find({ user_id: 1 });
+    console.log('user', user);
+    ctx.body = user;
     this.ctx.body = ctx.service.article.getArtilceList(ctx.request.body);
   }
   async add(ctx) {

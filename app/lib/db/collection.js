@@ -17,6 +17,7 @@ module.exports = class Collection {
     return this.db.delete(this.name, field);
   }
   getPager(query) {
+    console.log('service-Collection');
     return this.db.getPager(this.name, query);
   }
   getOrderAscByField(field) {
