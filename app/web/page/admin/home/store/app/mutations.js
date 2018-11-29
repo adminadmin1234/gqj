@@ -1,6 +1,7 @@
 'use strict';
 
 import {
+  SET_CXT,
   SET_ARTICLE_LIST,
   SET_ARTICLE_DETAIL,
   SET_SAVE_ARTICLE,
@@ -8,6 +9,9 @@ import {
 } from './mutation-type';
 
 const mutations = {
+  [SET_CXT](state, data) {
+    state.cxt = data;
+  },
   [SET_ARTICLE_LIST](state, { list, total }) {
     state.articleTotal = total;
     state.articleList = list;

@@ -2,12 +2,44 @@
   <div>
     <div class="search">
       <el-row class="clear">
-            <el-input class="long-input" clearable v-model="article.title" placeholder="文章标题"></el-input>
+            <el-col :span="3">文章标题：</el-col>
+            <el-col :span="12"><el-input class="long-input" clearable v-model="article.title" placeholder="文章标题"></el-input></el-col>
             <el-button class="add-button" type="success" icon="el-icon-document" @click="submit(1)">提交</el-button>
             <el-button class="add-button" type="primary" icon="el-icon-document" @click="submit(0)">草稿</el-button>
       </el-row>
       <el-row class="clear top16">
-        <el-input class="long-input" clearable v-model="article.tag" placeholder="标签,多个用空格隔开"></el-input>
+        <el-col :span="3">文件上传：</el-col>
+        <el-col :span="12">
+          <el-upload
+            class="upload-demo"
+            :action="csrf"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :file-list="article.fileList">
+            <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
+        </el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">标签：</el-col>
+        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="标签,多个用空格隔开"></el-input></el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">权重：</el-col>
+        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="权重,越大越靠前"></el-input></el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">阅读数：</el-col>
+        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="权重,越大越靠前"></el-input></el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">预览数：</el-col>
+        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="权重,越大越靠前"></el-input></el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">下载数：</el-col>
+        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="权重,越大越靠前"></el-input></el-col>
       </el-row>
     </div>
     <div id="editor">
@@ -26,17 +58,33 @@ import { SET_SAVE_ARTICLE } from '../../store/app/mutation-type';
 export default {
   data() {
     return {
+      csrf:'/upload?_csrf={{_csrf | safe }}',
       editor:null,
       article: {
         content: "Markdown Write",
         html: "",
         title: "",
-        tag: ""
+        tag: "",
+        fileList:[],
       },
     };
   },
   computed: {},
+  watch:{
+    article(value){
+      console.log('article',value);
+    }
+  },
   methods: {
+    handleRemove(file, fileList) {
+        console.log(file, fileList);
+    },
+    handlePreview(file) {
+        console.log(file);
+    },
+    beforeRemove(file, fileList) {
+        return this.$confirm(`确定移除 ${ file.name }？`);
+    },
     initEditor(){
       this.editor = new wangeditor('#editor');
       this.editor.customConfig.uploadImgServer = '/upload';

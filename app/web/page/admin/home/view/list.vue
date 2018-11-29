@@ -112,6 +112,9 @@ export default {
     };
   },
   methods: {
+    fetCxt(store, json){
+      return store.dispatch(SET_CXT, json);
+    },
     fetchApi(store, json) {
       return store.dispatch(SET_ARTICLE_LIST, json);
     },
@@ -182,6 +185,8 @@ export default {
     }
   },
   beforeMount() {
+    console.log('this.$store',this.$store)
+    this.fetCxt(this.$store);
     if (!(this.articleList && this.articleList.length > 0)) {
       this.fetchApi(this.$store, this.q);
     }

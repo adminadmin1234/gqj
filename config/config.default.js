@@ -35,6 +35,10 @@ module.exports = app => {
     agent: false,
   };
 
+  exports.multipart = {
+    mode: 'file',
+  };
+
   exports.logger = {
     consoleLevel: 'DEBUG',
     dir: path.join(app.baseDir, 'logs')
@@ -45,7 +49,7 @@ module.exports = app => {
     dir: path.join(app.baseDir, 'public')
   };
 
-  exports.keys = '123456';
+  exports.keys = '123456789';
 
   exports.middleware = [
     'locals',
@@ -57,7 +61,9 @@ module.exports = app => {
       ignoreJSON: false,
       cookieName: 'csrfToken',
       sessionName: 'csrfToken',
-      headerName: 'x-csrf-token'
+      headerName: 'x-csrf-token',
+      queryName: '_csrf', // 通过 query 传递 CSRF token 的默认字段为 _csrf
+      bodyName: '_csrf', // 通过 body 传递 CSRF token 的默认字段为 _csrf
     },
     xframe: {
       enable: false,

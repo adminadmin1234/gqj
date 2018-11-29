@@ -10,6 +10,7 @@ Vue.use(Vuex);
 
 export default function createStore(initState) {
   const state = {
+    ctx: null,
     articleTotal: 0,
     articleList: [],
     article: {},

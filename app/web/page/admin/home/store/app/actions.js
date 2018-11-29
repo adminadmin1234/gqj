@@ -8,10 +8,14 @@ import request from 'framework/network/request';
 Vue.use(Vuex);
 
 const actions = {
+  SET_CXT: (store, json) => {
+    return request.post('/admin/api/article/list', json, store).then(response => {
+      store.commit(Type.SET_CXT, response.data);
+    });
+  },
   SET_ARTICLE_LIST: (store, json) => {
     return request.post('/admin/api/article/list', json, store).then(response => {
       store.commit(Type.SET_ARTICLE_LIST, response.data);
-      console.log('response.data', response.data);
     });
   },
   SET_ARTICLE_DETAIL: (store, { id }) => {

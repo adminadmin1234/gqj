@@ -12,4 +12,5 @@ module.exports = app => {
   router.get('/admin/api/article/del/:id', controller.admin.admin.del);
   router.get('/admin/api/article/:id', controller.admin.admin.detail);
   router.get('/admin(/.+)?', controller.admin.admin.home);
+  router.post('/upload', controller.admin.upload.index);
 };
