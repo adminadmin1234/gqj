@@ -93,7 +93,7 @@
 
 </style>
 <script type="babel">
-import { SET_ARTICLE_LIST, DELETE_ARTICLE } from '../store/app/mutation-type';
+import {SET_CXT, SET_ARTICLE_LIST, DELETE_ARTICLE } from '../store/app/mutation-type';
 export default {
   components: {},
   data() {
@@ -112,7 +112,7 @@ export default {
     };
   },
   methods: {
-    fetCxt(store, json){
+    fetchCxt(store, json){
       return store.dispatch(SET_CXT, json);
     },
     fetchApi(store, json) {
@@ -185,8 +185,8 @@ export default {
     }
   },
   beforeMount() {
-    console.log('this.$store',this.$store)
-    this.fetCxt(this.$store);
+    console.log('this.$store',this.$store.state.csrf)
+    // this.fetchCxt(this.$store,'');
     if (!(this.articleList && this.articleList.length > 0)) {
       this.fetchApi(this.$store, this.q);
     }

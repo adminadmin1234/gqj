@@ -6,8 +6,12 @@ module.exports = class AdminController extends egg.Controller {
   }
   async home(ctx) {
     const url = ctx.url.replace(/\/admin/, '');
-    console.log('ctx1111111111111111111', ctx.csrf);
+    console.log('homehomehomehomehomehomehome');
     await ctx.render('admin/home/home.js', { ctx, url });
+  }
+  async getctx(ctx) {
+    console.log('ctct234234234', ctx.csrf);
+    this.ctx.body = ctx.csrf;
   }
   async list(ctx) {
     // 数据库
@@ -18,9 +22,9 @@ module.exports = class AdminController extends egg.Controller {
   }
   async add(ctx) {
     // ctx.body = this.service.article.saveArticle(ctx.request.body);
-    console.log('ctx', ctx.csrf);
-    ctx.body = ctx.csrf;
-    console.log('ctx.body11111111111111111111111', ctx.body);
+    // console.log('ctx', ctx.csrf);
+    this.ctx.body = ctx.csrf;
+    // console.log('ctx.body11111111111111111111111', ctx.body);
   }
   async del(ctx) {
     const { id } = ctx.params;

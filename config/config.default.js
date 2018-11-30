@@ -36,7 +36,7 @@ module.exports = app => {
   };
 
   exports.multipart = {
-    mode: 'file',
+    mode: 'stream',
   };
 
   exports.logger = {

@@ -6,6 +6,7 @@ axios.defaults.xsrfHeaderName = 'x-csrf-token';
 axios.defaults.xsrfCookieName = 'csrfToken';
 export default {
   post(url, json, store = {}) {
+    console.log('axios-store', store);
     const { state = { origin: '' } } = store;
     const headers = {};
     if (EASY_ENV_IS_NODE) {

@@ -2,6 +2,8 @@
 
 // node.js 文件操作对象
 const fs = require('fs');
+// 解压文件
+const unzip = require('unzip');
 // node.js 路径操作对象
 const path = require('path');
 // egg.js Controller
@@ -17,6 +19,7 @@ const md5 = require('md5');
 class UploadController extends Controller {
   async index() {
     const ctx = this.ctx;
+    fs.createReadStream(this.config.baseDir + '/app/public/uploads/ef80b9efaf2619252a514ad92fa891a1.zip').pipe(unzip.Extract({ path: this.config.baseDir + '/app/public/uploads' }));
     // egg-multipart 已经帮我们处理文件二进制对象
     // node.js 和 php 的上传唯一的不同就是 ，php 是转移一个 临时文件
     // node.js 和 其他语言（java c#） 一样操作文件流
@@ -33,6 +36,7 @@ class UploadController extends Controller {
     try {
     // 异步把文件流 写入
       await awaitWriteStream(stream.pipe(writeStream));
+      // await fs.createReadStream(target).pipe(unzip.Extract({ path: this.config.baseDir + 'app/public/uploads/' }));
     } catch (err) {
     // 如果出现错误，关闭管道
       await sendToWormhole(stream);
@@ -40,7 +44,8 @@ class UploadController extends Controller {
     }
     // 文件响应
     ctx.body = {
-      url: '/public/uploads/' + filename
+      url: '/public/uploads/' + filename,
+      fields: stream.fields,
     };
   }
 }

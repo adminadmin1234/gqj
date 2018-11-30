@@ -9,7 +9,7 @@ Vue.use(Vuex);
 
 const actions = {
   SET_CXT: (store, json) => {
-    return request.post('/admin/api/article/list', json, store).then(response => {
+    return request.get('/admin/api/article/getctx', json, store).then(response => {
       store.commit(Type.SET_CXT, response.data);
     });
   },

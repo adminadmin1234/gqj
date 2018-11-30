@@ -58,7 +58,7 @@ import { SET_SAVE_ARTICLE } from '../../store/app/mutation-type';
 export default {
   data() {
     return {
-      csrf:'/upload?_csrf={{_csrf | safe }}',
+      csrf:'/upload?_csrf='+this.$store.state.csrf,
       editor:null,
       article: {
         content: "Markdown Write",
@@ -101,6 +101,7 @@ export default {
     }
   },
   mounted() {
+    console.log('this.$store-write',this.$store.state.csrf)
     this.initEditor();
   }
 };
