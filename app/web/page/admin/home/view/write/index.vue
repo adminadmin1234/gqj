@@ -31,7 +31,21 @@
       </el-row>
       <el-row class="clear top16">
         <el-col :span="3">标签：</el-col>
-        <el-col :span="12"><el-input class="long-input" clearable v-model="article.tag" placeholder="标签,多个用空格隔开"></el-input></el-col>
+        <el-col :span="12">
+          <el-select v-model="article.label" 
+          multiple 
+          filterable
+          remote
+          reserve-keyword
+          :remote-method="remoteLabel">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-col>
       </el-row>
       <el-row class="clear top16">
         <el-col :span="3">权重：</el-col>
@@ -63,9 +77,11 @@
 <script type="babel">
 import wangeditor from 'wangeditor'
 import { SET_SAVE_ARTICLE } from '../../store/app/mutation-type';
+import request from 'framework/network/request';
 export default {
   data() {
     return {
+      options:[],
       csrf:'/upload?_csrf='+this.$store.state.csrf,
       editor:null,
       article: {
@@ -75,6 +91,7 @@ export default {
         tag: "",
         fileList:[],
         type:'',
+        label:'',
       },
     };
   },
@@ -85,6 +102,11 @@ export default {
     }
   },
   methods: {
+    remoteLabel(query){
+      request.post('/admin/api/label/list',{lb_name:query},this.$store).then(response => {
+        console.log('response',response)
+      });
+    },
     successUpload(response,file,fileList){
       console.log('successUpload');
       console.log('response', response.url);
