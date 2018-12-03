@@ -15,3 +15,16 @@ INSERT INTO user(user_id, user_name)
 VALUES(1, '姚明'), (2, '比尔.盖茨'), (3, '火星人');
 #查看表数据
 select * from user;
+
+# 删除表
+DROP TABLE table_name;
+
+#创建标签表
+create table label(
+    lb_id INT NOT NULL AUTO_INCREMENT,
+    lb_name VARCHAR(100) unique,
+    PRIMARY KEY ( lb_id )
+);
+#向表中插入数据
+INSERT INTO label(lb_id, lb_name)
+VALUES(1, 'jquery'), (2, 'menu'), (3, 'canvas');

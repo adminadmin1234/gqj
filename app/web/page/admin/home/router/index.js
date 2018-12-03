@@ -3,6 +3,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Dashboard from '../view/dashboard/index.vue';
 import ArticleList from '../view/list.vue';
+import LableList from '../view/label.vue';
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,10 @@ export default function createRouter() {
       {
         path: '/article/detail/:id',
         component: () => import('../view/detail.vue')
+      },
+      {
+        path: '/label/list',
+        component: LableList
       },
       {
         path: '*', component: () => import('../view/notfound.vue')

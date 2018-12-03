@@ -21,10 +21,7 @@ module.exports = class AdminController extends egg.Controller {
     this.ctx.body = ctx.service.article.getArtilceList(ctx.request.body);
   }
   async add(ctx) {
-    // ctx.body = this.service.article.saveArticle(ctx.request.body);
-    // console.log('ctx', ctx.csrf);
     this.ctx.body = ctx.csrf;
-    // console.log('ctx.body11111111111111111111111', ctx.body);
   }
   async del(ctx) {
     const { id } = ctx.params;
@@ -33,5 +30,21 @@ module.exports = class AdminController extends egg.Controller {
   async detail(ctx) {
     const id = ctx.query.id;
     ctx.body = {};
+  }
+  async labellist(ctx) {
+    // 数据库
+    const labelList = await ctx.service.label.getLabelList();
+    console.log('labelList23124', labelList);
+    this.ctx.body = labelList;
+  }
+  async labeladd(ctx) {
+    // 数据库
+    const flag = await ctx.service.label.setLabelList(ctx.request.body);
+    this.ctx.body = flag;
+  }
+  async labeldel(ctx) {
+    const { id } = ctx.params;
+    console.log('labeldel', ctx);
+    ctx.body = this.service.label.deleteArticle(id);
   }
 };

@@ -3,7 +3,8 @@ export default {
     home: 'Home',
     articlemanage: 'Article Manage',
     articlequery: 'Article Query',
-    articleadd: 'Article Add'
+    articleadd: 'Article Add',
+    labelmanage: 'Label Manage',
   },
   lang: {
     href: '/admin?locale=cn',

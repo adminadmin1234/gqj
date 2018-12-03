@@ -19,6 +19,11 @@ const menu = {
         path: '/article/add'
       }
     }
+  },
+  label: {
+    name: 'menu.labelmanage',
+    path: '/label/list',
+    icon: 'el-icon-menu'
   }
 };
 

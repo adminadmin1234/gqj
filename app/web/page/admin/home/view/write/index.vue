@@ -13,12 +13,20 @@
           <el-upload
             class="upload-demo"
             :action="csrf"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-remove="beforeRemove"
+            :on-success="successUpload"
             :file-list="article.fileList">
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
+        </el-col>
+      </el-row>
+      <el-row class="clear top16">
+        <el-col :span="3">类型：</el-col>
+        <el-col :span="12">
+           <el-select v-model="article.type" placeholder="请选择">
+              <el-option label="前端插件" value="1"></el-option>
+              <el-option label="微信小程序" value="2"></el-option>
+              <el-option label="个人博客" value="3"></el-option>
+           </el-select>
         </el-col>
       </el-row>
       <el-row class="clear top16">
@@ -66,6 +74,7 @@ export default {
         title: "",
         tag: "",
         fileList:[],
+        type:'',
       },
     };
   },
@@ -76,14 +85,9 @@ export default {
     }
   },
   methods: {
-    handleRemove(file, fileList) {
-        console.log(file, fileList);
-    },
-    handlePreview(file) {
-        console.log(file);
-    },
-    beforeRemove(file, fileList) {
-        return this.$confirm(`确定移除 ${ file.name }？`);
+    successUpload(response,file,fileList){
+      console.log('successUpload');
+      console.log('response', response.url);
     },
     initEditor(){
       this.editor = new wangeditor('#editor');
@@ -106,3 +110,4 @@ export default {
   }
 };
 </script>
+

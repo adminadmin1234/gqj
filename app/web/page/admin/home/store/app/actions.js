@@ -13,6 +13,26 @@ const actions = {
       store.commit(Type.SET_CXT, response.data);
     });
   },
+  // 标签
+  SET_LABEL_LIST: (store, json) => {
+    return request.post('/admin/api/label/list', json, store).then(response => {
+      store.commit(Type.SET_LABEL_LIST, response.data);
+    });
+  },
+  SET_LABEL_SAVE: (store, json) => {
+    return request.post('/admin/api/label/add', json, store).then(response => {
+      store.commit(Type.SET_LABEL_SAVE, response.data);
+    });
+  },
+  LABEL_DELETE: (store, { id }) => {
+    // 鉴权 TODO
+    const { commit, dispatch, state } = store;
+    return request.get(`/admin/api/label/del/${id}`, store)
+      .then(response => {
+        commit(Type.LABEL_DELETE, { id });
+      });
+  },
+  // 文章
   SET_ARTICLE_LIST: (store, json) => {
     return request.post('/admin/api/article/list', json, store).then(response => {
       store.commit(Type.SET_ARTICLE_LIST, response.data);
