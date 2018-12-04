@@ -91,6 +91,16 @@ module.exports = class ArticeService extends egg.Service {
     console.log('json', json);
     const row = {
       atc_title: json.title,
+      atc_fileUrl: json.fileUrl,
+      atc_type: json.type,
+      atc_weight: json.weight,
+      atc_read: json.read,
+      atc_preview: json.preview,
+      atc_download: json.download,
+      atc_like: json.like,
+      atc_content: json.content,
+      atc_enabled: json.enabled,
+      atc_publish_time: json.publish_time,
     };
     const options = {
       where: {
