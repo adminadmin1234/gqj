@@ -9,6 +9,8 @@ module.exports = app => {
   router.get('/login', controller.admin.admin.login);
   router.post('/admin/api/article/list', controller.admin.admin.list);
   router.post('/admin/api/article/add', controller.admin.admin.add);
+  router.post('/admin/api/article/updateEnabled', controller.admin.admin.updateEnabled);
+  router.post('/admin/api/article/modify', controller.admin.admin.modify);
   router.get('/admin/api/article/del/:id', controller.admin.admin.del);
   router.get('/admin/api/article/:id', controller.admin.admin.detail);
   // 标签

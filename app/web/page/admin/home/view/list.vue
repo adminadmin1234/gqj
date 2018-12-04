@@ -29,53 +29,68 @@
         @selection-change="batchSelect"
         style="width: 100%;">
         <el-table-column
-          type="selection"
-          width="55">
-        </el-table-column>
-        <el-table-column
-          prop="title"
+          prop="atc_title"
           label="标题">
           <template slot-scope="props">
-            <router-link :to="'/article/detail/'+ props.row.id">{{props.row.title}}</router-link>
+            <router-link :to="'/article/detail/'+ props.row.id">{{props.row.atc_title}}</router-link>
           </template>
         </el-table-column>
         <el-table-column
-          prop="hits"
-          label="点赞"
+          prop="atc_like"
+          label="点赞数"
           width="100">
         </el-table-column>
         <el-table-column
-          prop="status"
+          prop="atc_weight"
+          label="权重"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="atc_read"
+          label="阅读数"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="atc_preview"
+          label="预览数"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="atc_download"
+          label="下载数"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="act_type"
+          label="类型"
+          width="100">
+          <template slot-scope="props">
+            <div v-if="props.row.atc_type == 1">前端插件</div>
+            <div v-if="props.row.atc_type == 2">微信小程序</div>
+            <div v-if="props.row.atc_type == 3">个人博客</div>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="atc_enabled"
           label="状态"
           width="100">
           <template slot-scope="props">
-            <span v-text="props.row.status == 1 ? '已发布' : '草稿'"></span>
+            <el-tag v-if="props.row.atc_enabled == 1" type="danger" size="small">在线</el-tag>
+            <el-tag v-if="props.row.atc_enabled == 0" type="info" size="small">下线</el-tag>
           </template>
         </el-table-column>
         <el-table-column
           label="操作"
           width="180">
           <template slot-scope="props">
-            <router-link :to="{params: {id: props.row.id}}" tag="span">
-              <el-button type="info" size="small" icon="edit" @click="handleEdit(props.$index, props.row)">修改</el-button>
-            </router-link>
-            <el-button type="danger" size="small" icon="delete" @click="handleDelete(props.$index, props.row)">删除</el-button>
+            <el-button type="success" v-if="props.row.atc_enabled == 0" size="small" @click="updateEnabled(props.row.atc_id,1)">上线</el-button>
+            <el-button type="success" v-if="props.row.atc_enabled == 1" size="small" @click="updateEnabled(props.row.atc_id,0)">下线</el-button>
+            <el-button type="info" size="small" icon="edit" @click="handleEdit(props.row.atc_id)">修改</el-button>
           </template>
         </el-table-column>
       </el-table>
       <div style="margin-top: 16px">
         <div style="float:left">
-           <el-button
-            type="danger"
-            icon="delete"
-            size="small"
-            :disabled="batchSelectArray.length === 0"
-            @click="batchDel"
-            slot="handler">
-            <span>批量删除</span>
-        </el-button>
-        </div>
-        <div style="float:right">
           <el-pagination
               @size-change="handleSizeChange"
               @current-change="handleCurrentChange"
@@ -93,7 +108,8 @@
 
 </style>
 <script type="babel">
-import {SET_CXT, SET_ARTICLE_LIST, DELETE_ARTICLE } from '../store/app/mutation-type';
+import {SET_ARTICLE_LIST, DELETE_ARTICLE } from '../store/app/mutation-type';
+import request from 'framework/network/request';
 export default {
   components: {},
   data() {
@@ -112,9 +128,6 @@ export default {
     };
   },
   methods: {
-    fetchCxt(store, json){
-      return store.dispatch(SET_CXT, json);
-    },
     fetchApi(store, json) {
       return store.dispatch(SET_ARTICLE_LIST, json);
     },
@@ -137,12 +150,19 @@ export default {
       this.q.pageIndex = val;
       this.fetchApi(this.$store, this.q);
     },
-    handleEdit(index, row) {
-      this.$message(`你点击了编辑操作 index:${index}, id:${row.id}`);
+    handleEdit(id) {
+      this.$router.push({path: '/article/add', query: {atc_id: id}});
     },
     handleDelete(index, row) {
       this.$store.dispatch(DELETE_ARTICLE, { id: row.id });
       this.$message(`删除[${row.title}]成功!`);
+    },
+    //上下架
+    updateEnabled(id, enabled) {
+      request.post('/admin/api/article/updateEnabled',{atc_id:id,atc_enabled:enabled},this.$store).then(response => {
+        console.log('上下架',response)
+        this.optionsLabel = response.data.list;
+      });
     },
     //批量选择
     batchSelect(val) {

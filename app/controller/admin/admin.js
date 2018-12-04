@@ -6,42 +6,53 @@ module.exports = class AdminController extends egg.Controller {
   }
   async home(ctx) {
     const url = ctx.url.replace(/\/admin/, '');
-    console.log('homehomehomehomehomehomehome');
     await ctx.render('admin/home/home.js', { ctx, url });
   }
   async getctx(ctx) {
     console.log('ctct234234234', ctx.csrf);
     this.ctx.body = ctx.csrf;
   }
+  // 获取文章列表
   async list(ctx) {
-    // 数据库
-    const user = await ctx.service.article.find({ user_id: 1 });
-    console.log('user', user);
-    // ctx.body = user;
-    this.ctx.body = ctx.service.article.getArtilceList(ctx.request.body);
+    console.log('ctx.request.body', ctx.request.body);
+    const articleList = await ctx.service.article.getArtilceList(ctx.request.body.title);
+    console.log('articleList', articleList);
+    this.ctx.body = articleList;
   }
+  // 添加文章
   async add(ctx) {
-    this.ctx.body = ctx.csrf;
+    this.ctx.body = await ctx.service.article.saveArticle(ctx.request.body);
+  }
+  // 文章上下线
+  async updateEnabled(ctx) {
+    this.ctx.body = await ctx.service.article.updateEnabledArticle(ctx.request.body);
   }
   async del(ctx) {
     const { id } = ctx.params;
     ctx.body = this.service.article.deleteArticle(id);
   }
+  // 获取文章详情
   async detail(ctx) {
-    const id = ctx.query.id;
-    ctx.body = {};
+    console.log('ctx.query.id', ctx.params.id);
+    const articleDetail = await ctx.service.article.getArticleDetail(ctx.params.id);
+    this.ctx.body = articleDetail;
   }
+  // 修改文章
+  async modify(ctx) {
+    const flag = await ctx.service.article.modify(ctx.request.body);
+    this.ctx.body = flag;
+  }
+  // 获取标签列表
   async labellist(ctx) {
-    // 数据库
-    const labelList = await ctx.service.label.getLabelList();
-    console.log('labelList23124', labelList);
+    const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name);
     this.ctx.body = labelList;
   }
+  // 添加标签
   async labeladd(ctx) {
-    // 数据库
     const flag = await ctx.service.label.setLabelList(ctx.request.body);
     this.ctx.body = flag;
   }
+  // 删除标签
   async labeldel(ctx) {
     const { id } = ctx.params;
     console.log('labeldel', ctx);

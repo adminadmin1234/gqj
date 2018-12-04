@@ -19,6 +19,9 @@ select * from user;
 # 删除表
 DROP TABLE table_name;
 
+
+——————————————————————————————————————————————————————————————————————————————
+
 #创建标签表
 create table label(
     lb_id INT NOT NULL AUTO_INCREMENT,
@@ -28,3 +31,27 @@ create table label(
 #向表中插入数据
 INSERT INTO label(lb_id, lb_name)
 VALUES(1, 'jquery'), (2, 'menu'), (3, 'canvas');
+
+#创建文章表
+create table article(
+   atc_id INT NOT NULL AUTO_INCREMENT,
+   atc_title VARCHAR(256),
+   atc_fileUrl VARCHAR(256),
+   atc_type tinyint default 1,
+   atc_weight tinyint default 0,
+   atc_read int,
+   atc_preview int,
+   atc_download int,
+   atc_like int,
+   atc_enabled tinyint,
+   atc_content text,
+   atc_publish_time VARCHAR(256),
+   PRIMARY KEY ( atc_id )
+);
+#创建文章标签关联表
+create table atcAndLb(
+   al_id INT NOT NULL AUTO_INCREMENT,
+   al_atc_id int,
+   al_lb_id int,
+   PRIMARY KEY ( al_id )
+);

@@ -35,8 +35,12 @@ class UploadController extends Controller {
       await sendToWormhole(stream);
       throw err;
     }
-    // 将zip文件压缩
-    await fs.createReadStream(this.config.baseDir + '/public/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/public/uploads' }));
+    const fileNameArr = filename.split('.');
+    console.log('fileNameArr', fileNameArr);
+    if (fileNameArr[fileNameArr.length - 1] === 'zip') {
+      // 将zip文件压缩
+      await fs.createReadStream(this.config.baseDir + '/public/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/public/uploads' }));
+    }
     // 文件响应
     ctx.body = {
       url: '/public/uploads/' + filename,

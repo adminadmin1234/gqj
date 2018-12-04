@@ -1,16 +1,21 @@
 'use strict';
 const egg = require('egg');
-const Collection = require('../lib/db/collection');
-const Query = require('../lib/db/query');
 module.exports = class LabelService extends egg.Service {
   constructor(ctx) {
     super(ctx);
     this.ctx = ctx;
-    this.colllection = new Collection(ctx.db, 'article');
   }
-  async getLabelList(uid) {
-    // 假如 我们拿到用户 id 从数据库获取用户详细信息
-    const labelList = await this.app.mysql.select('label');
+  async getLabelList(name) {
+    // 通过name进行模糊查询
+    const TABLE_NAME = 'label';
+    const QUERY_STR = 'lb_id, lb_name';
+    let sql;
+    if (name === null || name === undefined) {
+      sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
+    } else {
+      sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%"`;
+    }
+    const labelList = await this.app.mysql.query(sql);
     const string = JSON.stringify(labelList);
     const list = JSON.parse(string);
     const total = list.length;
@@ -25,10 +30,8 @@ module.exports = class LabelService extends egg.Service {
     return { flag };
   }
   async deleteArticle(data) {
-    console.log('deleteArticle', data);
     const result = await this.app.mysql.delete('label', { lb_id: data });
     const flag = result.affectedRows;
-    console.log('deleteArticle', flag);
     let id = null;
     if (flag === 1) {
       id = data;
