@@ -1,20 +1,21 @@
 'usestrict';
 const egg = require('egg');
 module.exports = class IndexController extends egg.Controller {
-  async index() {
-    const result = this.service.article.getArtilceList();
-    console.log('index-result', result);
-    await this.ctx.render('index/index.js', result);
+  async index(ctx) {
+    console.log('ctx.request.body', ctx.request.body);
+    const articleList = await ctx.service.article.getArtilceList(ctx.request.body.title);
+    console.log('articleList', articleList);
+    // this.ctx.body = articleList;
+    await this.ctx.render('index/index.js', articleList);
   }
-
   async client() {
     const result = this.service.article.getArtilceList();
     await this.ctx.renderClient('index/index.js', result);
   }
 
-  async list() {
-    this.ctx.body = this.service.article.getArtilceList(this.ctx.query);
-    console.log('list-this.ctx.body', this.ctx.body);
+  async list(ctx) {
+    const articleList = await ctx.service.article.getArtilceListIndex();
+    this.ctx.body = articleList;
   }
 
   async detail() {

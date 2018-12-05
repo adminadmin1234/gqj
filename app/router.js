@@ -6,7 +6,12 @@ module.exports = app => {
   router.get('/client', controller.index.index.client);
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);
+  router.get('/index/api/article/list', controller.index.index.list);
+
+  // 管理后台
+  // ----------------------------------
   router.get('/login', controller.admin.admin.login);
+  // 文章
   router.post('/admin/api/article/list', controller.admin.admin.list);
   router.post('/admin/api/article/add', controller.admin.admin.add);
   router.post('/admin/api/article/updateEnabled', controller.admin.admin.updateEnabled);
@@ -19,6 +24,5 @@ module.exports = app => {
   router.get('/admin/api/label/del/:id', controller.admin.admin.labeldel);
 
   router.get('/admin(/.+)?', controller.admin.admin.home);
-  router.get('/admin/api/article/getctx', controller.admin.admin.getctx);
   router.post('/upload', controller.admin.upload.index);
 };
