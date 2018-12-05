@@ -49,7 +49,7 @@ export default {
     },
     filters: {
       formatData(data){
-          return moment(parseInt(data)).format('YYYY-MM-DD HH:mm:ss');
+          return moment(parseInt(data)).format('YYYY-MM-DD');
       },
       imgUrlFun(str){
         let data = '';
