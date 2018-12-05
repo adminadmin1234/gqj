@@ -422,6 +422,8 @@ exports.index = function* (ctx) {
   app.get('/app(/.+)?', app.controller.app.app.index);
 ```
 
+https://www.html5tricks.com/10-html5-image-effect.html
+http://www.lanrenzhijia.com/
 
 ## License
 
