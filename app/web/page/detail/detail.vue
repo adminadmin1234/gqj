@@ -37,6 +37,7 @@
 @import "detail.css";
 </style>
 <script type="babel">
+import store from '../admin/home/store/app';
 import request from 'framework/network/request';
 import Vue from 'vue';
 import ElementUI from 'element-ui';
@@ -44,6 +45,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
 export default {
+store,
 components: {
     LayoutHeader,
 },
@@ -58,7 +60,7 @@ data(){
 },
 computed: {
     articleData() {
-      return this.title;
+        return 1;
     }
   },
 methods: {
@@ -74,7 +76,8 @@ methods: {
     }
 },
 mounted() {
-    
+    this.getArticleDetailById();
+    console.log('this.$store.state.articleTotal',this.$store.state.articleTotal)
 }
 }
 </script>
