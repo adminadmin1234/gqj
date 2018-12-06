@@ -6,6 +6,9 @@ module.exports = app => {
   router.get('/client', controller.index.index.client);
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);
+  router.get('/document', controller.document.document.index);
+  router.get('/detail', controller.detail.detail.index);
+  router.get('/detail/api/article/detail', controller.detail.detail.detail);
   router.get('/index/api/article/list', controller.index.index.list);
 
   // 管理后台

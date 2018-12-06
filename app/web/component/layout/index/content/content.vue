@@ -3,7 +3,7 @@
     <div class="content-left">
       <div class="content-up">
         <!--<img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="">-->
-        <h1 class="site-name">世界知最</h1>
+        <h1 class="site-name">凌晨两点半</h1>
         <hr class="content-left-hr">
       </div>
       <ul class="content-down">
@@ -16,18 +16,20 @@
     <div class="content-right">
       <div class="code-wrap">
         <!--<img src="../../../../asset/images/code.png" alt="">-->
-        <p>扫一扫有惊喜！</p>
+        <p>{{title}}</p>
       </div>
       <div class="content-wrap">
         <div>热门推荐</div>
         <ul class="content-wrap-ul">
-          <li v-for="item in articleList">
-            <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
-            <div class="content-detail-wrap">
-              <p>{{item.atc_title}}</p>
-              <span class="content-detail-date">{{item.atc_publish_time | formatData}}</span>
-              <span class="content-detail-label" v-for="itemLabel in item.labelList">{{itemLabel}}</span>
-            </div>
+          <li v-for="item in articleList" >
+              <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
+              <a :href="item.atc_id | addHref">
+                <div class="content-detail-wrap">
+                  <p>{{item.atc_title}}</p>
+                  <span class="content-detail-date">{{item.atc_publish_time | formatData}}</span>
+                  <span class="content-detail-label" v-for="itemLabel in item.labelList">{{itemLabel}}</span>
+                </div>
+              </a>
           </li>
         </ul>
       </div>
@@ -44,19 +46,22 @@ export default {
     name:'v-content',
     data(){
       return {
+        title:'博主码',
         articleList: []
       }
     },
     filters: {
       formatData(data){
-          return moment(parseInt(data)).format('YYYY-MM-DD');
+        return moment(parseInt(data)).format('YYYY-MM-DD');
+      },
+      addHref(data){
+        return '/detail?id=' + data;
       },
       imgUrlFun(str){
         let data = '';
             str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
                   data =  capture;
             });
-            console.log('data',data)
         return data
       }
     },
@@ -65,7 +70,7 @@ export default {
     },
     methods: {
       loadData() {
-        request.get('/index/api/article/list',{},this.$store).then(response => {
+        request.get('/index/api/article/list').then(response => {
           this.articleList = response.data.temp;
           console.log('this.articleList',this.articleList);
         });

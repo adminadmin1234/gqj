@@ -3,16 +3,13 @@
     <div class="logo-wrap"><img class="logo" src="../../../../asset/images/logo-index.svg" @click="onOffChart"></div>
     <nav class="nav header-wrap">
         <a class="nav-link header-nav-link active" href="/home">{{$t('menu.home')}}</a>
-        <a class="nav-link header-nav-link" href="/category">{{$t('menu.category')}}</a>
-        <a class="nav-link header-nav-link" href="#">旁门</a>
-        <a class="nav-link header-nav-link" href="#">收藏</a>
+        <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
     </nav>
 </div>
 </template>
 <script type="babel">
 import "./header.css";
 import $ from 'jquery';
-
 export default {
   components: {},
   data() {

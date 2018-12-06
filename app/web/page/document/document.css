@@ -1,0 +1,40 @@
+.main{
+    position: relative;
+}
+.menu-nav-wrap-full{
+    width: 100%;
+    background: #aaaaaa;
+    height: 44px;
+}
+.menu-nav-wrap{
+    position: absolute;
+    width: 1000px;
+    height: 44px;
+    left: 50%;
+    margin-left:-500px;
+}
+.menu-single-wrap{
+    float: left;
+    width: 100px;
+    background: #aaaaaa;
+    height: 44px;
+    color: black;
+    text-align: center;
+    line-height: 44px;
+}
+.content-wrap{
+    position: absolute;
+    width: 1000px;
+    background: #ccc;
+    height: 1000px;
+    left: 50%;
+    margin-left:-500px;
+}
+.content-single{
+    width: 320px;
+    float: left;
+    height: 200px;
+    margin-left: 10px;
+    background: #aaaaaa;
+    margin-top: 10px;
+}

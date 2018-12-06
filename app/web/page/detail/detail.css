@@ -1,0 +1,54 @@
+.main{
+    position: relative;
+}
+.menu-nav-wrap-full{
+    width: 100%;
+    background: #aaaaaa;
+    height: 44px;
+}
+.menu-nav-wrap{
+    position: absolute;
+    width: 1000px;
+    height: 44px;
+    left: 50%;
+    margin-left:-500px;
+}
+.menu-single-wrap{
+    float: left;
+    width: 100px;
+    background: #aaaaaa;
+    height: 44px;
+    color: black;
+    text-align: center;
+    line-height: 44px;
+}
+.content-wrap{
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    left: 50%;
+    margin-left:-500px;
+}
+.breadcrumb{
+    margin-top: 10px;
+}
+.article-wrap{
+    width: 1000px;
+    margin-top: 10px;
+    background: #aaaaaa;
+    border: 1px solid #aaaaaa;
+    height: 1000px;
+}
+.aricle-left-wrap{
+    float: left;
+    width: 700px;
+    background: #ccc;
+    height: 1000px;
+}
+.aricle-right-wrap{
+    float: left;
+    margin-left: 10px;
+    width: 288px;
+    height: 1000px;
+    background: lemonchiffon;
+}
