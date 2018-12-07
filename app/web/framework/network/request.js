@@ -6,6 +6,7 @@ axios.defaults.xsrfHeaderName = 'x-csrf-token';
 axios.defaults.xsrfCookieName = 'csrfToken';
 export default {
   post(url, json, store = {}) {
+    console.log('post');
     console.log('axios-store', store);
     const { state = { origin: '' } } = store;
     const headers = {};
@@ -14,12 +15,24 @@ export default {
       headers.Cookie = `csrfToken=${state.csrf}`;
     }
     console.log('`${state.origin}${url}`', `${state.origin}${url}`);
-    console.log('axios-json', json);
+    console.log('state.csrf', state.csrf);
     console.log('axios-headers', { headers });
-    return axios.post(`${state.origin}${url}`, json, { headers });
+    if (`${state.origin}` === 'undefined') {
+      console.log('post1');
+      return axios.post(`${url}`, json, { headers });
+    } else {
+      console.log('post2');
+      return axios.post(`${state.origin}${url}`, json, { headers });
+    }
   },
   get(url, store = {}) {
     const { state = { origin: '' } } = store;
-    return axios.get(`${state.origin}${url}`);
+    if (`${state.origin}` === 'undefined') {
+      console.log('getUrl1');
+      return axios.get(`${url}`);
+    } else {
+      console.log('getUrl2');
+      return axios.get(`${state.origin}${url}`);
+    }
   }
 };

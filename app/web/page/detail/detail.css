@@ -6,10 +6,12 @@
     background: #aaaaaa;
     height: 44px;
 }
+.menu-nav-wrap-full-h2{
+    height: 88px!important;
+}
 .menu-nav-wrap{
     position: absolute;
     width: 1000px;
-    height: 44px;
     left: 50%;
     margin-left:-500px;
 }

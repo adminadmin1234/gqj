@@ -8,10 +8,14 @@ import request from 'framework/network/request';
 Vue.use(Vuex);
 
 const actions = {
-  SET_CXT: (store, json) => {
-    return request.get('/admin/api/article/getctx', json, store).then(response => {
-      store.commit(Type.SET_CXT, response.data);
-    });
+  // 前台获取某个文章详情
+  GET_ARTICLE_DETAIL: (store, { id }) => {
+    // 鉴权 TODO
+    const { commit, dispatch, state } = store;
+    return request.get(`/detail/api/article/detail/${id}`, store)
+      .then(response => {
+        store.commit(Type.GET_ARTICLE_DETAIL, response.data);
+      });
   },
   // 标签
   SET_LABEL_LIST: (store, json) => {

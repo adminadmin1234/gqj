@@ -10,7 +10,6 @@ Vue.use(Vuex);
 
 export default function createStore(initState) {
   const state = {
-    ctx: null,
     dialogVisible: false,
     labelTotal: 0,
     labelList: [],

@@ -1,6 +1,6 @@
 'use strict';
 
-export const SET_CXT = 'SET_CXT';
+export const GET_ARTICLE_DETAIL = 'GET_ARTICLE_DETAIL';
 // 标签
 export const SET_LABEL_LIST = 'SET_LABEL_LIST';
 export const SET_LABEL_SAVE = 'SET_LABEL_SAVE';

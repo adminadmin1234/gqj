@@ -5,12 +5,12 @@ module.exports = app => {
       console.log('Detail');
       const result = 1;
       console.log('Category-index-result', result);
-      await this.ctx.renderClient('detail/detail.js', result);
+      await this.ctx.renderClient('detail/detail.js', { ctx, result });
     }
     // 获取文章详情
     async detail(ctx) {
-      console.log('ctx.query.id获取文章详情', ctx.query.id);
-      const articleDetail = await ctx.service.article.getArticleDetail(ctx.query.id);
+      const articleDetail = await ctx.service.article.getArticleDetail(ctx.params.id);
+      console.log('ctx.query.id获取文章详情', articleDetail);
       this.ctx.body = articleDetail;
     }
   };

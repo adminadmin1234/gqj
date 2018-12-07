@@ -9,12 +9,10 @@ module.exports = class AdminController extends egg.Controller {
     await ctx.render('admin/home/home.js', { ctx, url });
   }
   async getctx(ctx) {
-    console.log('ctct234234234', ctx.csrf);
     this.ctx.body = ctx.csrf;
   }
   // 获取文章列表
   async list(ctx) {
-    console.log('ctx.request.body', ctx.request.body);
     const articleList = await ctx.service.article.getArtilceList(ctx.request.body.title);
     console.log('articleList', articleList);
     this.ctx.body = articleList;
@@ -33,7 +31,6 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 获取文章详情
   async detail(ctx) {
-    console.log('ctx.query.id', ctx.params.id);
     const articleDetail = await ctx.service.article.getArticleDetail(ctx.params.id);
     this.ctx.body = articleDetail;
   }
