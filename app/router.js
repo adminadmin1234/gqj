@@ -2,12 +2,14 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.index.index.index);
-  router.get('/home', controller.index.index.index);
-  router.get('/client', controller.index.index.client);
+  router.get('/home(/.+)?', controller.index.index.index);
+  // router.get('/home', controller.index.index.index);
+  // router.get('/client', controller.index.index.client);
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);
   router.get('/document', controller.document.document.index);
   router.get('/detail', controller.detail.detail.index);
+  router.get('/detail/api/article/detail', controller.detail.detail.detail);
   router.get('/detail/api/article/detail/:id', controller.detail.detail.detail);
   router.get('/index/api/article/list', controller.index.index.list);
 

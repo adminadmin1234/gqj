@@ -6,10 +6,7 @@ module.exports = class AdminController extends egg.Controller {
   }
   async home(ctx) {
     const url = ctx.url.replace(/\/admin/, '');
-    await ctx.render('admin/home/home.js', { ctx, url });
-  }
-  async getctx(ctx) {
-    this.ctx.body = ctx.csrf;
+    await ctx.render('admin/home/home.js', { url });
   }
   // 获取文章列表
   async list(ctx) {

@@ -31,6 +31,9 @@ export default {
       options.i18n = i18n;
     }
   },
-  mounted() {},
+  mounted() {
+    console.log('store', store);
+    console.log('storestorestorestore', this.$store);
+  },
 };
 </script>

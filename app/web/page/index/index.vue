@@ -1,32 +1,35 @@
 <template>
-       <div class='main'>{{test}}
+       <div class='main'>
           <LayoutHeader></LayoutHeader>
           <LayoutContent>
             <div slot='content'><slot name='main'></slot></div>
           </LayoutContent>
         </div>
 </template>
-<style>
-  @import "index.css";
-</style>
-<script type="babel">
+<script type="text/babel">
   import LayoutHeader from '../../component/layout/index/header/header';
   import LayoutContent from '../../component/layout/index/content/content';
+  import store from '../store/app';
+  import router from '../router';
   export default {
+    store,
+    router,
     components: {
       LayoutHeader,
       LayoutContent
     },
-    data(){
+    data: function () {
       return {
-        test:'test'
+        test:1
       }
     },
     computed: {
     },
     methods: {
     },
-    mounted() {
-    }
+    created() {
+      console.log('store', store);
+      console.log('storestorestorestore', this.$store);
+    },
   }
 </script>
