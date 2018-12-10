@@ -63,8 +63,8 @@
     data(){
       return {
         pagination:{
-          index:0,
-          pagesize:5,
+          index:1,
+          pagesize:9,
           total:100,
         },
         labelId:null,
@@ -80,7 +80,6 @@
     },
     methods: {
       changePagination(index){
-        console.log('index', index);
         this.pagination.index = index;
         this.loadData(this.labelId);
       },

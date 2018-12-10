@@ -4,7 +4,7 @@
 }
 .menu-nav-wrap-full{
     width: 100%;
-    background: #aaaaaa;
+    background: #4a4a4a;
     height: 44px;
 }
 .menu-nav-wrap-full-h2{
@@ -19,11 +19,19 @@
 .menu-single-wrap{
     float: left;
     width: 100px;
-    background: #aaaaaa;
+    background: #4a4a4a;
     height: 44px;
-    color: black;
+    color: white;
     text-align: center;
     line-height: 44px;
+    border-right: 1px solid #5b5b5b;
+    cursor: pointer;
+}
+.menu-single-wrap:first-child{
+    border-left: 1px solid #5b5b5b;
+}
+.menu-single-wrap-default,.menu-single-wrap-active{
+    background: #ff6601;
 }
 .content-wrap{
     width: 1000px;

@@ -95,10 +95,8 @@ module.exports = class ArticeService extends egg.Service {
   async getArticleDetail(id = {}) {
     // 通过name进行模糊查询
     const TABLE_NAME = 'article';
-    console.log('id', id);
     const sql = `select * from ${TABLE_NAME} where atc_id = ${id}`;
     const articleList = await this.app.mysql.query(sql);
-    console.log('articleList', articleList);
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
     return {
@@ -157,10 +155,11 @@ module.exports = class ArticeService extends egg.Service {
       temp
     };
   }
-  async getArtilceListDoc(lbId, index = 0, maxCount = 5) {
+  async getArtilceListDoc(lbId, index = 0, maxCount = 12) {
+    const offset = index * maxCount - maxCount;
     const query = 'select SQL_CALC_FOUND_ROWS * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
-    + lbId + ') as al where a.atc_id = al.al_id order by a.atc_id limit '
-    + index + ',' + maxCount;
+    + lbId + ') as al where a.atc_id = al.al_atc_id order by a.atc_publish_time desc limit '
+    + offset + ',' + maxCount;
     const articleList = await this.app.mysql.query(query);
     const totalNum = await this.app.mysql.query('select FOUND_ROWS()');
     const string = JSON.stringify(articleList);
@@ -168,23 +167,52 @@ module.exports = class ArticeService extends egg.Service {
     let stringTotalNum = JSON.stringify(totalNum);
     stringTotalNum = stringTotalNum.replace('FOUND_ROWS()', 'total');
     const jsonTotalNum = JSON.parse(stringTotalNum);
-    console.log('jsonTotalNum', jsonTotalNum[0].total);
     const temp = this.uniqueObj(list);
-    if (list.length > 0) {
-      temp.forEach(item1 => {
-        const labelList = [];
-        list.forEach(item2 => {
-          if (item1.atc_id === item2.atc_id) {
-            labelList.push(item2.lb_name);
-          }
-          item1.labelList = labelList;
-        });
-      });
-    }
     const total = jsonTotalNum[0].total;
     return {
       total,
       temp
+    };
+  }
+  // 文章详情页右边两个列表数据
+  async getArtilceRightList(atcId) {
+    // 通过文章id查询出文章标签关联表的标签id
+    const sql = 'select al_lb_id from atcAndLb where al_atc_id =' + atcId;
+    const article = await this.app.mysql.query(sql);
+    const articleStr = JSON.stringify(article);
+    const articleJson = JSON.parse(articleStr);
+    console.log('articleJson[0].al_lb_id', articleJson[0].al_lb_id);
+
+    // 通过标签id查标签名
+    const sql1 = 'select lb_name from label where lb_id =' + articleJson[0].al_lb_id;
+    const label = await this.app.mysql.query(sql1);
+    const labelStr = JSON.stringify(label);
+    const labelJson = JSON.parse(labelStr);
+    console.log('articleJson[0].lb_name', labelJson[0].lb_name);
+    const labelData = {
+      id: articleJson[0].al_lb_id,
+      name: labelJson[0].lb_name
+    };
+
+    // 查询相关列表
+    const query = 'select * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
+    + articleJson[0].al_lb_id + ') as al where a.atc_id = al.al_atc_id order by a.atc_publish_time limit 8';
+    const articleList = await this.app.mysql.query(query);
+    const string = JSON.stringify(articleList);
+    const list = JSON.parse(string);
+    const reactList = this.uniqueObj(list);
+
+    // 查询最新列表
+    const query1 = 'select * from article order by atc_publish_time limit 8';
+    const articleList1 = await this.app.mysql.query(query1);
+    const string1 = JSON.stringify(articleList1);
+    const list1 = JSON.parse(string1);
+    const newList = this.uniqueObj(list1);
+
+    return {
+      labelData,
+      reactList,
+      newList
     };
   }
 };

@@ -2,16 +2,16 @@
        <div class='main'>
             <LayoutHeader></LayoutHeader>
             <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
-              <div class="menu-nav-wrap">
-                  <div class="menu-single-wrap" v-for="item in labelList">
+                <div class="menu-nav-wrap">
+                    <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
                     {{item.lb_name}}
-                  </div>
-              </div>
+                    </div>
+                </div>
             </div>
             <div class="content-wrap">
                 <div class="breadcrumb">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item :to="{ path: '/' }">jquery特效</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="{ path: '/' }">{{labelData.name}}</el-breadcrumb-item>
                         <el-breadcrumb-item>{{articleDetail.atc_title}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
@@ -32,15 +32,13 @@
                         <div class="kuang-wrap">
                             <h2 class="kuang-wrap-h2">最近更新</h2>
                             <ul>
-                                <li class="kuang-li"><a class="kuang-li-a">1.最近更新最近更新最近更新最近更新最近更新</a></li>
-                                <li class="kuang-li"><a class="kuang-li-a">2.最近更新最近更新最近更新最近最近更新最近更新最近更新最近更新最近更新更新最近更新</a></li>
+                               <li class="kuang-li" v-for="(item,index) in newList"><a class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
                             </ul>
                         </div>
                         <div class="kuang-wrap">
                             <h2 class="kuang-wrap-h2">相关文章</h2>
                             <ul>
-                                <li class="kuang-li"><a class="kuang-li-a">1.最近更新最近更新最近更新最近更新最近更新</a></li>
-                                <li class="kuang-li"><a class="kuang-li-a">2.最近更新最近更新最近更新最近更新最近更新</a></li>
+                                <li class="kuang-li" v-for="(item,index) in reactList"><a class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -55,6 +53,7 @@
 <script type="babel">
 import {GET_ARTICLE_DETAIL, SET_LABEL_LIST} from '../admin/home/store/app/mutation-type';
 import request from 'framework/network/request';
+import $ from 'jquery';
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -73,6 +72,10 @@ components: {
 },
 data(){
   return {
+    defaultIndex:0,
+    newList:[],
+    reactList:[],
+    labelData:[],
     atc_id: '',
     articleDetail:[],
     hrefFileUrl:'',
@@ -96,20 +99,29 @@ filters: {
     }
 },
 methods: {
+    menuToLoad(lbName,index){
+        this.defaultIndex=index;
+      },
+    menuSingleShow(event){
+        $(event.currentTarget).addClass('menu-single-wrap-active');
+      },
+    menuSingleHide(event){
+        $(event.currentTarget).removeClass('menu-single-wrap-active');
+      },
     getArticleDetailById(){
         // 获取文章id
         let currtIdArr = location.search.replace('?','');
         this.atc_id = currtIdArr.split('=')[1];
+        // 通过文章id获取右边的两个列表
+        this.getRightList(this.atc_id);
         request.get(`/detail/api/article/detail?id=${this.atc_id}`).then(response => {
             this.articleDetail = response.data.list[0];
             if (typeof this.articleDetail.atc_fileUrl !== 'undefined' && this.articleDetail.atc_fileUrl !== null) {
                 this.hrefFileUrl = this.articleDetail.atc_fileUrl.split('.')[0] + '/index.html';
             }
-            console.log('this.articleDetail',this.articleDetail);
         });
     },
     getLabelList(store){
-        // store.dispatch(SET_LABEL_LIST, {});
         request.post(`/admin/api/label/list`,{},this.$store).then(response => {
             console.log('getLabelList-response',response);
             this.labelList = response.data.list;
@@ -118,6 +130,14 @@ methods: {
             }else{
                 this.menuShow =false;
             }
+        });
+    },
+    getRightList(lbId){
+        request.get(`/detail/api/article/list?id=${lbId}`).then(response => {
+            console.log('response', response);
+            this.reactList = response.data.reactList;
+            this.newList = response.data.newList;
+            this.labelData = response.data.labelData;
         });
     }
 },

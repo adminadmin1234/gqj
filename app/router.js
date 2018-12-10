@@ -13,6 +13,7 @@ module.exports = app => {
   router.get('/detail', controller.detail.detail.index);
   router.get('/detail/api/article/detail', controller.detail.detail.detail);
   router.get('/detail/api/article/detail/:id', controller.detail.detail.detail);
+  router.get('/detail/api/article/list', controller.detail.detail.list);
   router.get('/index/api/article/list', controller.index.index.list);
 
   // 管理后台
