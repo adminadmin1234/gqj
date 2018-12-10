@@ -7,5 +7,9 @@ module.exports = app => {
       console.log('Category-index-result', result);
       await this.ctx.renderClient('document/document.js', result);
     }
+    async list(ctx) {
+      const articleList = await ctx.service.article.getArtilceListDoc(ctx.query.id, ctx.query.index, ctx.query.pagesize);
+      this.ctx.body = articleList;
+    }
   };
 };

@@ -8,6 +8,8 @@ module.exports = app => {
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);
   router.get('/document', controller.document.document.index);
+  router.get('/document/api/article/list', controller.document.document.list);
+  // router.get('/document/api/article/list/:id', controller.document.document.list);
   router.get('/detail', controller.detail.detail.index);
   router.get('/detail/api/article/detail', controller.detail.detail.detail);
   router.get('/detail/api/article/detail/:id', controller.detail.detail.detail);

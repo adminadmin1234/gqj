@@ -1,5 +1,6 @@
 .main{
     position: relative;
+    
 }
 .menu-nav-wrap-full{
     width: 100%;
@@ -25,28 +26,23 @@
     line-height: 44px;
 }
 .content-wrap{
-    position: absolute;
     width: 1000px;
-    left: 50%;
-    margin-left:-500px;
+    margin-left:50%;
+    transform:translate(-50%,0);
 }
 .breadcrumb{
     margin-top: 10px;
 }
-.article-wrap{
-    width: 1000px;
-    margin-top: 10px;
-    border: 1px solid #aaaaaa;
-}
 .article-left-wrap{
     float: left;
     width: 700px;
+    border: 1px solid #ccc;
+    padding: 10px;
 }
 .article-right-wrap{
     float: left;
     margin-left: 10px;
     width: 288px;
-    background: lemonchiffon;
 }
 .article-left-h1{
     text-align: center;
@@ -59,7 +55,48 @@
 .article-left-content{
 
 }
+.el-button{
+    height: 30px;
+    width: 50px;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid goldenrod;
+    background: green;
+}
+.el-button-a{
+    color: white;
+}
+.el-badge__content.is-fixed{
+    right: 15px;
+}
 .article-btn{
     float:right;
-    margin-left: 30px;
+    margin-left: 15px;
+}
+.article-btn-download{
+    margin-right: 2px;
+}
+.kuang-wrap{
+    font-size: 15px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.kuang-wrap-h2{
+    font-size: 16px;
+    padding: 5px 0;
+}
+.kuang-li{
+    max-height: 46px;
+    margin-bottom: 5px;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /*行数*/
+    -webkit-box-orient: vertical;
+}
+.kuang-li-a{
+    display: block;
+    white-space:pre-wrap;
 }

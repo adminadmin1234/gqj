@@ -157,4 +157,34 @@ module.exports = class ArticeService extends egg.Service {
       temp
     };
   }
+  async getArtilceListDoc(lbId, index = 0, maxCount = 5) {
+    const query = 'select SQL_CALC_FOUND_ROWS * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
+    + lbId + ') as al where a.atc_id = al.al_id order by a.atc_id limit '
+    + index + ',' + maxCount;
+    const articleList = await this.app.mysql.query(query);
+    const totalNum = await this.app.mysql.query('select FOUND_ROWS()');
+    const string = JSON.stringify(articleList);
+    const list = JSON.parse(string);
+    let stringTotalNum = JSON.stringify(totalNum);
+    stringTotalNum = stringTotalNum.replace('FOUND_ROWS()', 'total');
+    const jsonTotalNum = JSON.parse(stringTotalNum);
+    console.log('jsonTotalNum', jsonTotalNum[0].total);
+    const temp = this.uniqueObj(list);
+    if (list.length > 0) {
+      temp.forEach(item1 => {
+        const labelList = [];
+        list.forEach(item2 => {
+          if (item1.atc_id === item2.atc_id) {
+            labelList.push(item2.lb_name);
+          }
+          item1.labelList = labelList;
+        });
+      });
+    }
+    const total = jsonTotalNum[0].total;
+    return {
+      total,
+      temp
+    };
+  }
 };
