@@ -12,15 +12,23 @@
                 <div class="breadcrumb">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/' }">jquery特效</el-breadcrumb-item>
-                        <el-breadcrumb-item>超炫稻草人</el-breadcrumb-item>
+                        <el-breadcrumb-item>{{articleDetail.atc_title}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
                 <div class="article-wrap">
-                    <div class="aricle-left-wrap">
-                        <el-button><a :href="hrefFileUrl">预览</a></el-button>
-                        <el-button><a :href="articleDetail.atc_fileUrl">下载</a></el-button>
+                    <div class="article-left-wrap">
+                        <h1 class="article-left-h1">{{articleDetail.atc_title}}</h1>
+                        <div class="article-left-header">
+                            <span>{{articleDetail.atc_publish_time | formatData}}</span>
+                        </div>
+                        <div class="article-left-content" v-html='articleDetail.atc_content'></div>
+                        <el-badge :value="articleDetail.atc_download" class="item article-btn" type="primary">
+                            <el-button><a :href="articleDetail.atc_fileUrl">下载</a></el-button>                        </el-badge>
+                        <el-badge :value="articleDetail.atc_preview" class="item article-btn" type="primary">
+                            <el-button><a :href="hrefFileUrl">预览</a></el-button>
+                        </el-badge>
                     </div>
-                    <div class="aricle-right-wrap">
+                    <div class="article-right-wrap">
                     </div>
                 </div>
             </div>
@@ -39,6 +47,7 @@ Vue.use(ElementUI);
 import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
 import store from '../store/app';
 import router from '../router';
+import moment from 'moment';
 export default {
 store,
 router,
@@ -54,14 +63,21 @@ data(){
     menuShow:false,
   }
 },
-computed: {
-    // articleData() {
-    //     return this.$store.state.article;
-    // },
-    // labelList() {
-    //     return this.$store.state.labelList;
-    // }
-  },
+    filters: {
+      formatData(data){
+        return moment(parseInt(data)).format('YYYY-MM-DD');
+      },
+      addHref(data){
+        return '/detail?id=' + data;
+      },
+      imgUrlFun(str){
+        let data = '';
+            str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
+                  data =  capture;
+            });
+        return data
+      }
+    },
 methods: {
     getArticleDetailById(){
         // 获取文章id

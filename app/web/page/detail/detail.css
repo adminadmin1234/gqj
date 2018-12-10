@@ -27,7 +27,6 @@
 .content-wrap{
     position: absolute;
     width: 1000px;
-    height: 1000px;
     left: 50%;
     margin-left:-500px;
 }
@@ -37,20 +36,30 @@
 .article-wrap{
     width: 1000px;
     margin-top: 10px;
-    background: #aaaaaa;
     border: 1px solid #aaaaaa;
-    height: 1000px;
 }
-.aricle-left-wrap{
+.article-left-wrap{
     float: left;
     width: 700px;
-    background: #ccc;
-    height: 1000px;
 }
-.aricle-right-wrap{
+.article-right-wrap{
     float: left;
     margin-left: 10px;
     width: 288px;
-    height: 1000px;
     background: lemonchiffon;
+}
+.article-left-h1{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+.article-left-header{
+
+}
+.article-left-content{
+
+}
+.article-btn{
+    float:right;
+    margin-left: 30px;
 }
