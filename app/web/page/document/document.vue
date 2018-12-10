@@ -3,7 +3,7 @@
           <LayoutHeader></LayoutHeader>
           <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
             <div class="menu-nav-wrap">
-                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (index==defaultIndex)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
+                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelId)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
                   {{item.lb_name}}
                 </div>
             </div>
@@ -68,7 +68,6 @@
           total:100,
         },
         labelId:null,
-        defaultIndex:0,
         hrefFileUrl:'',
         articleList:[],
         labelList:[],
@@ -76,6 +75,8 @@
       }
     },
     mounted() {
+      console.log('this.$route.params.id',this.$route.query.id)
+      this.labelId = this.$route.query.id;
       this.getLabelList();
     },
     methods: {
@@ -90,15 +91,17 @@
       },
       getLabelList(store){
           request.post(`/admin/api/label/list`,{},this.$store).then(response => {
-              console.log('getLabelList-response',response);
               this.labelList = response.data.list;
+              if(this.labelId != null){
+                this.loadData(this.labelId);
+              } else {
+                this.labelId = this.labelList[0].lb_id;
+                console.log('99999')
+                this.loadData(this.labelId);
+              }
               if(this.labelList.length > 10){
-                  this.labelId = this.labelList[0].lb_id;
-                  this.loadData(this.labelId);
                   this.menuShow = true;
               }else{
-                  this.labelId = this.labelList[0].lb_id;
-                  this.loadData(this.labelId);
                   this.menuShow =false;
               }
           });

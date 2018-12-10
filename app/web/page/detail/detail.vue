@@ -4,14 +4,14 @@
             <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
                 <div class="menu-nav-wrap">
                     <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
-                    {{item.lb_name}}
+                    <a :href="item.lb_id | addHref">{{item.lb_name}}</a>
                     </div>
                 </div>
             </div>
             <div class="content-wrap">
                 <div class="breadcrumb">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item :to="{ path: '/' }">{{labelData.name}}</el-breadcrumb-item>
+                        <el-breadcrumb-item><a :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
                         <el-breadcrumb-item>{{articleDetail.atc_title}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
@@ -32,13 +32,13 @@
                         <div class="kuang-wrap">
                             <h2 class="kuang-wrap-h2">最近更新</h2>
                             <ul>
-                               <li class="kuang-li" v-for="(item,index) in newList"><a class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
+                               <li class="kuang-li" v-for="(item,index) in newList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
                             </ul>
                         </div>
                         <div class="kuang-wrap">
                             <h2 class="kuang-wrap-h2">相关文章</h2>
                             <ul>
-                                <li class="kuang-li" v-for="(item,index) in reactList"><a class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
+                                <li class="kuang-li" v-for="(item,index) in reactList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,6 +88,9 @@ filters: {
     return moment(parseInt(data)).format('YYYY-MM-DD');
     },
     addHref(data){
+    return '/document?id=' + data;
+    },
+    addHref1(data){
     return '/detail?id=' + data;
     },
     imgUrlFun(str){
@@ -99,8 +102,15 @@ filters: {
     }
 },
 methods: {
-    menuToLoad(lbName,index){
+    menuToLoad(lbId,index){
         this.defaultIndex=index;
+        this.$router.push({
+          name: 'Document',
+          params: {
+            id: lbId
+          }
+        });
+        console.log('1234')
       },
     menuSingleShow(event){
         $(event.currentTarget).addClass('menu-single-wrap-active');

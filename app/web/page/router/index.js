@@ -9,16 +9,17 @@ Vue.use(VueRouter);
 export default function createRouter() {
   return new VueRouter({
     mode: 'history',
-    base: '/index/',
+    base: '/',
     routes: [
       {
         path: '/',
         component: index
       },
       {
-        path: '/ducoment',
-        component: document
-      },
+        path: '/document',
+        component: document,
+        name: 'Document'
+      }
     ]
   });
 }
