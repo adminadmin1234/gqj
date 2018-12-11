@@ -33,6 +33,19 @@
 .menu-single-wrap-default,.menu-single-wrap-active{
     background: #ff6601;
 }
+.menu-single-a{
+    color: white;
+}
+.menu-single-a:link { 
+    text-decoration: none; 
+} 
+.menu-single-a:visited { 
+    text-decoration: none; 
+} 
+.menu-single-a:hover { 
+    text-decoration: none; 
+    color: white;
+} 
 .content-wrap{
     width: 1000px;
     margin-left:50%;
@@ -65,17 +78,23 @@
 }
 .el-button{
     height: 30px;
-    width: 50px;
+    width: 56px;
     line-height: 30px;
     padding: 0 10px;
-    border: 1px solid goldenrod;
-    background: green;
+    margin: 0;
+    background: #ffc000;
+}
+.el-button-sp:hover{
+    background: #ff6601;
+    color: white!important;
 }
 .el-button-a{
-    color: white;
+    color: white!important;
+    font-size: 13px;
 }
 .el-badge__content.is-fixed{
     right: 15px;
+    background: #ff6601;
 }
 .article-btn{
     float:right;

@@ -4,7 +4,7 @@
             <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
                 <div class="menu-nav-wrap">
                     <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
-                    <a :href="item.lb_id | addHref">{{item.lb_name}}</a>
+                    <a class="menu-single-a" :href="item.lb_id | addHref">{{item.lb_name}}</a>
                     </div>
                 </div>
             </div>
@@ -23,9 +23,9 @@
                         </div>
                         <div class="article-left-content" v-html='articleDetail.atc_content'></div>
                         <el-badge :value="articleDetail.atc_download" class="item article-btn article-btn-download" type="primary">
-                            <el-button><a class="el-button-a" :href="articleDetail.atc_fileUrl">下载</a></el-button>                        </el-badge>
+                            <el-button class="el-button-sp"><a class="el-button-a" :href="articleDetail.atc_fileUrl">下载</a></el-button>                        </el-badge>
                         <el-badge :value="articleDetail.atc_preview" class="item article-btn" type="primary">
-                            <el-button><a class="el-button-a" :href="hrefFileUrl">预览</a></el-button>
+                            <el-button class="el-button-sp"><a class="el-button-a" :href="hrefFileUrl">预览</a></el-button>
                         </el-badge>
                     </div>
                     <div class="article-right-wrap">

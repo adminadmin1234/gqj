@@ -133,7 +133,7 @@ module.exports = class ArticeService extends egg.Service {
   // 首页右边列表数据
   // 必须要有标签才能查出来
   async getArtilceListIndex() {
-    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id LIMIT 8';
+    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id LIMIT 4';
     const articleList = await this.app.mysql.query(query);
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
@@ -163,11 +163,11 @@ module.exports = class ArticeService extends egg.Service {
     const articleList = await this.app.mysql.query(query);
     const totalNum = await this.app.mysql.query('select FOUND_ROWS()');
     const string = JSON.stringify(articleList);
-    const list = JSON.parse(string);
+    const temp = JSON.parse(string);
     let stringTotalNum = JSON.stringify(totalNum);
     stringTotalNum = stringTotalNum.replace('FOUND_ROWS()', 'total');
     const jsonTotalNum = JSON.parse(stringTotalNum);
-    const temp = this.uniqueObj(list);
+    // const temp = this.uniqueObj(list);
     const total = jsonTotalNum[0].total;
     return {
       total,

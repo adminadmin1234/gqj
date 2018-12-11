@@ -2,7 +2,7 @@
   <div class="content-wrap">
     <div class="content-left">
       <div class="content-up">
-        <!--<img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="">-->
+        <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="">
         <h1 class="site-name">凌晨两点半</h1>
         <hr class="content-left-hr">
       </div>
@@ -14,12 +14,12 @@
       <div class="content-desc">你是否有那么一瞬是enjoy这个职业的！？</div>
     </div>
     <div class="content-right">
-      <div class="code-wrap">
-        <!--<img src="../../../../asset/images/code.png" alt="">-->
+       <!--<div class="code-wrap">
+        <img src="../../../../asset/images/code.png" alt="">
         <p>{{title}}</p>
-      </div>
+      </div>-->
       <div class="content-wrap">
-        <div>热门推荐</div>
+        <div>精品</div>
         <ul class="content-wrap-ul">
           <li v-for="item in articleList" >
               <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
@@ -46,7 +46,7 @@ export default {
     name:'v-content',
     data(){
       return {
-        title:'博主码',
+        title:'博主微信',
         articleList: []
       }
     },

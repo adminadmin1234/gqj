@@ -11,7 +11,6 @@ module.exports = class AdminController extends egg.Controller {
   // 获取文章列表
   async list(ctx) {
     const articleList = await ctx.service.article.getArtilceList(ctx.request.body.title);
-    console.log('articleList', articleList);
     this.ctx.body = articleList;
   }
   // 添加文章
@@ -49,7 +48,6 @@ module.exports = class AdminController extends egg.Controller {
   // 删除标签
   async labeldel(ctx) {
     const { id } = ctx.params;
-    console.log('labeldel', ctx);
     ctx.body = this.service.label.deleteArticle(id);
   }
 };
