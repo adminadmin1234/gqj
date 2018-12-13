@@ -5,7 +5,7 @@
   margin-top: 2%;
 }
 .content-left{
-  width: 60%;
+  width: 50%;
   float:left;
   padding: 1%;
   background: white;
@@ -28,7 +28,7 @@
   margin-top: 10px;
 }
 .content-right{
-  width:38%;
+  width:48%;
   margin-left: 2%;
   float:left;
   background: white;
@@ -45,13 +45,15 @@
   width:150px;
 }
 .content-wrap-ul li{
-  height: 80px;
-  padding: 5px 1px;
+  height: 100px;
+  padding: 15px 1px;
+  border-bottom: 1px solid #ccc;
 }
 .content-li-picture{
   height: 70px;
   width: 100px;
   float: left;
+  border-radius: 6px;
 }
 .content-detail-wrap{
   float: left;
@@ -71,5 +73,5 @@
   position: absolute;
   bottom: 0;
   right: 10px;
-  color: blue;
+  color: #ff6602;
 }

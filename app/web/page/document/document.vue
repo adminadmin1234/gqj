@@ -96,7 +96,6 @@
                 this.loadData(this.labelId);
               } else {
                 this.labelId = this.labelList[0].lb_id;
-                console.log('99999')
                 this.loadData(this.labelId);
               }
               if(this.labelList.length > 10){

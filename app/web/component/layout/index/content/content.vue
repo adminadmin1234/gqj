@@ -7,11 +7,14 @@
         <hr class="content-left-hr">
       </div>
       <ul class="content-down">
-        <li>分享web前端技术</li>
+        <li>收集、分享前端组件</li>
+        <li>分享前端技术</li>
         <li>收集常用工具文档</li>
       </ul>
-      <div class="content-desc">你是一只钟爱代码的猿吗！？</div>
-      <div class="content-desc">你是否有那么一瞬是enjoy这个职业的！？</div>
+      <hr class="content-left-hr">
+      <ul class="content-down">
+        <li>如本站内容侵犯了您的权益，请联系站长修改内容</li>
+      </ul>
     </div>
     <div class="content-right">
        <!--<div class="code-wrap">
@@ -19,7 +22,7 @@
         <p>{{title}}</p>
       </div>-->
       <div class="content-wrap">
-        <div>精品</div>
+        <div>文章推荐：</div>
         <ul class="content-wrap-ul">
           <li v-for="item in articleList" >
               <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
@@ -62,6 +65,9 @@ export default {
             str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
                   data =  capture;
             });
+            if(data==null || data==''){
+              data = '/public/img/default.jpeg'
+            }
         return data
       }
     },
