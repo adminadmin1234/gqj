@@ -54,11 +54,15 @@
 .breadcrumb{
     margin-top: 10px;
 }
+.breadcrumbFirst{
+    color: #ff6601!important;
+}
 .article-left-wrap{
     float: left;
     width: 700px;
     border: 1px solid #ccc;
     padding: 10px;
+    border-radius: 4px;
 }
 .article-right-wrap{
     float: left;
@@ -82,7 +86,8 @@
     line-height: 30px;
     padding: 0 10px;
     margin: 0;
-    background: #ffc000;
+    background: #ff6601;
+    border-radius: 4px;
 }
 .el-button-sp:hover{
     background: #ff6601;
@@ -90,11 +95,7 @@
 }
 .el-button-a{
     color: white!important;
-    font-size: 13px;
-}
-.el-badge__content.is-fixed{
-    right: 15px;
-    background: #ff6601;
+    font-size: 12px;
 }
 .article-btn{
     float:right;
@@ -108,10 +109,12 @@
     padding-left: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 .kuang-wrap-h2{
     font-size: 16px;
     padding: 5px 0;
+    color: #ff6601;
 }
 .kuang-li{
     max-height: 46px;
@@ -126,4 +129,7 @@
 .kuang-li-a{
     display: block;
     white-space:pre-wrap;
+}
+.kuang-li-a:hover{
+    color: #ff6601;
 }

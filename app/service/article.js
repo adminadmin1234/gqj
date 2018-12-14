@@ -155,6 +155,7 @@ module.exports = class ArticeService extends egg.Service {
       temp
     };
   }
+  // 根据标签id查询文章
   async getArtilceListDoc(lbId, index = 0, maxCount = 12) {
     const offset = index * maxCount - maxCount;
     const query = 'select SQL_CALC_FOUND_ROWS * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
@@ -169,6 +170,20 @@ module.exports = class ArticeService extends egg.Service {
     const jsonTotalNum = JSON.parse(stringTotalNum);
     // const temp = this.uniqueObj(list);
     const total = jsonTotalNum[0].total;
+    return {
+      total,
+      temp
+    };
+  }
+  // 根据文章标题关键字查询文章
+  async getArtilceListDocBySearch(keyword, index = 0, maxCount = 12) {
+    // 通过name进行模糊查询
+    const TABLE_NAME = 'article';
+    const sql = `select * from ${TABLE_NAME} where atc_title like "%${keyword}%"`;
+    const articleList = await this.app.mysql.query(sql);
+    const string = JSON.stringify(articleList);
+    const temp = JSON.parse(string);
+    const total = temp.length;
     return {
       total,
       temp

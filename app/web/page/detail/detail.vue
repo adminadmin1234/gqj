@@ -11,7 +11,7 @@
             <div class="content-wrap">
                 <div class="breadcrumb">
                     <el-breadcrumb separator-class="el-icon-arrow-right">
-                        <el-breadcrumb-item><a :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
+                        <el-breadcrumb-item><a class="breadcrumbFirst" :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
                         <el-breadcrumb-item>{{articleDetail.atc_title}}</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
@@ -22,11 +22,9 @@
                             <span>{{articleDetail.atc_publish_time | formatData}}</span>
                         </div>
                         <div class="article-left-content" v-html='articleDetail.atc_content'></div>
-                        <el-badge :value="articleDetail.atc_download" class="item article-btn article-btn-download" type="primary">
-                            <el-button class="el-button-sp"><a class="el-button-a" :href="articleDetail.atc_fileUrl">下载</a></el-button>                        </el-badge>
-                        <el-badge :value="articleDetail.atc_preview" class="item article-btn" type="primary">
-                            <el-button class="el-button-sp"><a class="el-button-a" :href="hrefFileUrl">预览</a></el-button>
-                        </el-badge>
+                        <el-button class="el-button-sp article-btn"><a class="el-button-a" :href="articleDetail.atc_fileUrl">下载</a></el-button>  
+                        <el-button class="el-button-sp article-btn"><a class="el-button-a" :href="hrefFileUrl">预览</a></el-button>
+                        
                     </div>
                     <div class="article-right-wrap">
                         <div class="kuang-wrap">

@@ -19,6 +19,7 @@
   font-weight: 500;
   margin-top: 10px;
   margin-left: 91px;
+  color: #ff6601
 }
 .content-down{
   margin-left: 90px;
@@ -73,5 +74,11 @@
   position: absolute;
   bottom: 0;
   right: 10px;
-  color: #ff6602;
+  /*color: #ff6602;*/
+}
+.content-wrap-a:hover{
+  color: #ff6601
+}
+.content-wrap-title{
+  color: #ff6601
 }

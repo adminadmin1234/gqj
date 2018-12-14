@@ -50,7 +50,11 @@
   color: #aaaaaa;
   font-size: 15px;
 }
+.header-nav-link:hover{
+  color:#ff6601
+}
 .logo{
   width:60px;
   height:60px;
+  border-radius: 50%;
 }

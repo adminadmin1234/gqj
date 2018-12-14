@@ -14,3 +14,7 @@
 .vertical-line{
     padding: 0 10px;
 }
+.footerFixed{
+    position: fixed;
+    bottom: 0;
+}

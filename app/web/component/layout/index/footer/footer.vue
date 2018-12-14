@@ -1,5 +1,5 @@
 <template>
-    <footer class='footer'>
+    <footer class='footer' v-bind:class="{'footerFixed':footerPosition}">
         <span class="footer-span">ICP13078412111号-6</span><span class="vertical-line">|</span>
         <span class="footer-span">广州时代</span><span class="vertical-line">|</span>
         <span class="footer-span">交流：9519786941</span><span class="vertical-line">|</span>
@@ -11,6 +11,9 @@
 </style>
 <script type='babel'>
   export default{
-    
+    props: ['footerPosition'],
+    mounted() {
+      console.log('footerPosition',this.footerPosition)
+    },
   };
 </script>

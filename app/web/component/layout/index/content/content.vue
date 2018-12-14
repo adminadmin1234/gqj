@@ -13,7 +13,7 @@
       </ul>
       <hr class="content-left-hr">
       <ul class="content-down">
-        <li>如本站内容侵犯了您的权益，请联系站长修改内容</li>
+        <li>如本站内容侵犯了您的权益，请联系站长</li>
       </ul>
     </div>
     <div class="content-right">
@@ -22,11 +22,11 @@
         <p>{{title}}</p>
       </div>-->
       <div class="content-wrap">
-        <div>文章推荐：</div>
+        <div class="content-wrap-title">文章推荐：</div>
         <ul class="content-wrap-ul">
           <li v-for="item in articleList" >
               <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
-              <a :href="item.atc_id | addHref">
+              <a :href="item.atc_id | addHref" class="content-wrap-a">
                 <div class="content-detail-wrap">
                   <p>{{item.atc_title}}</p>
                   <span class="content-detail-date">{{item.atc_publish_time | formatData}}</span>

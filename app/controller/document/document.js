@@ -9,5 +9,9 @@ module.exports = app => {
       const articleList = await ctx.service.article.getArtilceListDoc(ctx.query.id, ctx.query.index, ctx.query.pagesize);
       this.ctx.body = articleList;
     }
+    async search(ctx) {
+      const articleList = await ctx.service.article.getArtilceListDocBySearch(ctx.query.keyword);
+      this.ctx.body = articleList;
+    }
   };
 };

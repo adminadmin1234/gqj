@@ -9,6 +9,10 @@
             </div>
           </div>
           <div class="content-wrap">
+              <div class="search-con">
+                <input type="text" class="search-text" v-model="keyword">
+                <input type="submit" @click="search" class="search-sub" value="搜索">
+              </div>
               <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
                 <a :href="item.atc_id | addHref">
                   <img :src="item.atc_content | imgUrlFun" class="content-single-preview" alt="">
@@ -17,14 +21,18 @@
                     <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
-                    <span class="content-single-middle-preview"><a :href="item.atc_fileUrl | preview">预览</a></span>
+                    <span class="content-single-middle-preview"><a class="content-single-middle-a" :href="item.atc_fileUrl | preview">预览</a></span>
                   </div>
                   <div class="content-single-footer">
                     {{item.atc_title}}
                   </div>
                 </a>
               </div>
-              <div class="content-pagination">
+              <div class="not-content-wrap" v-if="pagination.total==0">
+                <img class="not-content-img" src="../../asset/images/logo.png" alt="">
+                <h2>暂无内容</h2>
+              </div>
+              <div class="content-pagination" v-if="pagination.total>0">
                 <el-pagination
                   @current-change="changePagination"
                   :page-size="pagination.pagesize"
@@ -33,7 +41,7 @@
                 </el-pagination>
               </div>
           </div>
-          <LayoutFooter></LayoutFooter>
+          <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
 </template>
 <style>
@@ -65,14 +73,29 @@
         pagination:{
           index:1,
           pagesize:9,
-          total:100,
+          total:0,
         },
         labelId:null,
         hrefFileUrl:'',
         articleList:[],
         labelList:[],
         menuShow:false,
+        keyword:null,
+        footerPosition:true,
       }
+    },
+    watch:{
+      'pagination.total':{
+      handler(data){
+        if( data >=9 ){
+          this.footerPosition = false;
+        }else{
+          this.footerPosition = true;
+        }
+      },
+      deep:true,
+      immediate:false,
+    },
     },
     mounted() {
       console.log('this.$route.params.id',this.$route.query.id)
@@ -88,6 +111,12 @@
         this.defaultIndex=index;
         this.labelId = lbId;
         this.loadData(lbId);
+      },
+      search(){
+        request.get(`/document/api/article/search?keyword=${this.keyword}`).then(response => {
+          this.articleList = response.data.temp;
+          this.pagination.total = response.data.total;
+        });
       },
       getLabelList(store){
           request.post(`/admin/api/label/list`,{},this.$store).then(response => {
@@ -141,6 +170,9 @@
             str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
                   data =  capture;
             });
+            if(data==null || data==''){
+              data = '/public/img/default.jpeg'
+            }
         return data
       }
     },
