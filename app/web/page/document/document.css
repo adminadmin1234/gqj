@@ -51,13 +51,13 @@
 }
 .content-single-preview{
     object-fit: cover;
-    width: 320px;
+    width: 318px;
     height: 200px;
     border-radius: 4px;
 }
 .content-single-middle{
     height: 32px;
-    width: 320px;
+    width: 318px;
     line-height: 32px;
     background: rgba(0,0,0,0.3);
     position:absolute;
@@ -102,7 +102,7 @@
     font-size: 16px;
     background: #ff6601;
     overflow: hidden;
-    width: 320px;
+    width: 318px;
     text-overflow: ellipsis;
     white-space: nowrap; 
     color: white;

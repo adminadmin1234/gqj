@@ -15,5 +15,20 @@ module.exports = app => {
       const articleDetail = await ctx.service.article.getArtilceRightList(ctx.query.id);// params
       this.ctx.body = articleDetail;
     }
+    // 下载数加1
+    async countDownload(ctx) {
+      const articleDetail = await ctx.service.article.addDownloadCount(ctx.query.atcid);// params
+      this.ctx.body = articleDetail;
+    }
+    // 预览数加1
+    async countPreview(ctx) {
+      const articleDetail = await ctx.service.article.addPriviewCount(ctx.query.atcid);// params
+      this.ctx.body = articleDetail;
+    }
+    // 阅读数加1
+    async countRead(ctx) {
+      const articleDetail = await ctx.service.article.addReadCount(ctx.query.atcid);// params
+      this.ctx.body = articleDetail;
+    }
   };
 };

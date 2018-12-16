@@ -1,6 +1,4 @@
-#创建数据库
-create database blog;
-#选择数据库
+
 use blog;
 #创建表
 create table user(
@@ -21,7 +19,10 @@ DROP TABLE table_name;
 
 
 ——————————————————————————————————————————————————————————————————————————————
-
+#创建数据库
+create database blog;
+#选择数据库
+use blog;
 #创建标签表
 create table label(
     lb_id INT NOT NULL AUTO_INCREMENT,

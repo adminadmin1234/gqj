@@ -3,20 +3,18 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.index.index.index);
   router.get('/home(/.+)?', controller.index.index.index);
-  // router.get('/home', controller.index.index.index);
-  // router.get('/client', controller.index.index.client);
   router.get('/list', controller.index.index.list);
   router.get('/category', controller.category.category.index);
   router.get('/document', controller.document.document.index);
   router.get('/document/api/article/list', controller.document.document.list);
   router.get('/document/api/article/search', controller.document.document.search);
-  // router.get('/document/api/article/list/:id', controller.document.document.list);
   router.get('/detail', controller.detail.detail.index);
   router.get('/detail/api/article/detail', controller.detail.detail.detail);
-  router.get('/detail/api/article/detail/:id', controller.detail.detail.detail);
   router.get('/detail/api/article/list', controller.detail.detail.list);
   router.get('/index/api/article/list', controller.index.index.list);
-
+  router.get('/detail/api/article/countDownload', controller.detail.detail.countDownload);
+  router.get('/detail/api/article/countPreview', controller.detail.detail.countPreview);
+  router.get('/detail/api/article/countRead', controller.detail.detail.countRead);
   // 管理后台
   // ----------------------------------
   router.get('/login', controller.admin.admin.login);

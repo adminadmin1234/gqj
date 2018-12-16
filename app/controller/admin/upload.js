@@ -20,8 +20,10 @@ class UploadController extends Controller {
     // node.js 和 php 的上传唯一的不同就是 ，php 是转移一个 临时文件
     // node.js 和 其他语言（java c#） 一样操作文件流
     const stream = await ctx.getFileStream();
+    
     // 新建一个文件名
     const filename = stream.filename;
+    const fileNameArr = filename.split('.');
     // 文件生成绝对路径
     // 当然这里这样是不行的，因为你还要判断一下是否存在文件路径
     const target = path.join(this.config.baseDir, 'public/uploads', filename);
@@ -35,11 +37,11 @@ class UploadController extends Controller {
       await sendToWormhole(stream);
       throw err;
     }
-    const fileNameArr = filename.split('.');
+    console.log('filename', filename);
     console.log('fileNameArr', fileNameArr);
-    if (fileNameArr[fileNameArr.length - 1] === 'zip') {
+    if (fileNameArr[fileNameArr.length - 1] === 'zip'||fileNameArr[fileNameArr.length - 1] === 'rar') {
       // 将zip文件压缩
-      await fs.createReadStream(this.config.baseDir + '/public/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/public/uploads' }));
+      await fs.createReadStream(this.config.baseDir + '/public/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/public/uploads/' + fileNameArr[0]}));
     }
     // 文件响应
     ctx.body = {

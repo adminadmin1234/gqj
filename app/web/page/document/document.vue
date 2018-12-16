@@ -21,7 +21,7 @@
                     <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
-                    <span class="content-single-middle-preview"><a class="content-single-middle-a" :href="item.atc_fileUrl | preview">预览</a></span>
+                    <a class="content-single-middle-a" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
                   </div>
                   <div class="content-single-footer">
                     {{item.atc_title}}
@@ -106,6 +106,10 @@
       changePagination(index){
         this.pagination.index = index;
         this.loadData(this.labelId);
+      },
+      onPreview(atcid){
+          request.get(`/detail/api/article/countPreview?atcid=${atcid}`).then(response => {
+          });
       },
       menuToLoad(lbId,index){
         this.defaultIndex=index;

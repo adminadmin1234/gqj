@@ -75,10 +75,13 @@
     font-size: 20px;
 }
 .article-left-header{
-
+    color: #ff6601;
+    
 }
 .article-left-content{
-
+    margin-top: 20px;
+    padding: 0 10px;
+    padding-bottom: 15px;
 }
 .el-button{
     height: 30px;
@@ -100,6 +103,7 @@
 .article-btn{
     float:right;
     margin-left: 15px;
+    color: white!important;
 }
 .article-btn-download{
     margin-right: 2px;

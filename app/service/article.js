@@ -230,4 +230,19 @@ module.exports = class ArticeService extends egg.Service {
       newList
     };
   }
+  async addDownloadCount(atcId) {
+    const TABLE_NAME = 'article';
+    const sql = `update ${TABLE_NAME} set atc_download=atc_download+1 where atc_id = ${atcId}`;
+    const articleList = await this.app.mysql.query(sql);
+  }
+  async addPriviewCount(atcId) {
+    const TABLE_NAME = 'article';
+    const sql = `update ${TABLE_NAME} set atc_preview=atc_preview+1 where atc_id = ${atcId}`;
+    const articleList = await this.app.mysql.query(sql);
+  }
+  async addReadCount(atcId) {
+    const TABLE_NAME = 'article';
+    const sql = `update ${TABLE_NAME} set atc_read=atc_read+1 where atc_id = ${atcId}`;
+    const articleList = await this.app.mysql.query(sql);
+  }
 };

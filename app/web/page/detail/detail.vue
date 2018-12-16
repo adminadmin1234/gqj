@@ -19,11 +19,14 @@
                     <div class="article-left-wrap">
                         <h1 class="article-left-h1">{{articleDetail.atc_title}}</h1>
                         <div class="article-left-header">
-                            <span>{{articleDetail.atc_publish_time | formatData}}</span>
+                           <span>预览：{{articleDetail.atc_preview}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                           <span>下载：{{articleDetail.atc_download}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                           <span>阅读：{{articleDetail.atc_read}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                           <span>发布：{{articleDetail.atc_publish_time | formatData}}</span>
                         </div>
                         <div class="article-left-content" v-html='articleDetail.atc_content'></div>
-                        <el-button class="el-button-sp article-btn"><a class="el-button-a" :href="articleDetail.atc_fileUrl">下载</a></el-button>  
-                        <el-button class="el-button-sp article-btn"><a class="el-button-a" :href="hrefFileUrl">预览</a></el-button>
+                        <a class="el-button-a" :href="articleDetail.atc_fileUrl"><el-button @click="onDownload" class="el-button-sp article-btn">下载</el-button></a> 
+                        <a class="el-button-a" target="blank" :href="hrefFileUrl"><el-button @click="onPreview" class="el-button-sp article-btn">预览</el-button></a>
                         
                     </div>
                     <div class="article-right-wrap">
@@ -108,8 +111,19 @@ methods: {
             id: lbId
           }
         });
-        console.log('1234')
       },
+    onDownload(){
+        request.get(`/detail/api/article/countDownload?atcid=${this.articleDetail.atc_id}`).then(response => {
+        });
+    },
+    onPreview(){
+        request.get(`/detail/api/article/countPreview?atcid=${this.articleDetail.atc_id}`).then(response => {
+        });
+    },
+    onRead(){
+        request.get(`/detail/api/article/countRead?atcid=${this.articleDetail.atc_id}`).then(response => {
+        });
+    },
     menuSingleShow(event){
         $(event.currentTarget).addClass('menu-single-wrap-active');
       },
@@ -150,7 +164,10 @@ methods: {
     }
 },
 mounted() {
-    console.log('storestorestorestore', this.$store);
+    const _this = this;
+    setTimeout(function(){
+        _this.onRead();
+    },5000)
     this.getArticleDetailById();
     this.getLabelList(this.$store);
 }
