@@ -29,7 +29,6 @@
     },
     data: function () {
       return {
-        test:1
       }
     },
     computed: {
@@ -37,8 +36,6 @@
     methods: {
     },
     created() {
-      console.log('store', store);
-      console.log('storestorestorestore', this.$store);
     },
   }
 </script>

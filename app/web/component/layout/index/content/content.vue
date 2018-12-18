@@ -1,8 +1,8 @@
 <template>
-  <div class="content-wrap">
+  <div class="index-content-wrap">
     <div class="content-left">
       <div class="content-up">
-        <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="">
+        <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">
         <h1 class="site-name">凌晨两点半</h1>
         <hr class="content-left-hr">
       </div>
@@ -17,15 +17,11 @@
       </ul>
     </div>
     <div class="content-right">
-       <!--<div class="code-wrap">
-        <img src="../../../../asset/images/code.png" alt="">
-        <p>{{title}}</p>
-      </div>-->
-      <div class="content-wrap">
+      <div class="">
         <div class="content-wrap-title">文章推荐：</div>
         <ul class="content-wrap-ul">
           <li v-for="item in articleList" >
-              <img :src="item.atc_content | imgUrlFun" alt="" class="content-li-picture">
+              <img :src="item.atc_content | imgUrlFun" :alt="item.atc_title" class="content-li-picture">
               <a :href="item.atc_id | addHref" class="content-wrap-a">
                 <div class="content-detail-wrap">
                   <p>{{item.atc_title}}</p>
@@ -39,7 +35,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
   @import 'content.css';
 </style>
 <script type='babel'>
@@ -66,21 +62,32 @@ export default {
                   data =  capture;
             });
             if(data==null || data==''){
-              data = '/public/img/default.jpeg'
+              data = '/public/default.jpeg'
             }
         return data
       }
     },
     mounted() {
+      // 百度统计代码
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1114bf2679a9e797610cd8a52541da1";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+      })();
+
       this.loadData();
     },
     methods: {
       loadData() {
         request.get('/index/api/article/list').then(response => {
           this.articleList = response.data.temp;
-          console.log('this.articleList',this.articleList);
         });
       }
     }
   };
 </script>
+
+
+

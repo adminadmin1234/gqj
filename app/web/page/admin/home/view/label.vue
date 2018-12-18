@@ -87,7 +87,6 @@ export default {
       return this.$store.dispatch(SET_LABEL_SAVE, this.label);
     },
     fetchApi(store, json) {
-      console.log('storeSET_LABEL_LIST',store)
       return store.dispatch(SET_LABEL_LIST, json);
     },
     query() {
@@ -97,7 +96,6 @@ export default {
       this.$store.state.dialogVisible = true;
     },
     handleSelectionChange(val) {
-      console.log("handleSelectionChange", val);
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -169,7 +167,6 @@ export default {
     }
   },
   beforeMount() {
-    console.log('store', this.$store);
     if (!(this.labelList && this.labelList.length > 0)) {
       this.fetchApi(this.$store, this.q);
     }

@@ -120,11 +120,9 @@ export default {
   methods: {
     // 修改文章
     loadData(){
-      console.log('this.$route.query.atc_id',this.$route.query.atc_id);
       if(this.$route.query.atc_id != undefined){
         request.get(`/admin/api/article/${this.$route.query.atc_id}`, this.$store)
           .then(response => {
-            console.log('response',response);
             this.article.id = response.data.list[0].atc_id;
             this.article.title = response.data.list[0].atc_title;
             this.article.fileUrl = response.data.list[0].atc_fileUrl;
@@ -147,7 +145,6 @@ export default {
     // 获取标签列表
     remoteLabel(query){
       request.post('/admin/api/label/list',{lb_name:query},this.$store).then(response => {
-        console.log('response11111remoteLabel',response)
         this.optionsLabel = response.data.list;
       });
     },

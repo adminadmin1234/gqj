@@ -9,7 +9,6 @@ import mutations from './mutations';
 Vue.use(Vuex);
 
 export default function createStore(initState) {
-  console.log('createStore', initState);
   const state = {
     dialogVisible: false,
     labelTotal: 0,
@@ -19,7 +18,6 @@ export default function createStore(initState) {
     article: {},
     ...initState
   };
-  console.log('createStorestate', state);
   return new Vuex.Store({
     state,
     actions,

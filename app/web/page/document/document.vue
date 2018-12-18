@@ -98,7 +98,6 @@
     },
     },
     mounted() {
-      console.log('this.$route.params.id',this.$route.query.id)
       this.labelId = this.$route.query.id;
       this.getLabelList();
     },

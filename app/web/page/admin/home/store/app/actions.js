@@ -51,7 +51,6 @@ const actions = {
   },
   SET_SAVE_ARTICLE: (store, json) => {
     const { commit, dispatch, state } = store;
-    console.log('SET_SAVE_ARTICLE-json', json);
     return request.post('/admin/api/article/add', json, store).then(response => {
       commit(Type.SET_SAVE_ARTICLE, json);
     });

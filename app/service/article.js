@@ -133,7 +133,7 @@ module.exports = class ArticeService extends egg.Service {
   // 首页右边列表数据
   // 必须要有标签才能查出来
   async getArtilceListIndex() {
-    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id LIMIT 4';
+    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id and atc_enabled = 1 order by a.atc_publish_time desc LIMIT 4';
     const articleList = await this.app.mysql.query(query);
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
@@ -159,7 +159,7 @@ module.exports = class ArticeService extends egg.Service {
   async getArtilceListDoc(lbId, index = 0, maxCount = 12) {
     const offset = index * maxCount - maxCount;
     const query = 'select SQL_CALC_FOUND_ROWS * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
-    + lbId + ') as al where a.atc_id = al.al_atc_id order by a.atc_publish_time desc limit '
+    + lbId + ') as al where a.atc_id = al.al_atc_id and a.atc_enabled = 1 order by a.atc_publish_time desc limit '
     + offset + ',' + maxCount;
     const articleList = await this.app.mysql.query(query);
     const totalNum = await this.app.mysql.query('select FOUND_ROWS()');
@@ -179,7 +179,7 @@ module.exports = class ArticeService extends egg.Service {
   async getArtilceListDocBySearch(keyword, index = 0, maxCount = 12) {
     // 通过name进行模糊查询
     const TABLE_NAME = 'article';
-    const sql = `select * from ${TABLE_NAME} where atc_title like "%${keyword}%"`;
+    const sql = `select * from ${TABLE_NAME} where atc_title like "%${keyword}%" and atc_enabled = 1`;
     const articleList = await this.app.mysql.query(sql);
     const string = JSON.stringify(articleList);
     const temp = JSON.parse(string);
@@ -196,14 +196,12 @@ module.exports = class ArticeService extends egg.Service {
     const article = await this.app.mysql.query(sql);
     const articleStr = JSON.stringify(article);
     const articleJson = JSON.parse(articleStr);
-    console.log('articleJson[0].al_lb_id', articleJson[0].al_lb_id);
 
     // 通过标签id查标签名
     const sql1 = 'select lb_name from label where lb_id =' + articleJson[0].al_lb_id;
     const label = await this.app.mysql.query(sql1);
     const labelStr = JSON.stringify(label);
     const labelJson = JSON.parse(labelStr);
-    console.log('articleJson[0].lb_name', labelJson[0].lb_name);
     const labelData = {
       id: articleJson[0].al_lb_id,
       name: labelJson[0].lb_name
@@ -211,14 +209,14 @@ module.exports = class ArticeService extends egg.Service {
 
     // 查询相关列表
     const query = 'select * from article as a join (select * from atcAndLb as al where al.al_lb_id ='
-    + articleJson[0].al_lb_id + ') as al where a.atc_id = al.al_atc_id order by a.atc_publish_time limit 8';
+    + articleJson[0].al_lb_id + ') as al where a.atc_id = al.al_atc_id and a.atc_enabled = 1 order by a.atc_publish_time limit 8';
     const articleList = await this.app.mysql.query(query);
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
     const reactList = this.uniqueObj(list);
 
     // 查询最新列表
-    const query1 = 'select * from article order by atc_publish_time limit 8';
+    const query1 = 'select * from article where atc_enabled = 1 order by atc_publish_time limit 8';
     const articleList1 = await this.app.mysql.query(query1);
     const string1 = JSON.stringify(articleList1);
     const list1 = JSON.parse(string1);

@@ -145,7 +145,6 @@ methods: {
     },
     getLabelList(store){
         request.post(`/admin/api/label/list`,{},this.$store).then(response => {
-            console.log('getLabelList-response',response);
             this.labelList = response.data.list;
             if(this.labelList.length > 10){
                 this.menuShow = true;
@@ -156,7 +155,6 @@ methods: {
     },
     getRightList(lbId){
         request.get(`/detail/api/article/list?id=${lbId}`).then(response => {
-            console.log('response', response);
             this.reactList = response.data.reactList;
             this.newList = response.data.newList;
             this.labelData = response.data.labelData;
@@ -164,6 +162,14 @@ methods: {
     }
 },
 mounted() {
+    // 百度统计代码
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?f1114bf2679a9e797610cd8a52541da1";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+    })();
     const _this = this;
     setTimeout(function(){
         _this.onRead();

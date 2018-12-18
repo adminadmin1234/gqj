@@ -6,13 +6,13 @@ export default function createLayout(name, components, tpl) {
     components,
     computed: {
       vTitle() {
-        return this.$root.title || this.title || 'myBlog';
+        return this.$root.title || this.title || '凌晨两点半';
       },
       vKeywords() {
-        return this.$root.keywords || this.keywords || 'egg, typescript, vue, webpack, server side render';
+        return this.$root.keywords || this.keywords || '图片滚动, canvas, jQuery特效, 菜单, 瀑布流';
       },
       vDescription() {
-        return this.$root.description || this.description || 'myBlog';
+        return this.$root.description || this.description || '凌晨两点半';
       },
       baseClass() {
         return this.$root.baseClass;

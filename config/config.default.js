@@ -46,16 +46,20 @@ module.exports = app => {
 
   exports.static = {
     prefix: '/public/',
-    dir: path.join(app.baseDir, 'public')
+    dir: [path.join(app.baseDir, 'public'), path.join(app.baseDir, 'publicData')]// 多静态文件入口
   };
-
+  exports.cluster = {
+    listen: {
+      path: '',
+      port: 80,
+    }
+  };
   exports.keys = '123456789';
 
   exports.middleware = [
     'locals',
     'access'
   ];
-
   exports.security = {
     csrf: {
       ignoreJSON: false,

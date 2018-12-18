@@ -21,7 +21,6 @@ const mutations = {
   },
   // 标签
   [SET_LABEL_LIST](state, { list, total }) {
-    console.log('标签list', list);
     state.labelTotal = total;
     state.labelList = list;
   },
