@@ -1,0 +1,129 @@
+body {
+  background-color: #4682b4;
+}
+
+a:hover,
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.c-menu {
+  position: relative;
+  height: 440px;
+  width: 800px;
+  overflow: hidden;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.top, .bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+}
+
+.top {
+  top: 0;
+  background: linear-gradient(to bottom, steelblue 0%, rgba(70, 130, 180, 0) 100%);
+}
+
+.bottom {
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(70, 130, 180, 0) 0%, steelblue 100%);
+}
+
+.img-box, .hide {
+  position: absolute;
+  left: 7px;
+  top: 177px;
+  width: 111px;
+  height: 82px;
+  opacity: 1;
+  transition: opacity, 2s;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity, .5s;
+}
+
+.items-list {
+  position: absolute;
+  left: -400px;
+  top: -101px;
+  width: 500px;
+  height: 498px;
+  border: 2px solid #a2c0d9;
+  border-radius: 50%;
+  margin: 70px;
+}
+
+.item {
+  position: absolute;
+  width: 600px;
+  padding-left: 25px;
+  font-size: 18px;
+  transition: font-size 1s;
+  text-align: left;
+  cursor: pointer;
+}
+.item:nth-child(7) {
+  font-size: 28px;
+  margin-top: -4px;
+  transition: font-size .5s;
+}
+.item:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #dae6ef;
+  border-radius: 50%;
+  left: 5px;
+  top: 4px;
+}
+.item:nth-child(7):before {
+  top: 10px;
+}
+.item a {
+  color: #dae6ef;
+  transition: color 0.5s;
+}
+.item a:hover {
+  color: white;
+  transition: color 0.5s;
+}
+.item:nth-child(2), .item:nth-child(3), .item:nth-child(11), .item:nth-child(12) {
+  opacity: 0.7;
+}
+
+.btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  left: 60px;
+  font-size: 20pt;
+  color: #dae6ef;
+  -webkit-transform: scale(3, 1);
+          transform: scale(3, 1);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.btn:hover {
+  color: white;
+  transition: color 0.5s;
+}
+
+.prev {
+  top: 110px;
+}
+
+.next {
+  bottom: 120px;
+}
