@@ -29,9 +29,6 @@ create table label(
     lb_name VARCHAR(100) unique,
     PRIMARY KEY ( lb_id )
 );
-#向表中插入数据
-INSERT INTO label(lb_id, lb_name)
-VALUES(1, 'jquery'), (2, 'menu'), (3, 'canvas');
 
 #创建文章表
 create table article(
