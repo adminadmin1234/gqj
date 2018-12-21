@@ -1,8 +1,8 @@
 <template>
     <footer class='footer' v-bind:class="{'footerFixed':footerPosition}">
-        <span class="footer-span">ICP13078412111号-6</span><span class="vertical-line">|</span>
-        <span class="footer-span">广州时代</span><span class="vertical-line">|</span>
-        <span class="footer-span">交流：9519786941</span><span class="vertical-line">|</span>
+        <span class="footer-span">香港服务器</span><span class="vertical-line">|</span>
+        <span class="footer-span">广州天河</span><span class="vertical-line">|</span>
+        <span class="footer-span">微信：lzhlad</span><span class="vertical-line">|</span>
         <span class="footer-span">关于我们</span>
     </footer>
 </template>
