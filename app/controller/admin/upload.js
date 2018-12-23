@@ -39,7 +39,7 @@ class UploadController extends Controller {
     }
     if (fileNameArr[fileNameArr.length - 1] === 'zip' || fileNameArr[fileNameArr.length - 1] === 'rar') {
       // 将zip文件压缩
-      await fs.createReadStream(this.config.baseDir + '/publicData/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/publicData/uploads/' + fileNameArr[0] }));
+      fs.createReadStream(this.config.baseDir + '/publicData/uploads/' + filename).pipe(unzip.Extract({ path: this.config.baseDir + '/publicData/uploads/' + fileNameArr[0] }));
     }
     // 文件响应
     ctx.body = {

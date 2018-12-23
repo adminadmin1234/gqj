@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>CSS3 SVG背景图片渲染水波纹动画特效</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<svg width="0" height="0"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <filter id="water">
+    <feTurbulence type="fractalNoise" baseFrequency=".05 .05" numOctaves="1" result="noise1"></feTurbulence>
+    <feColorMatrix in="noise1" type="hueRotate" values="0" result="noise2">
+      <animate attributeName="values" from="0" to="360" dur="1s" repeatCount="indefinite">
+    </feColorMatrix>
+    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="7" in="SourceGraphic" in2="noise2" />
+  </filter>
+</svg>
+
+<img src="img/hawaii-water-small.jpg" alt="Hawaiian water crashes against the rocks">
+
+</body>
+</html>
