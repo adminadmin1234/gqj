@@ -15,7 +15,7 @@
               </div>
               <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
                 <a :href="item.atc_id | addHref">
-                  <img :src="item.atc_content | imgUrlFun" class="content-single-preview" alt="">
+                  <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
                   <div class="content-single-middle">
                     <span class="content-single-middle-span"><i class="el-icon-view">{{item.atc_preview}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
@@ -98,8 +98,17 @@
     },
     },
     mounted() {
+      const _this = this;
       this.labelId = this.$route.query.id;
       this.getLabelList();
+      document.onkeydown = function (e) { // 回车提交表单
+      // 兼容FF和IE和Opera
+          var theEvent = window.event || e;
+          var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+          if (code == 13) {
+              _this.search();
+          }
+      }
     },
     methods: {
       changePagination(index){

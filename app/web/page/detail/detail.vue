@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <LayoutFooter></LayoutFooter>
+            <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
 </template>
 <style>
@@ -82,6 +82,7 @@ data(){
     hrefFileUrl:'',
     labelList:[],
     menuShow:false,
+    footerPosition:false,
   }
 },
 filters: {
