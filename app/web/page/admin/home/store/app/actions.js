@@ -38,6 +38,7 @@ const actions = {
   },
   // 文章
   SET_ARTICLE_LIST: (store, json) => {
+    console.log('SET_ARTICLE_LIST', json);
     return request.post('/admin/api/article/list', json, store).then(response => {
       store.commit(Type.SET_ARTICLE_LIST, response.data);
     });

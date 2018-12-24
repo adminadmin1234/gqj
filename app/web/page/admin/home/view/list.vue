@@ -71,6 +71,14 @@
           </template>
         </el-table-column>
         <el-table-column
+          prop="act_publish_time"
+          label="修改时间"
+          width="100">
+          <template slot-scope="props">
+            <div>{{props.row.atc_publish_time | formatData}}</div>
+          </template>
+        </el-table-column>
+        <el-table-column
           prop="atc_enabled"
           label="状态"
           width="100">
@@ -110,6 +118,7 @@
 <script type="babel">
 import {SET_ARTICLE_LIST, DELETE_ARTICLE } from '../store/app/mutation-type';
 import request from 'framework/network/request';
+import moment from 'moment';
 export default {
   components: {},
   data() {
@@ -126,6 +135,11 @@ export default {
       //批量选择数组
       batchSelectArray: []
     };
+  },
+  filters: {
+    formatData(data){
+      return moment(parseInt(data)).format('YYYY-MM-DD hh:mm:ss');
+    },
   },
   methods: {
     fetchApi(store, json) {
@@ -206,10 +220,7 @@ export default {
   },
   beforeMount() {
     console.log('this.$store',this.$store.state.csrf)
-    // this.fetchCxt(this.$store,'');
-    if (!(this.articleList && this.articleList.length > 0)) {
-      this.fetchApi(this.$store, this.q);
-    }
+    this.fetchApi(this.$store, this.q);
   }
 };
 </script>

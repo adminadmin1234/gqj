@@ -48,8 +48,8 @@ const mutations = {
     state.article = data;
   },
   [SET_SAVE_ARTICLE](state, data) {
-    state.articleTotal += 1;
-    state.articleList = [data].concat(state.articleList);
+    console.log('data-SET_SAVE_ARTICLE1', data);
+    state.changFlag = data;
   },
   [DELETE_ARTICLE](state, { id }) {
     state.articleTotal -= 1;

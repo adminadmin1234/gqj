@@ -28,15 +28,20 @@ module.exports = class ArticeService extends egg.Service {
     // 通过name进行模糊查询
     const TABLE_NAME = 'article';
     let sql;
-    if (json.title === null || json.title === undefined) {
-      sql = `select * from ${TABLE_NAME}`;
+    const offset = json.pageIndex * json.pageSize - json.pageSize;
+    if (json.pageSize !== undefined && json.title === undefined) {
+      sql = `select SQL_CALC_FOUND_ROWS * from ${TABLE_NAME} order by atc_publish_time desc limit ${offset} , ${json.pageSize}`;
     } else {
-      sql = `select * from ${TABLE_NAME} where atc_title like "%${json.title}%"`;
+      sql = `select * from ${TABLE_NAME} where atc_title like "%${json.title}%" order by atc_publish_time desc`;
     }
     const articleList = await this.app.mysql.query(sql);
+    const totalNum = await this.app.mysql.query('select FOUND_ROWS()');
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
-    const total = list.length;
+    let stringTotalNum = JSON.stringify(totalNum);
+    stringTotalNum = stringTotalNum.replace('FOUND_ROWS()', 'total');
+    const jsonTotalNum = JSON.parse(stringTotalNum);
+    const total = jsonTotalNum[0].total;
     return {
       total,
       list
@@ -44,36 +49,29 @@ module.exports = class ArticeService extends egg.Service {
   }
   async saveArticle(json = {}) {
     console.log('json', json);
-    const result1 = await this.app.mysql.insert('article',
-      {
-        atc_title: json.title,
-        atc_fileUrl: json.fileUrl,
-        atc_type: json.type,
-        atc_weight: json.weight,
-        atc_read: json.read,
-        atc_preview: json.preview,
-        atc_download: json.download,
-        atc_like: json.like,
-        atc_enabled: json.enabled,
-        atc_content: json.content,
-        atc_publish_time: json.publish_time,
-      });
-    console.log('result1', result1.insertId);
-    const flag = result1.affectedRows;
-    // 标签存关联表
-    if (flag === 1 && json.label !== undefined && json.label.length > 0) {
-      const row = [];
-      let curobj = { al_atc_id: null, al_lb_id: null };
-      json.label.forEach(item => {
-        curobj = {
-          al_atc_id: result1.insertId,
-          al_lb_id: item,
-        };
-        row.push(curobj);
-      });
-      console.log('row', row);
-      const result2 = await this.app.mysql.insert('atcAndLb', row);
-      console.log('result2', result2.insertId);
+    let flag = 0;
+    if (json.label !== null) {
+      const result1 = await this.app.mysql.insert('article',
+        {
+          atc_title: json.title,
+          atc_fileUrl: json.fileUrl,
+          atc_type: json.type,
+          atc_weight: json.weight,
+          atc_read: json.read,
+          atc_preview: json.preview,
+          atc_download: json.download,
+          atc_like: json.like,
+          atc_enabled: json.enabled,
+          atc_content: json.content,
+          atc_publish_time: json.publish_time,
+        });
+      flag = result1.affectedRows;
+      console.log('result1', result1);
+      // 标签存关联表
+      if (flag === 1 && json.label !== undefined) {
+        const result2 = await this.app.mysql.insert('atcAndLb', { al_atc_id: result1.insertId, al_lb_id: json.label });
+        console.log('result2', result2);
+      }
     }
     return { flag };
   }
@@ -168,7 +166,6 @@ module.exports = class ArticeService extends egg.Service {
     let stringTotalNum = JSON.stringify(totalNum);
     stringTotalNum = stringTotalNum.replace('FOUND_ROWS()', 'total');
     const jsonTotalNum = JSON.parse(stringTotalNum);
-    // const temp = this.uniqueObj(list);
     const total = jsonTotalNum[0].total;
     return {
       total,

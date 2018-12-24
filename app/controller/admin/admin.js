@@ -10,7 +10,8 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 获取文章列表
   async list(ctx) {
-    const articleList = await ctx.service.article.getArtilceList(ctx.request.body.title);
+    console.log('ctx获取文章列表request', ctx.request.body);
+    const articleList = await ctx.service.article.getArtilceList(ctx.request.body);
     this.ctx.body = articleList;
   }
   // 添加文章

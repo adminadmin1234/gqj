@@ -9,6 +9,11 @@
       </el-row>
       <el-row class="clear top16">
         <el-col :span="3">文件上传：</el-col>
+        <el-col :span="8" v-if="article.fileUrl != null">
+          {{article.fileUrl}}
+          <a class="el-button-a" target="blank" :href="article.fileUrl | preview"><el-button class="el-button-sp article-btn">预览</el-button></a>
+          <a class="el-button-a" :href="article.fileUrl"><el-button class="el-button-sp article-btn">下载</el-button></a> 
+        </el-col>
         <el-col :span="12">
           <el-upload
             class="upload-demo"
@@ -28,11 +33,10 @@
            </el-select>
         </el-col>
       </el-row>
-      <el-row class="clear top16">
+      <el-row class="clear top16" v-if="queryId === undefined">
         <el-col :span="3">标签：</el-col>
         <el-col :span="12">
           <el-select v-model="article.label" 
-          multiple 
           filterable
           remote
           reserve-keyword
@@ -95,11 +99,13 @@ export default {
       optionsLabel:[],
       csrf:'/upload?_csrf='+this.$store.state.csrf,
       editor:null,
+      changFlag:0,
+      queryId:null,
       article: {
         title:null,
         fileUrl:null,
         type:1,
-        label:[],
+        label:null,
         weight: 1,
         read:1,
         preview:1,
@@ -115,11 +121,21 @@ export default {
   watch:{
     article(value){
       console.log('article',value);
+    },
+    changFlag(value){
+      console.log('changFlag',value);
     }
+  },
+  filters: {
+      preview(data){
+        return data.split('.')[0] + '/index.html';
+      },
   },
   methods: {
     // 修改文章
     loadData(){
+      this.queryId = this.$route.query.atc_id;
+      console.log('this.queryId',this.queryId);
       if(this.$route.query.atc_id != undefined){
         request.get(`/admin/api/article/${this.$route.query.atc_id}`, this.$store)
           .then(response => {
@@ -150,7 +166,6 @@ export default {
     },
     // 文件上传成功回调
     successUpload(response,file,fileList){
-      console.log('response', response.url);
       this.article.fileUrl = response.url
     },
     // 初始化富文本编辑器
@@ -169,12 +184,40 @@ export default {
        }else{
          this.article.enabled = 0;
        }
-       console.log('this.article',this.article);
+       if(this.$route.query.atc_id === undefined){
+         if(this.article.label == null){
+           this.$message({
+              message: '标签必须填',
+              type: 'error'
+            });
+            return;
+         }
+       }
        if(this.$route.query.atc_id == undefined){//添加
-        this.$store.dispatch(SET_SAVE_ARTICLE, this.article); // 通过vuex搞
+        request.post('/admin/api/article/add',this.article,this.$store).then(result => {
+          if(result.data.flag === 1){
+            this.$message({
+              message: '添加成功',
+              type: 'success'
+            });
+            this.$router.push('/article/list');
+          }else{
+            this.$message({
+              message: '添加失败',
+              type: 'error'
+            });
+            this.$router.push('/article/add');
+          }
+        });
        }else{//修改
-        request.post('/admin/api/article/modify',this.article,this.$store).then(response => {
-          console.log('modifyArticleresponse',response)
+        request.post('/admin/api/article/modify',this.article,this.$store).then(result => {
+          if(result.data.flag === 1){
+              this.$message({
+                message: '修改成功',
+                type: 'success'
+              });
+              this.$router.push('/article/list');
+            }
         });
        }
     },
@@ -182,34 +225,16 @@ export default {
       editor.customConfig.uploadImgHooks = {
           before: function (xhr, editor, files) {
               // 图片上传之前触发
-              // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
-              // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
-              // return {
-              //     prevent: true,
-              //     msg: '放弃上传'
-              // }
-            console.log('before')
-            console.log('success',editor)
-            console.log('success',files)
           },
           success: function (xhr, editor, result) {
-            console.log('success')
-            console.log('success',editor)
-            console.log('success',result)
               // 图片上传并返回结果，图片插入成功之后触发
               // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
           },
           fail: function (xhr, editor, result) {
-            console.log('fail')
-            console.log('success',editor)
-            console.log('success',result)
               // 图片上传并返回结果，但图片插入错误时触发
               // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
           },
           error: function (xhr, editor) {
-            console.log('error')
-              console.log('success',xhr)
-              console.log('success',editor)
               // 图片上传出错时触发
               // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
           },
@@ -218,14 +243,9 @@ export default {
           customInsert: function (insertImg, result, editor) {
               // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
               // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
-              console.log('customInsert')
-              console.log('success',insertImg)
-              console.log('success',editor)
-              console.log('success',result)
               // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
               var url = result.url
               insertImg(url)
-
               // result 必须是一个 JSON 格式字符串！！！否则报错
           }
           }
