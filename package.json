@@ -15,6 +15,7 @@
   "dependencies": {
     "await-stream-ready": "^1.0.1",
     "axios": "^0.17.1",
+    "compressing": "^1.4.0",
     "cross-env": "^5.0.0",
     "egg": "^2.1.0",
     "egg-bin": "^4.3.7",
@@ -36,7 +37,6 @@
     "shortid": "^2.2.8",
     "showdown": "^1.8.6",
     "stream-wormhole": "^1.1.0",
-    "unzip": "^0.1.11",
     "vue": "^2.5.0",
     "vue-hot-reload-api": "^2.1.0",
     "vue-i18n": "^8.1.0",
@@ -63,12 +63,5 @@
   },
   "ci": {
     "version": "8, 10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/easy-team/egg-vue-webpack-boilerplate.git"
-  },
-  "author": "hubcarl@126.com",
-  "license": "MIT",
-  "homepage": "https://github.com/easy-team/egg-vue-webpack-boilerplate"
+  }
 }

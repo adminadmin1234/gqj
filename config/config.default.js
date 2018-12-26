@@ -15,8 +15,8 @@ module.exports = app => {
     }
   };
 
+  // 数据库信息配置
   exports.mysql = {
-    // 单数据库信息配置
     client: {
       // host
       host: 'localhost',
@@ -35,6 +35,7 @@ module.exports = app => {
     agent: false,
   };
 
+  // 控制上传文件
   exports.multipart = {
     mode: 'stream',
   };
@@ -44,10 +45,13 @@ module.exports = app => {
     dir: path.join(app.baseDir, 'logs')
   };
 
+  // 多静态文件入口
   exports.static = {
     prefix: '/public/',
-    dir: [path.join(app.baseDir, 'public'), path.join(app.baseDir, 'publicData')]// 多静态文件入口
+    dir: [path.join(app.baseDir, 'public'), path.join(app.baseDir, 'publicData')]
   };
+
+  // 访问端口
   exports.cluster = {
     listen: {
       path: '',
@@ -60,6 +64,8 @@ module.exports = app => {
     'locals',
     'access'
   ];
+
+  // post传输保护机制
   exports.security = {
     csrf: {
       ignoreJSON: false,
