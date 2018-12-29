@@ -1,5 +1,6 @@
 <template>
   <div class="index-content-wrap">
+    <slot name='content'></slot>
     <div class="content-left">
       <div class="content-up">
         <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">

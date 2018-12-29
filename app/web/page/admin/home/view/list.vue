@@ -32,7 +32,7 @@
           prop="atc_title"
           label="标题">
           <template slot-scope="props">
-            <router-link :to="'/article/detail/'+ props.row.id">{{props.row.atc_title}}</router-link>
+            <router-link :to="'/detail/'+ props.row.id">{{props.row.atc_title}}</router-link>
           </template>
         </el-table-column>
         <el-table-column

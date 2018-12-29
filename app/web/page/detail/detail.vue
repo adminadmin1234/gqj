@@ -1,5 +1,6 @@
 <template>
-       <div class='main'>
+<layout title="真像！" description="vue server side render133" keywords="egg, vue, webpack, server side render">
+       <div class='main'>111
             <LayoutHeader></LayoutHeader>
             <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
                 <div class="menu-nav-wrap">
@@ -47,6 +48,7 @@
             </div>
             <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
+</layout>
 </template>
 <style>
 @import "detail.css";
