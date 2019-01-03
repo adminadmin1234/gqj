@@ -2,7 +2,7 @@
     <div>
         <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
             <div class="menu-nav-wrap">
-                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in dataRes.labelList.list" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
+                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" v-for="(item,index) in dataRes.labelList.list" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
                 <a class="menu-single-a" :href="item.lb_id | addHref">{{item.lb_name}}</a>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                         <span>发布：{{dataRes.articleDetail.list[0].atc_publish_time | formatData}}</span>
                     </div>
                     <div class="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
-                    <a class="el-button-a" :href="dataRes.articleDetail.list[0].atc_fileUrl"><el-button @click="onDownload" class="el-button-sp article-btn">下载</el-button></a> 
-                    <a class="el-button-a" target="blank" :href="hrefFileUrl"><el-button @click="onPreview" class="el-button-sp article-btn">预览</el-button></a>
+                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" :href="dataRes.articleDetail.list[0].atc_fileUrl"><el-button @click="onDownload" class="el-button-sp article-btn">下载</el-button></a> 
+                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" target="blank" :href="hrefFileUrl"><el-button @click="onPreview" class="el-button-sp article-btn">预览</el-button></a>
                 </div>
                 <div class="article-right-wrap">
                     <div class="kuang-wrap">
@@ -90,15 +90,6 @@ filters: {
     }
 },
 methods: {
-    menuToLoad(lbId,index){
-        this.defaultIndex=index;
-        this.$router.push({
-          name: 'Document',
-          params: {
-            id: lbId
-          }
-        });
-      },
     onDownload(){
         request.get(`/detail/api/article/countDownload?atcid=${this.articleDetail.atc_id}`).then(response => {
         });
@@ -116,37 +107,7 @@ methods: {
       },
     menuSingleHide(event){
         $(event.currentTarget).removeClass('menu-single-wrap-active');
-      },
-    getArticleDetailById(){
-        // 获取文章id
-        let currtIdArr = location.search.replace('?','');
-        this.atc_id = currtIdArr.split('=')[1];
-        // 通过文章id获取右边的两个列表
-        this.getRightList(this.atc_id);
-        request.get(`/detail/api/article/detail?id=${this.atc_id}`).then(response => {
-            this.articleDetail = response.data.list[0];
-            if (typeof this.articleDetail.atc_fileUrl !== 'undefined' && this.articleDetail.atc_fileUrl !== null) {
-                this.hrefFileUrl = this.articleDetail.atc_fileUrl.split('.')[0] + '/index.html';
-            }
-        });
-    },
-    getLabelList(store){
-        request.post(`/admin/api/label/list`,{},this.$store).then(response => {
-            this.labelList = response.data.list;
-            if(this.labelList.length > 10){
-                this.menuShow = true;
-            }else{
-                this.menuShow =false;
-            }
-        });
-    },
-    getRightList(lbId){
-        request.get(`/detail/api/article/list?id=${lbId}`).then(response => {
-            this.reactList = response.data.reactList;
-            this.newList = response.data.newList;
-            this.labelData = response.data.labelData;
-        });
-    }
+      }
 },
 mounted() {
     // 百度统计代码
@@ -165,6 +126,16 @@ mounted() {
     // this.getLabelList(this.$store);
     // this.labelList = this.allData.list;
     // console.log('allData',this.labelList)
+    if(this.dataRes.labelList.list.length > 10){
+        this.menuShow = true;
+    }else{
+        this.menuShow =false;
+    }
+    if (typeof this.dataRes.articleDetail.list[0].atc_fileUrl !== 'undefined' && this.dataRes.articleDetail.list[0].atc_fileUrl !== null) {
+        this.hrefFileUrl = this.dataRes.articleDetail.list[0].atc_fileUrl.split('.')[0] + '/index.html';
+    }
+    this.labelData = this.dataRes.rightList.labelData;
+    this.articleDetail = this.dataRes.articleDetail.list[0];
 }
 }
 </script>

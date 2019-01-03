@@ -21,7 +21,7 @@
                     <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
                     <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
-                    <a class="content-single-middle-a" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
+                    <a class="content-single-middle-a" v-if="item.atc_fileUrl != null" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
                   </div>
                   <div class="content-single-footer">
                     {{item.atc_title}}

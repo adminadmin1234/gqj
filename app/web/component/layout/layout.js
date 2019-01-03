@@ -1,19 +1,11 @@
 import Vue from 'vue';
 export default function createLayout(name, components, tpl) {
-  console.log('name', name);
-  console.log('components', components);
-  console.log('tpl', tpl);
-  console.log('EASY_ENV_IS_BROWSER', EASY_ENV_IS_BROWSER);
-  console.log('我进来了');
   return {
     name,
     props: ['title', 'description', 'keywords'],
     components,
     computed: {
       vTitle() {
-        console.log('你来啦');
-        console.log(this.$root.title);
-        console.log(this.title);
         return this.$root.title || this.title || '凌晨两点半';
       },
       vKeywords() {
