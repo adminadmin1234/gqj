@@ -1,11 +1,11 @@
 <template>
-  <div>123
-    <slot name='slot'></slot>
+  <div>
+    <slot name='homeSlot'></slot>
   </div>
 </template>
 <script type='babel'>
   export default {
-    name:'v-slot',
+    name:'v-homeSlot',
     data(){
       return {
 

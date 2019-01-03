@@ -18,7 +18,6 @@ export default function createRouter() {
       {
         path: '/document',
         component: document,
-        name: 'Document'
       }
     ]
   });

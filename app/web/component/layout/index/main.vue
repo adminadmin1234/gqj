@@ -1,12 +1,12 @@
 <template>
   <div class='main'>
     <slotCompent>
-        <div slot='slot'><slot name='main'></slot></div>
+        <div slot='homeSlot'><slot name="main"></slot></div>
     </slotCompent>
   </div>
 </template>
 <script type='babel'>
-  import slotCompent from './slot/slot';
+  import slotCompent from './homeSlot/homeSlot';
   export default {
     components: {
       slotCompent,

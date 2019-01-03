@@ -18,6 +18,7 @@ export default function createStore(initState) {
     article: {},
     ...initState
   };
+  console.log('初始化vuex');
   return new Vuex.Store({
     state,
     actions,
