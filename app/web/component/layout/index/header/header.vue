@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <div class="logo-wrap"><img class="logo" src="../../../../asset/images/logo.png" @click="onOffChart"></div>
+    <div class="logo-wrap"><img class="logo" alt="凌晨零点半logo" src="../../../../asset/images/logo.png" @click="onOffChart"></div>
     <nav class="nav header-wrap">
         <a class="nav-link header-nav-link active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
@@ -9,7 +9,10 @@
 </template>
 <script type="babel">
 import "./header.css";
-import $ from 'jquery';
+// var jsdom = require ('jsdom');  
+// var window = jsdom.jsdom().defaultView;  
+// var $ = require('jquery')(window); 
+// const $ = require('cheerio');
 export default {
   components: {},
   data() {
@@ -78,11 +81,11 @@ export default {
   mounted() {
   },
   created() {
-    this.effect({
-        minSize: 8,		//雪花的最小尺寸
-        maxSize: 40, 	//雪花的最大尺寸
-        newOn: 600		//雪花出现的频率 这个数值越小雪花越多
-    })
+    // this.effect({
+    //     minSize: 8,		//雪花的最小尺寸
+    //     maxSize: 40, 	//雪花的最大尺寸
+    //     newOn: 600		//雪花出现的频率 这个数值越小雪花越多
+    // })
   },
 };
 </script>
