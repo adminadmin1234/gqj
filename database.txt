@@ -1,4 +1,4 @@
-
+drop database blog;
 use blog;
 #创建表
 create table user(
