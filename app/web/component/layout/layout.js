@@ -21,6 +21,7 @@ export default function createLayout(name, components, tpl) {
     template: EASY_ENV_IS_BROWSER ? tpl : `<!DOCTYPE html>
                   <html lang="en">
                     <head>
+                     <meta name="baidu-site-verification" content="zB7PIlT1gD" />
                       <title>{{vTitle}}</title>
                       <meta charset="utf-8">
                       <meta http-equiv="X-UA-Compatible" content="IE=edge">
