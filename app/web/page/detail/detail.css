@@ -3,7 +3,7 @@ body{
 }
 .main{
     position: relative;
-    
+    background: #f5f5f7;
 }
 .menu-nav-wrap-full{
     width: 100%;
@@ -63,16 +63,17 @@ body{
 }
 .article-left-wrap{
     float: left;
-    width: 700px;
-    border: 1px solid #ccc;
+    width: 788px;
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 50px;
+    background: white;
 }
 .article-right-wrap{
     float: left;
     margin-left: 10px;
-    width: 288px;
+    width: 200px;
+    
 }
 .article-left-h1{
     text-align: center;
@@ -88,6 +89,9 @@ body{
     margin-top: 20px;
     padding: 0 10px;
     padding-bottom: 15px;
+}
+.article-left-content pre {
+    background: #f6f8fa !important;
 }
 .el-button{
     height: 30px;
@@ -118,8 +122,8 @@ body{
     font-size: 15px;
     padding-left: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
+    background: white;
 }
 .kuang-wrap-h2{
     font-size: 16px;
