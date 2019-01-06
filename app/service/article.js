@@ -131,7 +131,7 @@ module.exports = class ArticeService extends egg.Service {
   // 首页右边列表数据
   // 必须要有标签才能查出来
   async getArtilceListIndex() {
-    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id and atc_enabled = 1 order by a.atc_publish_time desc LIMIT 4';
+    const query = 'select * from article a,label l,atcAndLb al where a.atc_id=al.al_atc_id and l.lb_id=al.al_lb_id and atc_enabled = 1 order by a.atc_publish_time desc LIMIT 5';
     const articleList = await this.app.mysql.query(query);
     const string = JSON.stringify(articleList);
     const list = JSON.parse(string);
