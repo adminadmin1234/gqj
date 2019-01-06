@@ -16,4 +16,5 @@
       console.log('footerPosition',this.footerPosition)
     },
   };
+  
 </script>
