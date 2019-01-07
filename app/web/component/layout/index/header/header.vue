@@ -1,34 +1,26 @@
 <template>
 <div class="container-fluid">
     <div class="logo-wrap"><img class="logo" alt="凌晨零点半logo" src="../../../../asset/images/logo.png" @click="onOffChart"></div>
-    <nav class="nav header-wrap">
+    <nav class="header-wrap">
         <a class="nav-link header-nav-link active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
     </nav>
 </div>
 </template>
 <script type="babel">
-import "./header.css";
-// var jsdom = require ('jsdom');  
-// var window = jsdom.jsdom().defaultView;  
-// var $ = require('jquery')(window); 
-// const $ = require('cheerio');
+import $ from 'jquery'
 export default {
   components: {},
   data() {
     return {
-      collapsed: false,
       interval:null,
       isDown:true,
     };
   },
   computed: {},
   methods: {
-    menuBtn() {
-      this.collapsed = !this.collapsed;
-    },
     effect(options){
-            const chartMap = ['❄','❤️','🌹','💃','🔥'],
+            const chartMap = ['❄','10','01'],
                   chartColor = ['#64dbfb','#4e3099','#27a8e1','#4e0157','#d601d6'];
             let chartIndex = parseInt(Math.random()*chartMap.length);
             let colorIndex = parseInt(Math.random()*chartColor.length);
@@ -81,7 +73,11 @@ export default {
   mounted() {
   },
   created() {
-    // this.effect({
+    
+  },
+  beforeMount() {
+    // 只会在浏览器执行  
+    //   this.effect({
     //     minSize: 8,		//雪花的最小尺寸
     //     maxSize: 40, 	//雪花的最大尺寸
     //     newOn: 600		//雪花出现的频率 这个数值越小雪花越多
@@ -89,8 +85,10 @@ export default {
   },
 };
 </script>
-<style lang="css">
-    body{
-          overflow: hidden
-    }
+<style scoped lang="scss">
+@import '../../../../asset/css/mixin.scss';
+@import "./header.scss";
+body{
+    overflow: hidden
+}
 </style>

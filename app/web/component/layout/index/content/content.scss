@@ -1,8 +1,7 @@
 .index-content-wrap{
   background: white;
-  width: 96%;
-  margin-left: 2%;
-  margin-top: 2%;
+  width: 100%;
+  margin-top: REM(70);
 }
 .content-left{
   width: 50%;
@@ -11,71 +10,68 @@
   background: white;
 }
 .head-pic{
-  width: 300px;
-  margin-left: 90px;
+  width: REM(400);
+  margin-left: REM(90);
 }
 .site-name{
-  font-size: 20px;
+  font-size: REM(26);
   font-weight: 500;
-  margin-top: 10px;
-  margin-left: 91px;
+  margin-top: REM(10);
+  margin-left: REM(91);
   color: #ff6601
 }
 .content-down{
-  margin-left: 90px;
-}
-.content-desc{
-  margin-left: 91px;
-  margin-top: 10px;
+  margin-left: REM(90);
+  font-size: REM(20)
 }
 .content-right{
-  width:48%;
+  width:44%;
   padding: 1%;
   margin-left: 2%;
   float:left;
   background: white;
-}
-.code-wrap{
-  height: 200px;
-  padding: 20px 10px 0 10px;
-  text-align: center;
-  background: #fbfbfb;
-}
-.code-wrap img{
-  margin: auto;
-  height: 150px;
-  width:150px;
+  font-size: REM(20)
 }
 .content-wrap-ul li{
-  height: 100px;
-  padding: 15px 1px;
+  height: REM(110);
+  padding: REM(15) REM(1);
   border-bottom: 1px solid #ccc;
 }
 .content-li-picture{
-  height: 70px;
-  width: 100px;
+  height: REM(110);
+  width: REM(140);
   float: left;
-  border-radius: 6px;
+  border-radius: REM(6);
+}
+.content-left-hr{
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  float: left;
+  margin: REM(30) 0;
+  font-size: REM(12)
 }
 .content-detail-wrap{
   float: left;
-  width: 325px;
-  margin-left:20px;
-  height: 70px;
+  width: REM(625);
+  margin-left: REM(20);
+  height: REM(110);
   position: relative;
+  p{
+    font-size: REM(22);
+  }
 }
 .content-detail-date{
-  font-size: 14px;
+  font-size: REM(20);
   position: absolute;
   bottom: 0;
-  left: 2px;
+  left: REM(2);
 }
 .content-detail-label{
-  font-size: 14px;
+  font-size: REM(20);
   position: absolute;
   bottom: 0;
-  right: 10px;
-  /*color: #ff6602;*/
+  right: REM(10);
 }
 .content-wrap-a:hover{
   color: #ff6601

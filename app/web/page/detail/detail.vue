@@ -7,9 +7,6 @@
        </div>
 </layout>
 </template>
-<style>
-@import "detail.css";
-</style>
 <script type="babel">
 import request from 'framework/network/request';
 import Vue from 'vue';

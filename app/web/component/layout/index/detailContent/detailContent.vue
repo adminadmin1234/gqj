@@ -45,7 +45,9 @@
         </div>
     </div>
 </template>
-<style>
+<style scoped lang="scss">
+    @import '../../../../asset/css/mixin.scss';
+    @import "./detailContent.scss";
 </style>
 <script type="babel">
 import request from 'framework/network/request';

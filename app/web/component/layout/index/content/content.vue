@@ -3,16 +3,17 @@
     <slot name='content'></slot>
     <div class="content-left">
       <div class="content-up">
+        <!--<img src="../../../../asset/images/egg-vue-webpack-dev.png" class="head-pic" alt="凌晨两点半头像">-->
         <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">
         <h1 class="site-name">凌晨两点半</h1>
-        <hr class="content-left-hr">
       </div>
+      <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down">
         <li>收集、分享前端组件</li>
         <li>记录、收藏文档工具</li>
         <li>学习、储备前端技术</li>
       </ul>
-      <hr class="content-left-hr">
+      <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down">
         <li>如本站内容侵犯了您的权益，请联系站长:18312710387</li>
       </ul>
@@ -36,18 +37,13 @@
     </div>
   </div>
 </template>
-<style scoped>
-  @import 'content.css';
-</style>
 <script type='babel'>
-import request from 'framework/network/request';
 import moment from 'moment';
 export default {
     name:'v-content',
     data(){
       return {
         title:'博主微信',
-        // articleList: []
       }
     },
     props:['articleList'],
@@ -93,20 +89,12 @@ export default {
           s.parentNode.insertBefore(bp, s);
       })();
 
-      // this.loadData();
-      // this.articleList = window.__INITIAL_STATE__.temp;
-      // console.log('window.__INITIAL_STATE__',window.__INITIAL_STATE__);
-      console.log('this.articleList',this.articleList);
     },
     methods: {
-      loadData() {
-        request.get('/index/api/article/list').then(response => {
-          this.articleList = response.data.temp;
-        });
-      }
     }
   };
 </script>
-
-
-
+<style scoped lang="scss">
+  @import '../../../../asset/css/mixin.scss';
+  @import 'content.scss';
+</style>

@@ -1,0 +1,5 @@
+$REM: 100;
+/* px转换为rem */
+@function REM($n) {
+    @return $n/$REM*1rem;
+}

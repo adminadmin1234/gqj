@@ -7,10 +7,7 @@
     </nav>
 </div>
 </template>
-<script type="babel">
-import "./headercommon.css";
-export default {
-};
-</script>
-<style lang="css">
+<style scoped lang="scss">
+@import '../../../../asset/css/mixin.scss';
+@import "./headercommon.scss";
 </style>
