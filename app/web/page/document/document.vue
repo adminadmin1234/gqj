@@ -50,6 +50,7 @@
 
 </style>
 <script type="babel">
+  import '../../asset/js/rem.js';
   import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
   import LayoutFooter from '../../component/layout/index/footer/footer';
   import moment from 'moment';

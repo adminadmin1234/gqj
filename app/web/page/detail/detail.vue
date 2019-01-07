@@ -8,6 +8,7 @@
 </layout>
 </template>
 <script type="babel">
+import '../../asset/js/rem.js';
 import request from 'framework/network/request';
 import Vue from 'vue';
 import ElementUI from 'element-ui';

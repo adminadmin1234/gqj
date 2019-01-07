@@ -12,6 +12,7 @@
   }
 </style>
 <script type="text/babel">
+  import '../../asset/js/rem.js';
   import LayoutHeader from '../../component/layout/index/header/header';
   import LayoutFooter from '../../component/layout/index/footer/footer';
   import LayoutContent from '../../component/layout/index/content/content';
