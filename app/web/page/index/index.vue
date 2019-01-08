@@ -5,7 +5,10 @@
       <LayoutFooter></LayoutFooter>
     </layout>
 </template>
-<style scoped>
+<style>
+  body{
+    overflow: hidden;
+  }
   .footer{
     position:fixed;
     bottom:0;

@@ -9,7 +9,7 @@
         </div>
         <div class="content-wrap">
             <div class="breadcrumb">
-                <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb  separator="/">
                     <el-breadcrumb-item><a class="breadcrumbFirst" :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
                     <el-breadcrumb-item>{{dataRes.articleDetail.list[0].atc_title}}</el-breadcrumb-item>
                 </el-breadcrumb>
@@ -24,20 +24,20 @@
                         <span>发布：{{dataRes.articleDetail.list[0].atc_publish_time | formatData}}</span>
                     </div>
                     <div class="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
-                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" :href="dataRes.articleDetail.list[0].atc_fileUrl"><el-button @click="onDownload" class="el-button-sp article-btn">下载</el-button></a> 
-                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" target="blank" :href="hrefFileUrl"><el-button @click="onPreview" class="el-button-sp article-btn">预览</el-button></a>
+                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" :href="dataRes.articleDetail.list[0].atc_fileUrl"><span @click="onDownload" class="article-btn">下载</span></a> 
+                    <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" target="blank" :href="hrefFileUrl"><span @click="onPreview" class="article-btn">预览</span></a>
                 </div>
                 <div class="article-right-wrap">
                     <div class="kuang-wrap">
                         <h2 class="kuang-wrap-h2">最近更新</h2>
                         <ul>
-                            <li class="kuang-li" v-for="(item,index) in dataRes.rightList.newList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
+                            <li class="kuang-li" v-for="(item,index) in dataRes.rightList.newList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{item.atc_title}}</a></li>
                         </ul>
                     </div>
                     <div class="kuang-wrap">
                         <h2 class="kuang-wrap-h2">相关文章</h2>
                         <ul>
-                            <li class="kuang-li" v-for="(item,index) in dataRes.rightList.reactList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{index+1}}.{{item.atc_title}}</a></li>
+                            <li class="kuang-li" v-for="(item,index) in dataRes.rightList.reactList"><a :href="item.atc_id | addHref1" class="kuang-li-a">{{item.atc_title}}</a></li>
                         </ul>
                     </div>
                 </div>

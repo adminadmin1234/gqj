@@ -64,10 +64,15 @@ body{
     line-height:  REM(50);
     background: #e9ecef;
     padding: 0 REM(10);
-    border-radius: 4px;
+}
+.el-breadcrumb__separator{
+    margin-top: 2px!important;
 }
 .el-breadcrumb__item{
-    font-size: REM(24)!important;
+    font-size: REM(20)!important;
+}
+.el-breadcrumb__item .el-icon-arrow-right{
+    margin-top: 2px!important;
 }
 .breadcrumbFirst{
     color: #ff6601!important;
@@ -76,7 +81,6 @@ body{
     float: right;
     width: REM(1165);
     padding: REM(10);
-    border-radius: 4px;
     margin-bottom: REM(50);
     background: white;
     margin-left: REM(15);
@@ -102,50 +106,54 @@ body{
     padding: 0 REM(10);
     padding-bottom: REM(15);
     font-size: REM(22);
+    overflow: hidden;
 }
 .article-left-content pre {
     background: #f6f8fa !important;
 }
-.el-button{
-    height: REM(30);
-    width: REM(56);
-    line-height: REM(30);
-    padding: 0 REM(10);
-    margin: 0;
-    background: #ff6601;
-    border-radius: 4px;
-}
-.el-button-sp:hover{
-    background: #ff6601;
-    color: white!important;
-}
-.el-button-a{
-    color: white!important;
-    font-size: REM(12);
-}
 .article-btn{
     float:right;
     margin-left: REM(15);
-    color: white!important;
+    width: REM(100);
+    height: REM(40);
+    line-height: REM(40);
+    font-size: REM(18);
+    text-align: center;
+    color: white;
+    display: block;
+    background: #373d41;
+}
+.article-btn:hover{
+    background: #ff6601;
 }
 .article-btn-download{
     margin-right: 2px;
 }
 .kuang-wrap{
     font-size: REM(22);
-    padding-left: REM(10);
     margin-bottom: REM(10);
-    border-radius: 4px;
     background: white;
+    padding: REM(5) REM(5) REM(2) REM(8);
 }
 .kuang-wrap-h2{
-    font-size: REM(22);
-    padding: 5px 0;
-    color: #ff6601;
+    font-size: REM(20);
+    color: black;
+    margin-bottom: REM(20);
+}
+.kuang-wrap-h2:before{
+    display: inline-block;
+    margin-right: REM(8);
+    content: '';
+    width: REM(6);
+    height: REM(22);
+    vertical-align: REM(-3);
+    background-color: #ff6601;
 }
 .kuang-li{
-    max-height: REM(46);
-    margin-bottom: 5px;
+    font-size: REM(20);
+    max-height: REM(56);
+    line-height: REM(28);
+    margin-bottom: 2px;
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
     text-overflow: ellipsis;

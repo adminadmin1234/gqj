@@ -27,6 +27,7 @@ use blog;
 create table label(
     lb_id INT NOT NULL AUTO_INCREMENT,
     lb_name VARCHAR(100) unique,
+    lb_type tinyint default 1,
     PRIMARY KEY ( lb_id )
 );
 
@@ -52,4 +53,24 @@ create table atcAndLb(
    al_atc_id int,
    al_lb_id int,
    PRIMARY KEY ( al_id )
+);
+#创建参考文档表
+create table document(
+   doc_id INT NOT NULL AUTO_INCREMENT,
+   doc_logo VARCHAR(256),
+   doc_title VARCHAR(256),
+   doc_desc VARCHAR(256),
+   doc_address VARCHAR(256),
+   doc_github VARCHAR(256),
+   doc_label VARCHAR(256),
+   doc_publish_time VARCHAR(256),
+   doc_weight tinyint default 1,
+   PRIMARY KEY ( doc_id )
+);
+#创建参考文档标签关联表
+create table docAndLb(
+   dl_id INT NOT NULL AUTO_INCREMENT,
+   dl_doc_id int,
+   dl_lb_id int,
+   PRIMARY KEY ( dl_id )
 );

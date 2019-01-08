@@ -13,20 +13,22 @@
                 <input type="text" class="search-text" v-model="keyword">
                 <input type="submit" @click="search" class="search-sub" value="搜索">
               </div>
-              <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
-                <a :href="item.atc_id | addHref">
-                  <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
-                  <div class="content-single-middle">
-                    <span class="content-single-middle-span"><i class="el-icon-view">{{item.atc_preview}}</i></span>
-                    <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
-                    <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
-                    <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
-                    <a class="content-single-middle-a" v-if="item.atc_fileUrl != null" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
-                  </div>
-                  <div class="content-single-footer">
-                    {{item.atc_title}}
-                  </div>
-                </a>
+              <div>
+                <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
+                  <a :href="item.atc_id | addHref">
+                    <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
+                    <div class="content-single-middle">
+                      <span class="content-single-middle-span"><i class="el-icon-view">{{item.atc_preview}}</i></span>
+                      <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
+                      <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
+                      <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
+                      <a class="content-single-middle-a" v-if="item.atc_fileUrl != null" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
+                    </div>
+                    <div class="content-single-footer">
+                      {{item.atc_title}}
+                    </div>
+                  </a>
+                </div>
               </div>
               <div class="not-content-wrap" v-if="pagination.total==0">
                 <img class="not-content-img" src="../../asset/images/logo.png" alt="">
@@ -44,10 +46,9 @@
           <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
 </template>
-<style>
-
-@import "document.css";
-
+<style scoped lang="scss">
+@import '../../asset/css/mixin.scss';
+@import "document.scss";
 </style>
 <script type="babel">
   import '../../asset/js/rem.js';
@@ -73,7 +74,7 @@
       return {
         pagination:{
           index:1,
-          pagesize:9,
+          pagesize:12,
           total:0,
         },
         labelId:null,
@@ -86,17 +87,18 @@
       }
     },
     watch:{
-      'pagination.total':{
-      handler(data){
-        if( data >=9 ){
-          this.footerPosition = false;
-        }else{
-          this.footerPosition = true;
-        }
-      },
-      deep:true,
-      immediate:false,
-    },
+      // 'pagination.total':{
+      //   handler(data){
+      //     console.log('data',data);
+      //     if( data >= 12 ){
+      //       this.footerPosition = false;
+      //     }else{
+      //       this.footerPosition = true;
+      //     }
+      //   },
+      //   deep:true,
+      //   immediate:false,
+      // },
     },
     mounted() {
       const _this = this;
@@ -128,6 +130,11 @@
       search(){
         request.get(`/document/api/article/search?keyword=${this.keyword}`).then(response => {
           this.articleList = response.data.temp;
+          if(this.articleList.length >= 12){
+            this.footerPosition = false;
+            }else{
+              this.footerPosition = true;
+            }
           this.pagination.total = response.data.total;
         });
       },

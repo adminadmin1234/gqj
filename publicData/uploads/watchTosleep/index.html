@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #000;
+}
+@-webkit-keyframes rotate{
+	to{
+		-webkit-transform: rotate(30deg);
+	}
+}
+@-ms-keyframes rotate{
+	to{
+		-ms-transform: rotate(30deg);
+	}
+}
+@-moz-keyframes rotate{
+	to{
+		-moz-transform: rotate(30deg);
+	}
+}
+@-o-keyframes rotate{
+	to{
+		-o-transform: rotate(30deg);
+	}
+}
+@keyframes rotate{
+	to{
+		transform: rotate(30deg);
+	}
+}
+.clock{
+	-webkit-transform-origin: center top;
+	-ms-transform-origin: center top;
+	-moz-transform-origin: center top;
+	-o-transform-origin: center top;
+	transform-origin: center top;
+	-webkit-transform: rotate(-30deg);
+	-ms-transform: rotate(-30deg);
+	-moz-transform: rotate(-30deg);
+	-o-transform: rotate(-30deg);
+	transform: rotate(-30deg);
+	display: block;
+	width: 200px;
+	height:737px;
+	margin: 0 auto;
+	background: url(img/2.png) center no-repeat;
+	background-size: 100% 100%;
+	-webkit-animation: rotate 1.5s ease-in-out alternate infinite;
+	-ms-animation: rotate 1.5s ease-in-out alternate infinite;
+	-moz-animation: rotate 1.5s ease-in-out alternate infinite;
+	-o-animation: rotate 1.5s ease-in-out alternate infinite;
+	animation: rotate 1.5s ease-in-out alternate infinite;
+	position: relative;
+	margin-top: -5px;
+}
+.circle{
+	width: 72%;
+	height: 144px;
+	position: absolute;
+	bottom: 9px;
+	left: 27px;
+	border-radius: 200px;
+}
+.circlecenter{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -6px;
+	margin-top: -6px;
+	width: 12px;
+	height: 12px;
+	background: url(img/3.png) no-repeat center;
+	background-size: 100% 100%;
+	z-index: 5;
+}
+.shizhen{
+	width: 16px;
+	height: 38px;
+	background: url(img/shizhen.png) center no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 64px;
+	top: 34px;
+	-webkit-transform-origin: center bottom;
+	-ms-transform-origin: center bottom;
+	-moz-transform-origin: center bottom;
+	-o-transform-origin: center bottom;
+	transform-origin: center bottom;
+	-webkit-animation: shizhen 43200s linear infinite;
+	-ms-animation: shizhen 43200s linear infinite;
+	-moz-animation: shizhen 43200s linear infinite;
+	-o-animation: shizhen 43200s linear infinite;
+	animation: shizhen 43200s linear infinite;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	z-index: 2;
+}
+@-webkit-keyframes shizhen{
+	to{-webkit-transform: rotate(360deg);}
+}
+@-ms-keyframes shizhen{
+	to{-ms-transform: rotate(360deg);}
+}
+@-moz-keyframes shizhen{
+	to{-moz-transform: rotate(360deg);}
+}
+@-o-keyframes shizhen{
+	to{-o-transform: rotate(360deg);}
+}
+@keyframes shizhen{
+	to{transform: rotate(360deg);}
+}
+.fenzhen{
+	width: 9px;
+	height: 44px;
+	background: url(img/fenzhen.png) center no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 68px;
+	top: 29px;
+	-webkit-transform-origin: center bottom;
+	-ms-transform-origin: center bottom;
+	-moz-transform-origin: center bottom;
+	-o-transform-origin: center bottom;
+	transform-origin: center bottom;
+	-webkit-animation: shizhen 3600s linear infinite;
+	-ms-animation: shizhen 3600s linear infinite;
+	-moz-animation: shizhen 3600s linear infinite;
+	-o-animation: shizhen 3600s linear infinite;
+	animation: shizhen 3600s linear infinite;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	z-index: 3;
+}
+.miaozhen{
+	width: 5px;
+	height: 50px;
+	background: url(img/miaozhen.png) center no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	left: 69px;
+	top: 22px;
+	-webkit-transform-origin: center bottom;
+	-ms-transform-origin: center bottom;
+	-moz-transform-origin: center bottom;
+	-o-transform-origin: center bottom;
+	transform-origin: center bottom;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	z-index: 4;
+}
+audio{
+	display: none;
+}
+</style>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="clock">
+	<div class="circle">
+		<div class="circlecenter"></div>
+		<div class="miaozhen"></div>
+		<div class="fenzhen"></div>
+		<div class="shizhen"></div>
+	</div>
+</div>
+
+<audio src="img/miao.mp3"></audio>
+
+<script type="text/javascript">
+var ad=$('audio')[0];
+ad.play();
+setInterval(function(){
+	ad.play();
+},1000);
+var myTime=new Date();
+var houre=myTime.getHours();
+var minutes=myTime.getMinutes();
+var seconds=myTime.getSeconds();
+console.log(houre);
+console.log(minutes);
+console.log(seconds);
+var miao=seconds;
+var mz=$('.miaozhen');
+setInterval(function(){
+	if(miao==59){
+		miao=0;
+		mz.css({
+			'-webkit-transform': 'rotate(0deg)',
+			'-ms-transform': 'rotate(0deg)',
+			'-moz-transform': 'rotate(0deg)',
+			'-o-transform': 'rotate(0deg)',
+			'transform': 'rotate(0deg)'
+		})
+	}else{
+		miao++;
+		miaodu=miao*6;
+		mz.css({
+			'-webkit-transform': 'rotate('+miaodu+'deg)',
+			'-ms-transform': 'rotate('+miaodu+'deg)',
+			'-moz-transform': 'rotate('+miaodu+'deg)',
+			'-o-transform': 'rotate('+miaodu+'deg)',
+			'transform': 'rotate('+miaodu+'deg)'
+		})
+	}
+},1000);
+var minutesdeg=parseInt(minutes*6)+parseInt(seconds/10);
+$('.fenzhen').css({
+	'-webkit-transform': 'rotate('+minutesdeg+'deg)',
+	'-ms-transform': 'rotate('+minutesdeg+'deg)',
+	'-moz-transform': 'rotate('+minutesdeg+'deg)',
+	'-o-transform': 'rotate('+minutesdeg+'deg)',
+	'transform': 'rotate('+minutesdeg+'deg)'
+})
+var houredeg=parseInt(houre%12*30)+parseInt(minutes/2);
+$('.shizhen').css({
+	'-webkit-transform': 'rotate('+houredeg+'deg)',
+	'-ms-transform': 'rotate('+houredeg+'deg)',
+	'-moz-transform': 'rotate('+houredeg+'deg)',
+	'-o-transform': 'rotate('+houredeg+'deg)',
+	'transform': 'rotate('+houredeg+'deg)'
+})
+</script>
+
+</body>
+</html>

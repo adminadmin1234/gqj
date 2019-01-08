@@ -18,6 +18,13 @@
           label="标签名">
         </el-table-column>
         <el-table-column
+          label="归属">
+          <template slot-scope="props">
+            <div v-if='props.row.lb_type === 1'>常用组件</div>
+            <div v-if='props.row.lb_type === 2'>中文文档</div>
+          </template>
+        </el-table-column>
+        <el-table-column
           label="操作"
           width="180">
           <template slot-scope="props">

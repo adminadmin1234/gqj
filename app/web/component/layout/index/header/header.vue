@@ -77,18 +77,16 @@ export default {
   },
   beforeMount() {
     // 只会在浏览器执行  
-    //   this.effect({
-    //     minSize: 8,		//雪花的最小尺寸
-    //     maxSize: 40, 	//雪花的最大尺寸
-    //     newOn: 600		//雪花出现的频率 这个数值越小雪花越多
-    // })
+      this.effect({
+        minSize: 8,		//雪花的最小尺寸
+        maxSize: 40, 	//雪花的最大尺寸
+        newOn: 600		//雪花出现的频率 这个数值越小雪花越多
+    })
   },
 };
 </script>
 <style scoped lang="scss">
+
 @import '../../../../asset/css/mixin.scss';
 @import "./header.scss";
-body{
-    overflow: hidden
-}
 </style>
