@@ -13,7 +13,7 @@
                 <input type="text" class="search-text" v-model="keyword">
                 <input type="submit" @click="search" class="search-sub" value="搜索">
               </div>
-              <div>
+              <div class="content-single-wrap">
                 <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
                   <a :href="item.atc_id | addHref">
                     <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
