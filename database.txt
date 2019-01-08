@@ -30,7 +30,6 @@ create table label(
     lb_type tinyint default 1,
     PRIMARY KEY ( lb_id )
 );
-
 #创建文章表
 create table article(
    atc_id INT NOT NULL AUTO_INCREMENT,
