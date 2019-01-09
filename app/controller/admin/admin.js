@@ -46,6 +46,11 @@ module.exports = class AdminController extends egg.Controller {
     const flag = await ctx.service.label.setLabelList(ctx.request.body);
     this.ctx.body = flag;
   }
+  // 修改标签
+  async labelmodify(ctx) {
+    const flag = await ctx.service.label.modifyLabel(ctx.request.body);
+    this.ctx.body = flag;
+  }
   // 删除标签
   async labeldel(ctx) {
     const { id } = ctx.params;

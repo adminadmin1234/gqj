@@ -8,7 +8,7 @@ module.exports = class LabelService extends egg.Service {
   async getLabelList(name) {
     // 通过name进行模糊查询
     const TABLE_NAME = 'label';
-    const QUERY_STR = 'lb_id, lb_name, lb_type';
+    const QUERY_STR = 'lb_id, lb_name, lb_type, lb_weight';
     let sql;
     if (name === null || name === undefined) {
       sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
@@ -25,7 +25,24 @@ module.exports = class LabelService extends egg.Service {
     };
   }
   async setLabelList(data) {
-    const result = await this.app.mysql.insert('label', { lb_name: data.lb_name });
+    const result = await this.app.mysql.insert('label', { lb_name: data.lb_name, lb_weight: data.lb_weight, lb_type: data.lb_type });
+    const flag = result.affectedRows;
+    return { flag };
+  }
+  async modifyLabel(data) {
+    // 修改数据，将会根据主键 ID 查找，并更新
+    const row = {
+      lb_id: data.lb_id,
+      lb_name: data.lb_name,
+      lb_type: data.lb_type,
+      lb_weight: data.lb_weight,
+    };
+    const options = {
+      where: {
+        lb_id: data.lb_id,
+      }
+    };
+    const result = await this.app.mysql.update('label', row, options); // 更新 label 表中的记录
     const flag = result.affectedRows;
     return { flag };
   }

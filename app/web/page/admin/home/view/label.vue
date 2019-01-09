@@ -9,8 +9,6 @@
       </div>
       <el-table
         :data="labelList"
-        v-loading="loading"
-        element-loading-text="拼命加载中"
         border
         style="width: 100%;">
         <el-table-column
@@ -22,14 +20,19 @@
           <template slot-scope="props">
             <div v-if='props.row.lb_type === 1'>常用组件</div>
             <div v-if='props.row.lb_type === 2'>中文文档</div>
+            <div v-if='props.row.lb_type === 3'>个人博客</div>
           </template>
+        </el-table-column>
+        <el-table-column
+          prop="lb_weight"
+          label="权重">
         </el-table-column>
         <el-table-column
           label="操作"
           width="180">
           <template slot-scope="props">
             <router-link :to="{params: {id: props.row.id}}" tag="span">
-              <el-button type="info" size="small" icon="edit" @click="handleEdit(props.$index, props.row)">修改</el-button>
+              <el-button type="info" size="small" icon="edit" @click="handleEdit(props.row)">修改</el-button>
             </router-link>
             <el-button type="danger" size="small" icon="delete" @click="handleDelete(props.row)">删除</el-button>
           </template>
@@ -50,31 +53,42 @@
       </div>
       <el-dialog
         title="添加标签"
-        :visible.sync="dialogVisible"
+        :visible.sync="$store.state.addDialog"
         width="60%">
-         <el-col :span="3">标签名：</el-col>
-        <el-col :span="12"><el-input class="long-input" clearable v-model="label.lb_name"></el-input>
-        </el-col>
+        <el-form>
+          <el-form-item label="归属：" :required="true" label-width="100px">
+                <el-select  v-model="label.lb_type" placeholder="归属">
+                      <el-option :value="1" label="常用组件"></el-option>
+                      <el-option :value="2" label="中文文档"></el-option>
+                      <el-option :value="3" label="个人博客"></el-option>
+                </el-select>
+          </el-form-item>
+          <el-form-item label="标签名：" :required="true" label-width="100px">
+                <el-input clearable v-model="label.lb_name"></el-input>
+          </el-form-item>
+
+          <el-form-item label="权重：" :required="true" label-width="100px">
+                <el-input clearable v-model="label.lb_weight" placeholder="数值越大越靠前"></el-input>
+          </el-form-item>
+        </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button @click="$store.state.addDialog = false">取 消</el-button>
           <el-button type="primary" @click="addLabel">确 定</el-button>
         </span>
       </el-dialog>
   </div>
 </template>
-<style>
-
-</style>
 <script type="babel">
-import {SET_CXT, SET_LABEL_LIST, SET_LABEL_SAVE, LABEL_DELETE, DELETE_ARTICLE } from '../store/app/mutation-type';
+import { SET_LABEL_LIST, SET_LABEL_SAVE, SET_LABEL_MODIFY, LABEL_DELETE } from '../store/app/mutation-type';
 export default {
   components: {},
   data() {
     return {
-      // dialogVisible:false,
       label:{
         lb_id: null,
-        lb_name: null
+        lb_name: null,
+        lb_type: 1,
+        lb_weight: 1,
       },
       q: {
         title: undefined,
@@ -83,15 +97,16 @@ export default {
         pageIndex: 1,
         pageSize: 10
       },
-      //请求时的loading效果
-      loading: false,
-      //批量选择数组
-      batchSelectArray: []
     };
   },
   methods: {
     addLabel(){
-      return this.$store.dispatch(SET_LABEL_SAVE, this.label);
+      if(this.label.lb_id != null){
+        return this.$store.dispatch(SET_LABEL_MODIFY, this.label);
+      } else{
+        return this.$store.dispatch(SET_LABEL_SAVE, this.label);
+      }
+      
     },
     fetchApi(store, json) {
       return store.dispatch(SET_LABEL_LIST, json);
@@ -100,7 +115,8 @@ export default {
       this.fetchApi(this.$store, this.q);
     },
     write() {
-      this.$store.state.dialogVisible = true;
+      this.label.lb_id = null
+      this.$store.state.addDialog = true;
     },
     handleSelectionChange(val) {
     },
@@ -113,60 +129,38 @@ export default {
       console.log(`当前页: ${val}`);
       this.q.pageIndex = val;
       this.fetchApi(this.$store, this.q);
+      return this.$store.dispatch(SET_LABEL_SAVE, this.label);
     },
-    handleEdit(index, row) {
-      this.$message(`你点击了编辑操作 index:${index}, id:${row.id}`);
+    handleEdit(row) { // 修改
+      this.label.lb_id = row.lb_id;
+      this.label.lb_name = row.lb_name;
+      this.label.lb_type = row.lb_type;
+      this.label.lb_weight = row.lb_weight;
+      this.$store.state.addDialog = true;
     },
     handleDelete(row) {
-      console.log(row)
-      this.$store.dispatch(LABEL_DELETE, { id: row.lb_id });
-      this.$message(`删除[${row.lb_name}]成功!`);
-    },
-    //批量选择
-    batchSelect(val) {
-      this.batchSelectArray = val;
-    },
-    //批量删除
-    batchDel() {
-      this.$confirm("将批量删除选择文章, 是否继续?", "提示", {
+      this.$confirm("删除选择标签, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
-        type: "warning"
+        type: "error"
       }).then(() => {
-        this.loading = true;
-        this.$message.success(msg);
-        this.loading = false;
+        this.$store.dispatch(LABEL_DELETE, { id: row.lb_id });
       });
-    }
+    },
   },
   computed: {
-    status() {
-      return [
-        { status: undefined, name: "--请选择--" },
-        { status: 1, name: "已发布" },
-        { status: 2, name: "草稿" }
-      ];
-    },
-    categories() {
-      return [
-        { categoryId: 0, name: "--请选择--" },
-        { categoryId: 1, name: "Nodejs" },
-        { categoryId: 2, name: "Webpack" },
-        { categoryId: 3, name: "Egg" }
-      ];
-    },
     total() {
       return this.$store.state.labelTotal;
     },
     labelList() {
       return this.$store.state.labelList;
     },
-    dialogVisible(){
-      return this.$store.state.dialogVisible;
+    addDialog(){
+      return this.$store.state.addDialog;
     }
   },
-  watch:{
-    dialogVisible(val){
+  watch:{ // 重新加载
+    addDialog(val){
       if (!val) {
         // 添加成功后，重新请求数据
         this.fetchApi(this.$store, this.q);

@@ -28,6 +28,11 @@ const actions = {
       store.commit(Type.SET_LABEL_SAVE, response.data);
     });
   },
+  SET_LABEL_MODIFY: (store, json) => {
+    return request.post('/admin/api/label/modify', json, store).then(response => {
+      store.commit(Type.SET_LABEL_SAVE, response.data);
+    });
+  },
   LABEL_DELETE: (store, { id }) => {
     // 鉴权 TODO
     const { commit, dispatch, state } = store;

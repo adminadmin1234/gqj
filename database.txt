@@ -17,7 +17,9 @@ select * from user;
 # 删除表
 DROP TABLE table_name;
 
-
+#向表中插入数据
+INSERT INTO label(lb_id, lb_name)
+VALUES(1, 'jquery'), (2, 'menu'), (3, 'canvas'), (21, '图片滚动');
 ——————————————————————————————————————————————————————————————————————————————
 #创建数据库
 create database blog;
@@ -31,9 +33,7 @@ create table label(
     lb_weight tinyint default 1, #权重
     PRIMARY KEY ( lb_id )
 );
-#向表中插入数据
-INSERT INTO label(lb_id, lb_name)
-VALUES(1, 'jquery'), (2, 'menu'), (3, 'canvas'), (4, 'nodejs'), (5, '图片滚动');
+
 #创建文章表
 create table article(
    atc_id INT NOT NULL AUTO_INCREMENT,

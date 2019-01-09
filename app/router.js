@@ -28,6 +28,7 @@ module.exports = app => {
   // 标签
   router.post('/admin/api/label/list', controller.admin.admin.labellist);
   router.post('/admin/api/label/add', controller.admin.admin.labeladd);
+  router.post('/admin/api/label/modify', controller.admin.admin.labelmodify);
   router.get('/admin/api/label/del/:id', controller.admin.admin.labeldel);
 
   router.get('/admin(/.+)?', controller.admin.admin.home);

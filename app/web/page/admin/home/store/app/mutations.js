@@ -3,6 +3,7 @@
 import {
   GET_ARTICLE_DETAIL,
   SET_LABEL_LIST,
+  SET_LABEL_MODIFY,
   SET_LABEL_SAVE,
   LABEL_DELETE,
   SET_ARTICLE_LIST,
@@ -26,9 +27,16 @@ const mutations = {
   },
   [SET_LABEL_SAVE](state, data) {
     if (data.flag === 1) {
-      state.dialogVisible = false;
+      state.addDialog = false;
     } else {
-      state.dialogVisible = true;
+      state.addDialog = true;
+    }
+  },
+  [SET_LABEL_MODIFY](state, data) {
+    if (data.flag === 1) {
+      state.addDialog = false;
+    } else {
+      state.addDialog = true;
     }
   },
   [LABEL_DELETE](state, { id }) {

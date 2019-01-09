@@ -10,7 +10,7 @@ Vue.use(Vuex);
 
 export default function createStore(initState) {
   const state = {
-    dialogVisible: false,
+    addDialog: false,
     labelTotal: 0,
     labelList: [],
     articleTotal: 0,
