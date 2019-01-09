@@ -24,6 +24,11 @@ const menu = {
     name: 'menu.labelmanage',
     path: '/label/list',
     icon: 'el-icon-menu'
+  },
+  document: {
+    name: 'menu.documentmanage',
+    path: '/document/list',
+    icon: 'el-icon-menu'
   }
 };
 

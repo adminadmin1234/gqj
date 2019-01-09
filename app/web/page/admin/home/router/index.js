@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Dashboard from '../view/dashboard/index.vue';
 import ArticleList from '../view/list.vue';
 import LableList from '../view/label.vue';
+import DocumentList from '../view/document.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,10 @@ export default function createRouter() {
       {
         path: '/article/detail/:id',
         component: () => import('../view/detail.vue')
+      },
+      {
+        path: '/document/list',
+        component: DocumentList
       },
       {
         path: '/label/list',
