@@ -1,6 +1,11 @@
 'use strict';
 
 export const GET_ARTICLE_DETAIL = 'GET_ARTICLE_DETAIL';
+// 中文文档
+export const SET_DOCUMENT_LIST = 'SET_DOCUMENT_LIST';
+export const SET_DOCUMENT_SAVE = 'SET_DOCUMENT_SAVE';
+export const SET_DOCUMENT_MODIFY = 'SET_DOCUMENT_MODIFY';
+export const DOCUMENT_DELETE = 'DOCUMENT_DELETE';
 // 标签
 export const SET_LABEL_LIST = 'SET_LABEL_LIST';
 export const SET_LABEL_SAVE = 'SET_LABEL_SAVE';

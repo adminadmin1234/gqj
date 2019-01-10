@@ -17,6 +17,17 @@ const actions = {
         store.commit(Type.GET_ARTICLE_DETAIL, response.data);
       });
   },
+  // 中文文档
+  SET_DOCUMENT_LIST: (store, json) => {
+    return request.post('/admin/api/document/list', json, store).then(response => {
+      store.commit(Type.SET_DOCUMENT_LIST, response.data);
+    });
+  },
+  SET_DOCUMENT_SAVE: (store, json) => {
+    return request.post('/admin/api/document/add', json, store).then(response => {
+      store.commit(Type.SET_DOCUMENT_SAVE, response.data);
+    });
+  },
   // 标签
   SET_LABEL_LIST: (store, json) => {
     return request.post('/admin/api/label/list', json, store).then(response => {

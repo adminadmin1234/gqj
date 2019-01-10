@@ -18,6 +18,9 @@ module.exports = app => {
   // 管理后台
   // ----------------------------------
   router.get('/login', controller.admin.admin.login);
+  // 中文文档
+  router.post('/admin/api/document/add', controller.admin.admin.documentadd);
+  router.post('/admin/api/document/list', controller.admin.admin.documentlist);
   // 文章
   router.post('/admin/api/article/list', controller.admin.admin.list);
   router.post('/admin/api/article/add', controller.admin.admin.add);

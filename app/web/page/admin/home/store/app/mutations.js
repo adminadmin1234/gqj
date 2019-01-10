@@ -2,10 +2,17 @@
 // 对服务端返回的结果做处理
 import {
   GET_ARTICLE_DETAIL,
+
+  SET_DOCUMENT_LIST,
+  SET_DOCUMENT_MODIFY,
+  SET_DOCUMENT_SAVE,
+  DOCUMENT_DELETE,
+
   SET_LABEL_LIST,
   SET_LABEL_MODIFY,
   SET_LABEL_SAVE,
   LABEL_DELETE,
+
   SET_ARTICLE_LIST,
   SET_ARTICLE_DETAIL,
   SET_SAVE_ARTICLE,
@@ -18,6 +25,18 @@ const mutations = {
     if (typeof state.article.atc_fileUrl !== 'undefined' && state.article.atc_fileUrl !== null) {
       const hrefFileUrl = state.article.atc_fileUrl.split('.')[0] + '/index.html';
       state.article.hrefFileUrl = hrefFileUrl;
+    }
+  },
+  // 中文文档
+  [SET_DOCUMENT_LIST](state, { list, total }) {
+    state.documentTotal = total;
+    state.documentList = list;
+  },
+  [SET_DOCUMENT_SAVE](state, data) {
+    if (data.flag === 1) {
+      state.addDialog = false;
+    } else {
+      state.addDialog = true;
     }
   },
   // 标签

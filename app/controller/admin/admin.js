@@ -56,4 +56,15 @@ module.exports = class AdminController extends egg.Controller {
     const { id } = ctx.params;
     ctx.body = this.service.label.deleteArticle(id);
   }
+  // 添加文档
+  async documentadd(ctx) {
+    console.log('添加文档添加文档添加文档1');
+    const flag = await ctx.service.document.setDocumentList(ctx.request.body);
+    this.ctx.body = flag;
+  }
+  // 获取文档列表
+  async documentlist(ctx) {
+    const labelList = await ctx.service.document.getDocumentList(ctx.request.body.lb_name);
+    this.ctx.body = labelList;
+  }
 };
