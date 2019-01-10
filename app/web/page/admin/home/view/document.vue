@@ -24,7 +24,7 @@
           </template>
         </el-table-column>
         <el-table-column
-          prop="lb_weight"
+          prop="doc_weight"
           label="权重">
         </el-table-column>
         <el-table-column
