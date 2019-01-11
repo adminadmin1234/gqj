@@ -152,7 +152,7 @@ export default {
     };
   },
   methods: {
-    // 文件上传成功回调
+    // 文件上传成功回调 
     successUpload(response,file,fileList){
       this.document.doc_logo = response.url
     },
