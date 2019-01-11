@@ -4,6 +4,7 @@
     <nav class="nav header-wrap">
         <a class="nav-link header-nav-link active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
+        <a class="nav-link header-nav-link" href="/documentch">{{$t('menu.document')}}</a>
     </nav>
 </div>
 </template>

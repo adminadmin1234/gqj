@@ -160,7 +160,7 @@ export default {
     },
     // 获取标签列表
     remoteLabel(query){
-      request.post('/admin/api/label/list',{lb_name:query},this.$store).then(response => {
+      request.post('/admin/api/label/list',{lb_name:query, lb_type:1},this.$store).then(response => {
         this.optionsLabel = response.data.list;
       });
     },

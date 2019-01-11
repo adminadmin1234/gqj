@@ -139,7 +139,7 @@
         });
       },
       getLabelList(store){
-          request.post(`/admin/api/label/list`,{},this.$store).then(response => {
+          request.post(`/admin/api/label/list`,{lb_type:1},this.$store).then(response => {
               this.labelList = response.data.list;
               if(this.labelId != null){
                 this.loadData(this.labelId);

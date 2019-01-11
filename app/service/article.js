@@ -66,18 +66,15 @@ module.exports = class ArticeService extends egg.Service {
           atc_publish_time: json.publish_time,
         });
       flag = result1.affectedRows;
-      console.log('result1', result1);
       // 标签存关联表
       if (flag === 1 && json.label !== undefined) {
         const result2 = await this.app.mysql.insert('atcAndLb', { al_atc_id: result1.insertId, al_lb_id: json.label });
-        console.log('result2', result2);
       }
     }
     return { flag };
   }
   async updateEnabledArticle(json = {}) {
     // 修改数据，将会根据主键 ID 查找，并更新
-    console.log('json', json);
     const row = {
       atc_enabled: json.atc_enabled,
     };

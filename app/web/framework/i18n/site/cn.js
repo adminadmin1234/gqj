@@ -4,7 +4,8 @@ export default {
     home: '首页',
     category: '分类',
     about: '关于',
-    component: '常用组件'
+    component: '常用组件',
+    document: '中文文档',
   },
   lang: {
     href: '/?locale=en',

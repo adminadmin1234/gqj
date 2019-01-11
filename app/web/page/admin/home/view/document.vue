@@ -13,15 +13,30 @@
         style="width: 100%;">
         <el-table-column
           prop="doc_title"
-          label="标签名">
+          label="文档名：">
         </el-table-column>
         <el-table-column
-          label="归属">
+          prop="doc_desc"
+          label="描述">
+        </el-table-column>
+        <el-table-column
+          prop="doc_logo"
+          label="logo" width="120">
           <template slot-scope="props">
-            <div v-if='props.row.lb_type === 1'>常用组件</div>
-            <div v-if='props.row.lb_type === 2'>中文文档</div>
-            <div v-if='props.row.lb_type === 3'>个人博客</div>
+            <img :src="props.row.doc_logo">
           </template>
+        </el-table-column>
+        <el-table-column
+          prop="doc_address"
+          label="文档地址">
+        </el-table-column>
+        <el-table-column
+          prop="doc_github"
+          label="github">
+        </el-table-column>
+        <el-table-column
+          prop="lb_name"
+          label="所属标签">
         </el-table-column>
         <el-table-column
           prop="doc_weight"
@@ -29,7 +44,7 @@
         </el-table-column>
         <el-table-column
           label="操作"
-          width="180">
+          width="160">
           <template slot-scope="props">
             <router-link :to="{params: {id: props.row.id}}" tag="span">
               <el-button type="info" size="small" icon="edit" @click="handleEdit(props.row)">修改</el-button>
@@ -58,7 +73,7 @@
           <el-form-item label="文档名：" :required="true" label-width="100px" style="width:500px">
                 <el-input clearable v-model="document.doc_title"></el-input>
           </el-form-item>
-          <el-form-item label="标签名：" :required="true" label-width="100px">
+          <el-form-item label="标签名：" :required="true" label-width="100px" v-if="document.doc_id === null">
                 <el-select v-model="document.doc_label" 
                   filterable
                   remote
@@ -103,7 +118,7 @@
   </div>
 </template>
 <script type="babel">
-import { SET_DOCUMENT_SAVE, SET_DOCUMENT_LIST} from '../store/app/mutation-type';
+import { SET_DOCUMENT_SAVE, SET_DOCUMENT_LIST, DOCUMENT_DELETE, SET_DOCUMENT_MODIFY} from '../store/app/mutation-type';
 import request from 'framework/network/request';
 export default {
   components: {},
@@ -132,7 +147,7 @@ export default {
         categoryId: undefined,
         statusId: undefined,
         pageIndex: 1,
-        pageSize: 10
+        pageSize: 20
       },
     };
   },
@@ -143,7 +158,7 @@ export default {
     },
     // 获取标签列表
     remoteLabel(query){
-      request.post('/admin/api/label/list',{lb_name:query},this.$store).then(response => {
+      request.post('/admin/api/label/list',{lb_name:query,lb_type:2},this.$store).then(response => {
         this.optionsLabel = response.data.list;
       });
     },
@@ -152,10 +167,9 @@ export default {
       if(this.document.doc_id != null){
         return this.$store.dispatch(SET_DOCUMENT_MODIFY, this.document);
       } else{
-        this.document.publish_time = new Date().getTime();
+        this.document.doc_publish_time = new Date().getTime();
         return this.$store.dispatch(SET_DOCUMENT_SAVE, this.document);
       }
-      
     },
     fetchApi(store, json) {
       return store.dispatch(SET_DOCUMENT_LIST, json);
@@ -164,10 +178,8 @@ export default {
       this.fetchApi(this.$store, this.q);
     },
     write() {
-      this.label.lb_id = null
+      this.document.doc_id = null
       this.$store.state.addDialog = true;
-    },
-    handleSelectionChange(val) {
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -181,19 +193,24 @@ export default {
       return this.$store.dispatch(SET_LABEL_SAVE, this.label);
     },
     handleEdit(row) { // 修改
-      this.label.lb_id = row.lb_id;
-      this.label.lb_name = row.lb_name;
-      this.label.lb_type = row.lb_type;
-      this.label.lb_weight = row.lb_weight;
+      this.document.doc_id = row.doc_id;
+      this.document.doc_logo = row.doc_logo;
+      this.document.doc_title = row.doc_title;
+      this.document.doc_desc = row.doc_desc;
+      this.document.doc_label = row.doc_label;
+      this.document.doc_address = row.doc_address;
+      this.document.doc_github = row.doc_github;
+      this.document.doc_publish_time = new Date().getTime();
+      this.document.doc_weight = row.doc_weight;
       this.$store.state.addDialog = true;
     },
     handleDelete(row) {
-      this.$confirm("删除选择标签, 是否继续?", "提示", {
+      this.$confirm("删除选择该文档, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "error"
       }).then(() => {
-        this.$store.dispatch(LABEL_DELETE, { id: row.lb_id });
+        this.$store.dispatch(DOCUMENT_DELETE, { id: row.doc_id });
       });
     },
   },
@@ -217,9 +234,7 @@ export default {
     }
   },
   beforeMount() {
-    if (!(this.labelList && this.labelList.length > 0)) {
       this.fetchApi(this.$store, this.q);
-    }
   }
 };
 </script>

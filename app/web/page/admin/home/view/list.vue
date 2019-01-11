@@ -219,7 +219,6 @@ export default {
     }
   },
   beforeMount() {
-    console.log('this.$store',this.$store.state.csrf)
     this.fetchApi(this.$store, this.q);
   }
 };

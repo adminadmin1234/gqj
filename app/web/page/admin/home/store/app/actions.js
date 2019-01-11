@@ -28,6 +28,19 @@ const actions = {
       store.commit(Type.SET_DOCUMENT_SAVE, response.data);
     });
   },
+  SET_DOCUMENT_MODIFY: (store, json) => {
+    return request.post('/admin/api/document/modify', json, store).then(response => {
+      store.commit(Type.SET_DOCUMENT_MODIFY, response.data);
+    });
+  },
+  DOCUMENT_DELETE: (store, { id }) => {
+    // 鉴权 TODO
+    const { commit, dispatch, state } = store;
+    return request.get(`/admin/api/document/del/${id}`, store)
+      .then(response => {
+        commit(Type.DOCUMENT_DELETE, { id });
+      });
+  },
   // 标签
   SET_LABEL_LIST: (store, json) => {
     return request.post('/admin/api/label/list', json, store).then(response => {
@@ -54,7 +67,6 @@ const actions = {
   },
   // 文章
   SET_ARTICLE_LIST: (store, json) => {
-    console.log('SET_ARTICLE_LIST', json);
     return request.post('/admin/api/article/list', json, store).then(response => {
       store.commit(Type.SET_ARTICLE_LIST, response.data);
     });

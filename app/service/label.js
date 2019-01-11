@@ -5,15 +5,39 @@ module.exports = class LabelService extends egg.Service {
     super(ctx);
     this.ctx = ctx;
   }
-  async getLabelList(name) {
+  // 前端
+  async getLabelListForend(type) {
+    // 通过name进行模糊查询
+    const TABLE_NAME = 'label';
+    const QUERY_STR = 'lb_id, lb_name, lb_type, lb_weight';
+    const sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type}`;
+    const labelList = await this.app.mysql.query(sql);
+    const string = JSON.stringify(labelList);
+    const list = JSON.parse(string);
+    const total = list.length;
+    return {
+      total,
+      list
+    };
+  }
+  // 后台 0 1 2 3
+  async getLabelList(name, type = 0) {
     // 通过name进行模糊查询
     const TABLE_NAME = 'label';
     const QUERY_STR = 'lb_id, lb_name, lb_type, lb_weight';
     let sql;
-    if (name === null || name === undefined) {
-      sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
+    if (type === 0) {
+      if (name === null || name === undefined) {
+        sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
+      } else {
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%"`;
+      }
     } else {
-      sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%"`;
+      if (name === null || name === undefined) {
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type}`;
+      } else {
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} and lb_name like "%${name}%"`;
+      }
     }
     const labelList = await this.app.mysql.query(sql);
     const string = JSON.stringify(labelList);
@@ -46,7 +70,7 @@ module.exports = class LabelService extends egg.Service {
     const flag = result.affectedRows;
     return { flag };
   }
-  async deleteArticle(data) {
+  async deleteLabel(data) {
     const result = await this.app.mysql.delete('label', { lb_id: data });
     const flag = result.affectedRows;
     let id = null;

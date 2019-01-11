@@ -1,0 +1,130 @@
+body{
+    overflow-y: auto!important;
+}
+.main{
+    position: relative;
+    background: #f5f5f7;
+}
+.menu-nav-wrap-full{
+    width: 100%;
+    background: #4a4a4a;
+    height: REM(56);
+    font-size: REM(22)!important;
+    margin-top: REM(71);
+}
+.menu-nav-wrap-full-h2{
+    height: REM(112)!important;
+}
+.menu-nav-wrap{
+    position: absolute;
+    width: REM(1500);
+    left: 50%;
+    margin-left:REM(-750);
+}
+.menu-single-wrap{
+    float: left;
+    width: REM(150);
+    background: #4a4a4a;
+    height: REM(56);
+    color: white;
+    text-align: center;
+    line-height: REM(56);
+    border-right: 1px solid #5b5b5b;
+    cursor: pointer;
+}
+.menu-single-wrap:first-child{
+    border-left: 1px solid #5b5b5b;
+    background: #ff6601;
+}
+.menu-single-wrap-default,.menu-single-wrap-active{
+    background: #ff6601;
+}
+.menu-single-a{
+    color: white;
+}
+.menu-single-a:link { 
+    text-decoration: none; 
+} 
+.menu-single-a:visited { 
+    text-decoration: none; 
+} 
+.menu-single-a:hover { 
+    text-decoration: none; 
+    color: white;
+} 
+.content-wrap{
+    width: REM(1500);
+    margin-left:50%;
+    transform:translate(-50%,0);
+}
+.single-wrap-kuang{
+    clear: both;
+    margin-top: REM(20);
+    h2{
+        font-size: REM(24);
+        color: black;
+    }
+}
+.single-wrap{
+    width: REM(366);
+    float: left;
+    height: REM(130);
+    padding: REM(5);
+    background: white;
+    margin-top: 10px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+    box-sizing:border-box;
+    margin-left: REM(12);
+    font-size: REM(20);
+    overflow: hidden;
+    box-sizing: border-box;
+    .logo{
+        width: REM(120);
+        height: REM(120);
+        border-radius: 4px;
+        float: left;
+        margin-left: REM(2)
+    }
+    .right-content{
+        float: left;
+        width: REM(226);
+        height: REM(120);
+        margin-left: REM(6);
+        .title{
+            font-size: REM(22);
+            width: REM(226);
+            height: REM(30);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; 
+            line-height: REM(30);
+        }
+        .desc{
+            font-size: REM(20);
+            width: REM(226);
+            height: REM(50);
+            line-height: REM(25);
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /*行数*/
+            -webkit-box-orient: vertical;
+            margin-top: REM(5);
+        }
+        .icon-wrap{
+            font-size: REM(20);
+            width: REM(226);
+            height: REM(32);
+            img{
+                width: REM(32);
+                height: REM(32);
+            }
+        }
+    }
+}
+.single-wrap:nth-child(4n+1){
+    margin-left: REM(0);
+}

@@ -39,6 +39,22 @@ const mutations = {
       state.addDialog = true;
     }
   },
+  [SET_DOCUMENT_MODIFY](state, data) {
+    if (data.flag === 1) {
+      state.addDialog = false;
+    } else {
+      state.addDialog = true;
+    }
+  },
+  [DOCUMENT_DELETE](state, { id }) {
+    if (id !== null) {
+      state.documentTotal -= 1;
+      state.documentList = state.documentList.filter(item => {
+        return item.doc_id !== id;
+      });
+      console.log('state.documentList', state.documentList);
+    }
+  },
   // 标签
   [SET_LABEL_LIST](state, { list, total }) {
     state.labelTotal = total;
@@ -75,7 +91,6 @@ const mutations = {
     state.article = data;
   },
   [SET_SAVE_ARTICLE](state, data) {
-    console.log('data-SET_SAVE_ARTICLE1', data);
     state.changFlag = data;
   },
   [DELETE_ARTICLE](state, { id }) {

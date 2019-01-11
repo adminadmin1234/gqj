@@ -10,7 +10,6 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 获取文章列表
   async list(ctx) {
-    console.log('ctx获取文章列表request', ctx.request.body);
     const articleList = await ctx.service.article.getArtilceList(ctx.request.body);
     this.ctx.body = articleList;
   }
@@ -38,7 +37,7 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 获取标签列表
   async labellist(ctx) {
-    const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name);
+    const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name, ctx.request.body.lb_type);
     this.ctx.body = labelList;
   }
   // 添加标签
@@ -54,7 +53,7 @@ module.exports = class AdminController extends egg.Controller {
   // 删除标签
   async labeldel(ctx) {
     const { id } = ctx.params;
-    ctx.body = this.service.label.deleteArticle(id);
+    ctx.body = this.service.label.deleteLabel(id);
   }
   // 添加文档
   async documentadd(ctx) {
@@ -64,7 +63,17 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 获取文档列表
   async documentlist(ctx) {
-    const labelList = await ctx.service.document.getDocumentList(ctx.request.body.lb_name);
+    const labelList = await ctx.service.document.getDocumentList(ctx.request.body);
     this.ctx.body = labelList;
+  }
+  // 删除文档
+  async documentdel(ctx) {
+    const { id } = ctx.params;
+    ctx.body = await this.service.document.deleteDocument(id);
+  }
+  // 修改文档
+  async documentmodify(ctx) {
+    const flag = await ctx.service.document.modify(ctx.request.body);
+    this.ctx.body = flag;
   }
 };
