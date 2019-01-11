@@ -10,7 +10,9 @@ body{
     background: #4a4a4a;
     height: REM(56);
     font-size: REM(22)!important;
-    margin-top: REM(71);
+    position: fixed;
+    top:REM(71);
+    z-index: 999;
 }
 .menu-nav-wrap-full-h2{
     height: REM(112)!important;
@@ -32,13 +34,16 @@ body{
     border-right: 1px solid #5b5b5b;
     cursor: pointer;
 }
+.menu-single-wrap:hover{
+    background: #ff6601;
+}
 .menu-single-wrap:first-child{
     border-left: 1px solid #5b5b5b;
-    background: #ff6601;
 }
-.menu-single-wrap-default,.menu-single-wrap-active{
-    background: #ff6601;
+.menu-single-wrap-active{
+    background: #ff6601!important;
 }
+
 .menu-single-a{
     color: white;
 }
@@ -56,6 +61,7 @@ body{
     width: REM(1500);
     margin-left:50%;
     transform:translate(-50%,0);
+    margin-top: REM(155)
 }
 .single-wrap-kuang{
     clear: both;

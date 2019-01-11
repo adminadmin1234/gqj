@@ -69,7 +69,7 @@ data(){
     hrefFileUrl:'',
     labelList:[],
     menuShow:false,
-    footerPosition:false,
+    footerPosition:true,
   }
 },
 props:['dataRes'],

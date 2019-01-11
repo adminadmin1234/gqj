@@ -2,14 +2,14 @@
     <div>
         <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
             <div class="menu-nav-wrap">
-                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelData.id)}" v-for="(item,index) in dataRes.labelList.list" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
-                <a class="menu-single-a" href="#">{{item.lb_name}}</a>
+                <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : index===0}" v-for="(item,index) in dataRes.labelList.list" @click="checkedActive($event)">
+                <a class="menu-single-a" :href="item.lb_name | targetName">{{item.lb_name}}</a>
                 </div>
             </div>
         </div>
         <div class="content-wrap">
             <div class="single-wrap-kuang" v-for="(labeItem,labeIndex) in dataRes.labelList.list" v-if="labeItem.docList.length > 0">
-                <h2>{{labeItem.lb_name}}</h2>
+                <h2 :id="labeItem.lb_name">{{labeItem.lb_name}}</h2>
                 <div>
                     <div class="single-wrap" v-for="(docItem,docIndex) in labeItem.docList">
                         <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
@@ -56,12 +56,17 @@ data(){
 },
 props:['dataRes'],
 methods: {
-    menuSingleShow(event){
+    checkedActive(event){
+        // $(event.currentTarget).parentNode.children[1].removeClass('menu-single-wrap-active');
+        // $(event.currentTarget).addClass('menu-single-wrap-active');
+        $(event.currentTarget).siblings().removeClass('menu-single-wrap-active');
         $(event.currentTarget).addClass('menu-single-wrap-active');
-      },
-    menuSingleHide(event){
-        $(event.currentTarget).removeClass('menu-single-wrap-active');
-      }
+    }
+},
+filters:{
+    targetName(data){
+        return '#'+data;
+    }
 },
 mounted() {
     // 百度统计代码

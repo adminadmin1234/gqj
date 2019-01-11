@@ -35,7 +35,7 @@ data(){
     hrefFileUrl:'',
     // labelList:[],
     menuShow:false,
-    footerPosition:true,
+    footerPosition:false,
   }
 },
 filters: {

@@ -23,7 +23,7 @@
           prop="doc_logo"
           label="logo" width="120">
           <template slot-scope="props">
-            <img :src="props.row.doc_logo">
+            <img :src="props.row.doc_logo" style="width:120px;height:120px;">
           </template>
         </el-table-column>
         <el-table-column
