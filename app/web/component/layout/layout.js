@@ -9,10 +9,10 @@ export default function createLayout(name, components, tpl) {
         return this.$root.title || this.title || '凌晨两点半';
       },
       vKeywords() {
-        return this.$root.keywords || this.keywords || '凌晨两点半，canvas，3d特效，微信小程序，活动页，官网模板';
+        return this.$root.keywords || this.keywords || '凌晨两点半，前端工具，前端中文文档，微信小程序，前端组件，前端进阶';
       },
       vDescription() {
-        return this.$root.description || this.description || '凌晨零点半作者是只前端猿；在空闲时间，喜欢收集前端的各种工具、插件、架构来分享';
+        return this.$root.description || this.description || '凌晨零点半挖掘前端领域,让前端编程更简单；快捷；方便';
       },
       baseClass() {
         return this.$root.baseClass;

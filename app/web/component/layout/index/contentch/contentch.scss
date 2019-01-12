@@ -15,17 +15,17 @@ body{
     z-index: 999;
 }
 .menu-nav-wrap-full-h2{
-    height: REM(112)!important;
+    height: REM(114)!important;
 }
 .menu-nav-wrap{
     position: absolute;
     width: REM(1500);
     left: 50%;
-    margin-left:REM(-750);
+    margin-left:REM(-746);
 }
 .menu-single-wrap{
     float: left;
-    width: REM(150);
+    width: REM(148);
     background: #4a4a4a;
     height: REM(56);
     color: white;
@@ -61,15 +61,43 @@ body{
     width: REM(1500);
     margin-left:50%;
     transform:translate(-50%,0);
-    margin-top: REM(155)
+    margin-top: REM(155);
+    .page-title{
+        font-size: REM(28);
+        color: #ff6601;
+    }
+    .not-more{
+        width: REM(1500);
+        padding: REM(20) 0;
+        font-size: REM(22);
+        color: #666;
+        float: left;
+        text-align: center;
+    }
 }
 .single-wrap-kuang{
     clear: both;
-    margin-top: REM(20);
-    h2{
-        font-size: REM(24);
-        color: black;
+    .label-name-wrap{
+        padding-top: REM(30);
+        overflow: hidden;
+        height: REM(25);
+        width: 100%;
+        .before-h2{
+            margin-right: REM(8);
+            width: REM(6);
+            height: REM(25);
+            margin-top: REM(1);
+            background-color: #ff6601;
+            float: left;
+        }
+        h2{
+            font-size: REM(24);
+            color: black;
+            position: relative;
+            float: left;
+        }
     }
+    
 }
 .single-wrap{
     width: REM(366);
@@ -133,4 +161,7 @@ body{
 }
 .single-wrap:nth-child(4n+1){
     margin-left: REM(0);
+}
+.got-out:hover{
+    color: #ff6601;
 }

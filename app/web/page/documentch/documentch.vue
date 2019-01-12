@@ -38,85 +38,29 @@ data(){
     footerPosition:false,
   }
 },
-filters: {
-    formatData(data){
-    return moment(parseInt(data)).format('YYYY-MM-DD');
-    },
-    addHref(data){
-    return '/document?id=' + data;
-    },
-    addHref1(data){
-    return '/detail?id=' + data;
-    },
-    imgUrlFun(str){
-    let data = '';
-        str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
-                data =  capture;
-        });
-    return data
-    }
-},
-methods: {
-    menuToLoad(lbId,index){
-        this.defaultIndex=index;
-        this.$router.push({
-          name: 'Document',
-          params: {
-            id: lbId
-          }
-        });
-      },
-    onDownload(){
-        request.get(`/detail/api/article/countDownload?atcid=${this.articleDetail.atc_id}`).then(response => {
-        });
-    },
-    onPreview(){
-        request.get(`/detail/api/article/countPreview?atcid=${this.articleDetail.atc_id}`).then(response => {
-        });
-    },
-    onRead(){
-        request.get(`/detail/api/article/countRead?atcid=${this.articleDetail.atc_id}`).then(response => {
-        });
-    },
-    menuSingleShow(event){
-        $(event.currentTarget).addClass('menu-single-wrap-active');
-      },
-    menuSingleHide(event){
-        $(event.currentTarget).removeClass('menu-single-wrap-active');
-      },
-    getArticleDetailById(){
-        // 获取文章id
-        let currtIdArr = location.search.replace('?','');
-        this.atc_id = currtIdArr.split('=')[1];
-        // 通过文章id获取右边的两个列表
-        this.getRightList(this.atc_id);
-        request.get(`/detail/api/article/detail?id=${this.atc_id}`).then(response => {
-            this.articleDetail = response.data.list[0];
-            if (typeof this.articleDetail.atc_fileUrl !== 'undefined' && this.articleDetail.atc_fileUrl !== null) {
-                this.hrefFileUrl = this.articleDetail.atc_fileUrl.split('.')[0] + '/index.html';
-            }
-        });
-    },
-    getLabelList(store){
-        request.post(`/admin/api/label/list`,{},this.$store).then(response => {
-            this.labelList = response.data.list;
-            if(this.labelList.length > 10){
-                this.menuShow = true;
-            }else{
-                this.menuShow =false;
-            }
-        });
-    },
-    getRightList(lbId){
-        request.get(`/detail/api/article/list?id=${lbId}`).then(response => {
-            this.reactList = response.data.reactList;
-            this.newList = response.data.newList;
-            this.labelData = response.data.labelData;
-        });
-    }
-},
 mounted() {
-    // this.getLabelList(this.$store);
+     // 百度统计代码
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f1114bf2679a9e797610cd8a52541da1";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+      })();
+
+      // 自动爬虫（百度）
+      (function(){
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+      })();
 }
 }
 </script>

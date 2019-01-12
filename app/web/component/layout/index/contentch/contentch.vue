@@ -8,22 +8,29 @@
             </div>
         </div>
         <div class="content-wrap">
+            <h1 class="page-title">凌晨两点半-值得收藏的前端程序员常用的中文文档,todo//</h1>
             <div class="single-wrap-kuang" v-for="(labeItem,labeIndex) in dataRes.labelList.list" v-if="labeItem.docList.length > 0">
-                <h2 :id="labeItem.lb_name">{{labeItem.lb_name}}</h2>
+                <div class="label-name-wrap">
+                    <div class="before-h2"></div>
+                    <h2 :id="labeItem.lb_name">{{labeItem.lb_name}}</h2>
+                </div>
                 <div>
                     <div class="single-wrap" v-for="(docItem,docIndex) in labeItem.docList">
-                        <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
-                        <div class="right-content">
-                            <div class="title">{{docItem.doc_title}}</div>
-                            <div class="desc">{{docItem.doc_desc}}</div>
-                            <div class="icon-wrap">
-                                <a target="block" :href="docItem.doc_address"><img src="../../../../asset/images/home.png" class="home"/></a>
-                                <a v-if="docItem.doc_github !== null" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
+                        <a class="got-out" target="block" :href="docItem.doc_address">
+                            <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
+                            <div class="right-content">
+                                <div class="title">{{docItem.doc_title}}</div>
+                                <div class="desc">{{docItem.doc_desc}}</div>
+                                <div class="icon-wrap">
+                                    <a target="block" :href="docItem.doc_address"><img src="../../../../asset/images/home.png" class="home"/></a>
+                                    <a v-if="docItem.doc_github !== null" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
+            <div class="not-more">目前内容暂时只有这么多，我们在努力更新中...</div>
         </div>
     </div>
 </template>

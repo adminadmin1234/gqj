@@ -27,13 +27,13 @@ module.exports = class LabelService extends egg.Service {
     const QUERY_STR = 'lb_id, lb_name, lb_type, lb_weight';
     let sql;
     if (type === 0) {
-      if (name === null || name === undefined) {
+      if (name === null || typeof name === 'undefined') {
         sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
       } else {
         sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%"`;
       }
     } else {
-      if (name === null || name === undefined) {
+      if (name === null || typeof name === 'undefined') {
         sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type}`;
       } else {
         sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} and lb_name like "%${name}%"`;

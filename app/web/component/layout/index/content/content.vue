@@ -5,7 +5,7 @@
       <div class="content-up">
         <!--<img src="../../../../asset/images/egg-vue-webpack-dev.png" class="head-pic" alt="凌晨两点半头像">-->
         <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">
-        <h1 class="site-name">凌晨两点半</h1>
+        <h1 class="site-name">凌晨两点半-挖掘前端领域,让前端编程更简单、快捷、方便</h1>
       </div>
       <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down">

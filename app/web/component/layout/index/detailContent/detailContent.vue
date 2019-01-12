@@ -137,10 +137,6 @@ mounted() {
     setTimeout(function(){
         _this.onRead();
     },5000)
-    // this.getArticleDetailById();
-    // this.getLabelList(this.$store);
-    // this.labelList = this.allData.list;
-    // console.log('allData',this.labelList)
     if(this.dataRes.labelList.list.length > 10){
         this.menuShow = true;
     }else{

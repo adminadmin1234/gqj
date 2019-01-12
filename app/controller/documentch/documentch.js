@@ -2,6 +2,7 @@
 const egg = require('egg');
 module.exports = class DocumentchController extends egg.Controller {
   async index(ctx) {
+    const keyword = [];
     // 获取文档标签
     const labelList = await ctx.service.label.getLabelListForend(2);
     // 获取文档列表
@@ -12,17 +13,18 @@ module.exports = class DocumentchController extends egg.Controller {
         docList.list.forEach(docItem => {
           if (labelItem.lb_id.toString() === docItem.doc_label) {
             arr.push(docItem);
+            keyword.push(docItem.doc_title);
           }
         });
         labelItem.docList = arr;
       });
     }
     // seo信息
-    const content = 1;
-    const description = 2;
+    const keywords = keyword.join(',')
+    const description = '凌晨零点半挖掘前端领域,让前端编程更简单；快捷；方便';
     const seo = {
-      title: 1,
-      keywords: 2,
+      title: '凌晨两点半',
+      keywords,
       description,
     };
     const dataRes = { labelList, docList, seo };
