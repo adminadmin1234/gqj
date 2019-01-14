@@ -8,7 +8,7 @@ module.exports = class DocumentService extends egg.Service {
   // 前端
   async getDocList(json = {}) {
     // 通过name进行模糊查询
-    const sql = 'select * from document';
+    const sql = 'select * from document order by doc_weight desc';
     const documentList = await this.app.mysql.query(sql);
     const string = JSON.stringify(documentList);
     const list = JSON.parse(string);

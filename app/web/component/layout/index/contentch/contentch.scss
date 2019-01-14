@@ -139,13 +139,14 @@ body{
             font-size: REM(20);
             width: REM(226);
             height: REM(50);
-            line-height: REM(25);
+            line-height: REM(26);
             text-overflow: -o-ellipsis-lastline;
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
             -webkit-line-clamp: 2; /*行数*/
             -webkit-box-orient: vertical;
+            white-space: normal;
             margin-top: REM(5);
         }
         .icon-wrap{
@@ -155,6 +156,13 @@ body{
             img{
                 width: REM(32);
                 height: REM(32);
+                float: right;
+                margin-top: REM(3);
+                margin-left: REM(10);
+            }
+            .github{
+                width: REM(30);
+                height: REM(30);
             }
         }
     }

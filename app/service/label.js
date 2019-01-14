@@ -10,7 +10,7 @@ module.exports = class LabelService extends egg.Service {
     // 通过name进行模糊查询
     const TABLE_NAME = 'label';
     const QUERY_STR = 'lb_id, lb_name, lb_type, lb_weight';
-    const sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type}`;
+    const sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} order by lb_weight desc`;
     const labelList = await this.app.mysql.query(sql);
     const string = JSON.stringify(labelList);
     const list = JSON.parse(string);

@@ -22,8 +22,8 @@
                                 <div class="title">{{docItem.doc_title}}</div>
                                 <div class="desc">{{docItem.doc_desc}}</div>
                                 <div class="icon-wrap">
+                                    <a v-if="docItem.doc_github !== null && docItem.doc_github !== ''" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
                                     <a target="block" :href="docItem.doc_address"><img src="../../../../asset/images/home.png" class="home"/></a>
-                                    <a v-if="docItem.doc_github !== null" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
                                 </div>
                             </div>
                         </a>
