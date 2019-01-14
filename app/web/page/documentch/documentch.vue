@@ -33,7 +33,6 @@ data(){
     atc_id: '',
     articleDetail:[],
     hrefFileUrl:'',
-    // labelList:[],
     menuShow:false,
     footerPosition:false,
   }
