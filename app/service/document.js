@@ -20,7 +20,6 @@ module.exports = class DocumentService extends egg.Service {
   async getDocumentList(json = {}) {
     // 通过name进行模糊查询
     let sql;
-    console.log('getDocumentList-json', json);
     const offset = json.pageIndex * json.pageSize - json.pageSize;
     if (json.pageSize !== undefined && json.title === undefined) {
       sql = `select SQL_CALC_FOUND_ROWS * from document d,label l,docAndLb dl where d.doc_id=dl.dl_doc_id and l.lb_id=dl.dl_lb_id order by d.doc_publish_time desc limit ${offset} , ${json.pageSize}`;

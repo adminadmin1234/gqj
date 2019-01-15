@@ -48,7 +48,6 @@ module.exports = class ArticeService extends egg.Service {
     };
   }
   async saveArticle(json = {}) {
-    console.log('json', json);
     let flag = 0;
     if (json.label !== null) {
       const result1 = await this.app.mysql.insert('article',
@@ -100,7 +99,6 @@ module.exports = class ArticeService extends egg.Service {
   }
   async modify(json = {}) {
     // 修改数据，将会根据主键 ID 查找，并更新
-    console.log('json', json);
     const row = {
       atc_title: json.title,
       atc_fileUrl: json.fileUrl,
