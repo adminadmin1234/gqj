@@ -35,6 +35,7 @@ data(){
     hrefFileUrl:'',
     menuShow:false,
     footerPosition:false,
+    
   }
 },
 mounted() {
