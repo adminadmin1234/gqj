@@ -265,7 +265,6 @@
     .content-single-middle{
         float: left;
         height: REM(40);
-        width: REM(450);
         line-height: REM(40);
         color: black;
         margin-left: REM(10);
@@ -274,14 +273,14 @@
     .content-single-middle-span{
         clear: both;
         margin-left: REM(5);
-        font-size: 12px;
+        font-size: 13px;
     }
     .content-single-middle-span-mobile-like{
         display: none;
     }
     .content-single-middle-span-mobile{
-        width: REM(450);
-        font-size: 12px;
+        width: REM(410);
+        font-size: 13px;
         display: block;
         margin-top: REM(20);
     }

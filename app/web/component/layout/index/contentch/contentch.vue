@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
+        <div class="menu-nav-wrap-full">
             <div class="menu-nav-wrap">
                 <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : index===0}" v-for="(item,index) in dataRes.labelList.list" @click="checkedActive($event)">
                 <a class="menu-single-a" :href="item.lb_name | targetName">{{item.lb_name}}</a>
@@ -39,6 +39,7 @@
     @import "./contentch.scss";
 </style>
 <script type="babel">
+import Util from'../../../../asset/js/util.js';
 import request from 'framework/network/request';
 import Vue from 'vue';
 import $ from 'jquery';
@@ -97,15 +98,17 @@ mounted() {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
     })();
-    const _this = this;
-    setTimeout(function(){
-        _this.onRead();
-    },5000)
-    if(this.dataRes.labelList.list.length > 10){
-        this.menuShow = true;
+    let marginTop = $('.container-fluid').height()+$('.menu-nav-wrap-full').height();
+    if(Util.browserRedirect()){//移动端
+        $('.content-wrap').css({
+            'margin-top': marginTop + 1
+        })
     }else{
-        this.menuShow =false;
+        $('.content-wrap').css({
+            'margin-top': marginTop + 10
+        })
     }
+    
 }
 }
 </script>

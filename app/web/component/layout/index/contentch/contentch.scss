@@ -182,8 +182,6 @@
     }
     .menu-nav-wrap-full{
         width: 100%;
-        background: #4a4a4a;
-        height: REM(150);
         font-size: REM(22)!important;
         position: fixed;
         top:REM(201);
@@ -217,7 +215,7 @@
         color: white;
     } 
     .content-wrap{
-        margin-top: REM(370);
+        clear:both;
         padding: 2%;
         .page-title{
             font-size: REM(60);
