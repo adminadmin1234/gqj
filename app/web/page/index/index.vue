@@ -5,14 +5,9 @@
       <LayoutFooter></LayoutFooter>
     </layout>
 </template>
-<style>
-  body{
-    overflow: hidden;
-  }
-  .footer{
-    position:fixed;
-    bottom:0;
-  }
+<style lang="scss">
+  @import '../../asset/css/mixin.scss';
+  @import 'index.scss';
 </style>
 <script type="text/babel">
   import '../../asset/js/rem.js';

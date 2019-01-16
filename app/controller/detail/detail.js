@@ -4,16 +4,15 @@ module.exports = class DetailController extends egg.Controller {
   async index(ctx) {
     // 获取标签
     const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name,1);
-    console.log('获取标签',labelList)
     // 获取文章详情
     const articleDetail = await ctx.service.article.getArticleDetail(ctx.query.id);
     // 获取右边的两个列表
     const rightList = await ctx.service.article.getArtilceRightList(ctx.query.id);
     // seo信息
     const content = this.removeHtml(articleDetail.list[0].atc_content);
-    const description = content.substr(0, 60);
+    const description = '凌晨两点半，' + content.substr(0, 60);
     const seo = {
-      title: articleDetail.list[0].atc_title,
+      title: '凌晨两点半-' + articleDetail.list[0].atc_title,
       keywords: '凌晨两点半，' + articleDetail.list[0].atc_title,
       description,
     };

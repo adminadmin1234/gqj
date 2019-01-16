@@ -1,7 +1,7 @@
 <template>
 <layout :title="dataRes.seo.title" :description="dataRes.seo.description" :keywords="dataRes.seo.keywords">
        <div class='main'>
-            <LayoutHeader></LayoutHeader>
+            <LayoutHeader :activeStr="documentch"></LayoutHeader>
             <ContentCh :dataRes="dataRes"></ContentCh>
             <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
@@ -34,6 +34,7 @@ data(){
     articleDetail:[],
     hrefFileUrl:'',
     menuShow:false,
+    documentch:'documentch',
     footerPosition:false,
     
   }

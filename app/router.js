@@ -4,7 +4,6 @@ module.exports = app => {
   router.get('/', controller.index.index.index);
   router.get('/home(/.+)?', controller.index.index.index);
   router.get('/list', controller.index.index.list);
-  router.get('/category', controller.category.category.index);
   router.get('/document', controller.document.document.index);
   router.get('/documentch', controller.documentch.documentch.index);
   router.get('/document/api/article/list', controller.document.document.list);

@@ -7,6 +7,9 @@
   z-index: 1000;
   background: white;
 }
+.nav-active{
+  color: #ff6601!important;
+}
 .container-fluid:after{
             content: '';
             position: absolute;
@@ -68,3 +71,29 @@
   color:#ff6601
 }
 
+@media screen and (max-width: 768px) {
+    .nav-active{
+      color: #ff6601!important;
+    }
+    .container-fluid{
+      height: REM(200);
+    }
+    .logo-wrap{
+      left: REM(80);
+      top:0px;
+      width: REM(200);
+      height: REM(200);
+      transform-origin: center center;
+      animation: btnRotate 10s infinite linear;
+      .logo{
+        width: REM(200);
+        height: REM(200);
+      }
+    }
+    .header-wrap{
+      height: REM(200);
+      left: REM(320);
+      top:0;
+      line-height: REM(200);
+    }
+}

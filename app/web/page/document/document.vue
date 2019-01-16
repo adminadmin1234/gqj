@@ -1,6 +1,6 @@
 <template>
        <div class='main'>
-          <LayoutHeader></LayoutHeader>
+          <LayoutHeader :activeStr="document"></LayoutHeader>
           <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
             <div class="menu-nav-wrap">
                 <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelId)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
@@ -11,7 +11,7 @@
           <div class="content-wrap">
               <div class="search-con">
                 <input type="text" class="search-text" v-model="keyword">
-                <input type="submit" @click="search" class="search-sub" value="搜索">
+                <div @click="search" class="search-sub">搜索</div>
               </div>
               <div class="content-single-wrap">
                 <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
@@ -19,9 +19,9 @@
                     <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
                     <div class="content-single-middle">
                       <span class="content-single-middle-span"><i class="el-icon-view">{{item.atc_preview}}</i></span>
-                      <span class="content-single-middle-span"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
+                      <span class="content-single-middle-span content-single-middle-span-mobile-like"><i class="el-icon-star-on">{{item.atc_like}}</i></span>
                       <span class="content-single-middle-span"><i class="el-icon-download">{{item.atc_download}}</i></span>
-                      <span class="content-single-middle-span"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
+                      <span class="content-single-middle-span content-single-middle-span-mobile"><i class="el-icon-date">{{item.atc_publish_time | formatData}}</i></span>
                       <a class="content-single-middle-a" v-if="item.atc_fileUrl != null" target="blanck" :href="item.atc_fileUrl | preview"><span @click="onPreview(item.atc_id)" class="content-single-middle-preview">预览</span></a>
                     </div>
                     <div class="content-single-footer">
@@ -84,21 +84,10 @@
         menuShow:false,
         keyword:null,
         footerPosition:true,
+        document:'document',
       }
     },
     watch:{
-      // 'pagination.total':{
-      //   handler(data){
-      //     console.log('data',data);
-      //     if( data >= 12 ){
-      //       this.footerPosition = false;
-      //     }else{
-      //       this.footerPosition = true;
-      //     }
-      //   },
-      //   deep:true,
-      //   immediate:false,
-      // },
     },
     mounted() {
       const _this = this;

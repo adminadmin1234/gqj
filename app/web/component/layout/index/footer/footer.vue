@@ -3,7 +3,7 @@
         <span class="footer-span">香港服务器</span><span class="vertical-line">|</span>
         <span class="footer-span">中国广州</span><span class="vertical-line">|</span>
         <span class="footer-span">微信：lzhlad</span><span class="vertical-line">|</span>
-        <span class="footer-span">关于我们</span>
+        <span class="footer-span"><a href="/home">关于我们</a></span>
     </footer>
 </template>
 <style>
@@ -13,8 +13,6 @@
   export default{
     props: ['footerPosition'],
     mounted() {
-      console.log('footerPosition',this.footerPosition)
     },
   };
-  
 </script>

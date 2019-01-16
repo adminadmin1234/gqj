@@ -137,6 +137,7 @@ mounted() {
     setTimeout(function(){
         _this.onRead();
     },5000)
+    console.log('')
     if(this.dataRes.labelList.list.length > 10){
         this.menuShow = true;
     }else{

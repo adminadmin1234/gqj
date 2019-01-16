@@ -3,7 +3,6 @@
     <slot name='content'></slot>
     <div class="content-left">
       <div class="content-up">
-        <!--<img src="../../../../asset/images/egg-vue-webpack-dev.png" class="head-pic" alt="凌晨两点半头像">-->
         <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">
         <h1 class="site-name">凌晨两点半-挖掘前端领域,让前端编程更简单、快捷、方便</h1>
       </div>
@@ -14,13 +13,13 @@
         <li>学习、储备前端技术</li>
       </ul>
       <div class="content-left-hr">&nbsp;</div>
-      <ul class="content-down">
+      <ul class="content-down content-down-mobile">
         <li>如本站内容侵犯了您的权益，请联系站长:18312710387</li>
       </ul>
     </div>
     <div class="content-right">
       <div class="">
-        <div class="content-wrap-title">文章推荐：</div>
+        <div class="content-wrap-title">最新推荐：</div>
         <ul class="content-wrap-ul">
           <li v-for="item in articleList" >
               <img :src="item.atc_content | imgUrlFun" :alt="item.atc_title" class="content-li-picture">
