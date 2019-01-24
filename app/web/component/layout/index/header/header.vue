@@ -8,6 +8,10 @@
     </nav>
 </div>
 </template>
+<style scoped lang="scss">
+@import '../../../../asset/css/mixin.scss';
+@import "./header.scss";
+</style>
 <script type="babel">
 import Util from'../../../../asset/js/util.js';
 import $ from 'jquery'

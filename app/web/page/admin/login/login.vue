@@ -37,7 +37,7 @@
 </template>
 
 <style>
-@import "login.css";
+@import "login.scss";
 </style>
 
 <script type="text/babel">

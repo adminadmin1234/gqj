@@ -32,8 +32,6 @@ export default {
     }
   },
   mounted() {
-    console.log('store', store);
-    console.log('storestorestorestore', this.$store);
   },
 };
 </script>

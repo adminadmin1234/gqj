@@ -36,6 +36,10 @@
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+@import '../../../../asset/css/mixin.scss';
+@import "./content.scss";
+</style>
 <script type='babel'>
 import moment from 'moment';
 export default {
