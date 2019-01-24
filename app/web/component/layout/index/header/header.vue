@@ -90,7 +90,4 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-@import '../../../../asset/css/mixin.scss';
-@import "./header.scss";
-</style>
+

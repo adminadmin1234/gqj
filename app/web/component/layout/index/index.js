@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import MainLayout from './main.vue';
-// import '../../../asset/css/bootstrap.min.css';
 import '../../../asset/css/blog.css';
 import createLayout from '../layout';
 

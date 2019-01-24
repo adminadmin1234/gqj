@@ -6,9 +6,7 @@
         <span class="footer-span"><a href="/home">关于我们</a></span>
     </footer>
 </template>
-<style>
-  @import './footer.css';
-</style>
+
 <script type='babel'>
   export default{
     props: ['footerPosition'],

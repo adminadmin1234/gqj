@@ -5,9 +5,12 @@
       <LayoutFooter></LayoutFooter>
     </layout>
 </template>
-<style lang="scss">
+<style lang="scss" >
   @import '../../asset/css/mixin.scss';
   @import 'index.scss';
+  @import '../../component/layout/index/header/header.scss';
+  @import '../../component/layout/index/footer/footer.css';
+  @import '../../component/layout/index/content/content.scss';
 </style>
 <script type="text/babel">
   import '../../asset/js/rem.js';
