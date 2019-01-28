@@ -31,7 +31,6 @@ data(){
     menuShow:false,
     documentch:'documentch',
     footerPosition:false,
-    
   }
 },
 mounted() {
