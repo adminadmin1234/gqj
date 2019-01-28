@@ -49,6 +49,7 @@
 <style scoped lang="scss">
 @import '../../asset/css/mixin.scss';
 @import "document.scss";
+@import "~element-ui/lib/theme-chalk/index.css";
 </style>
 <script type="babel">
   import '../../asset/js/rem.js';
@@ -56,13 +57,12 @@
   import LayoutFooter from '../../component/layout/index/footer/footer';
   import moment from 'moment';
   import Vue from 'vue';
-  import ElementUI from 'element-ui';
-  import 'element-ui/lib/theme-chalk/index.css';
   import request from 'framework/network/request';
-  import $ from 'jquery';
+  // import $ from 'jquery';
   import store from '../store/app';
   import router from '../router';
-  Vue.use(ElementUI);
+  import { Pagination } from 'element-ui'
+  Vue.component(Pagination.name, Pagination);
   export default {
     store,
     router,

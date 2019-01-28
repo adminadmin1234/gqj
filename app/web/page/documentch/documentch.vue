@@ -9,15 +9,10 @@
 </template>
 <script type="babel">
 import '../../asset/js/rem.js';
-import request from 'framework/network/request';
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
 import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
 import LayoutFooter from '../../component/layout/index/footer/footer';
 import ContentCh from '../../component/layout/index/contentch/contentch';
-import moment from 'moment';
 export default {
 components: {
     LayoutHeader,

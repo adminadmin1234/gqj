@@ -9,9 +9,10 @@
         </div>
         <div class="content-wrap">
             <div class="breadcrumb">
-                <el-breadcrumb  separator="/">
+                <el-breadcrumb separator="/">
                     <el-breadcrumb-item><a class="breadcrumbFirst" :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
-                    <el-breadcrumb-item>{{dataRes.articleDetail.list[0].atc_title}}</el-breadcrumb-item>
+                    <span class="separator-span">/</span>
+                    <el-breadcrumb-item class="last-breadcrumb-item">{{dataRes.articleDetail.list[0].atc_title}}</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
             <div class="article-wrap">
@@ -48,15 +49,15 @@
 <style scoped lang="scss">
     @import '../../../../asset/css/mixin.scss';
     @import "./detailContent.scss";
+    @import "~element-ui/lib/theme-chalk/breadcrumb-item.css";
+    @import "~element-ui/lib/theme-chalk/breadcrumb.css";
 </style>
 <script type="babel">
 import request from 'framework/network/request';
 import Vue from 'vue';
-import $ from 'jquery';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
 import moment from 'moment';
+import { Breadcrumb } from 'element-ui'
+Vue.component(Breadcrumb.name, Breadcrumb);
 export default {
 data(){
   return {
@@ -137,7 +138,6 @@ mounted() {
     setTimeout(function(){
         _this.onRead();
     },5000)
-    console.log('')
     if(this.dataRes.labelList.list.length > 10){
         this.menuShow = true;
     }else{

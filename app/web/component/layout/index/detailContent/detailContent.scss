@@ -1,7 +1,14 @@
+// .last-breadcrumb-item{
+//         margin-left: REM(1)
+//     }
+.separator-span{
+    color: #ccc;
+}
 @media screen and (min-width: 769px) {
     body{
         overflow-y: auto!important;
     }
+    
     .main{
         position: relative;
         background: #f5f5f7;
@@ -94,7 +101,6 @@
         float: right;
         width: REM(300);
         font-size: REM(22);
-        margin-top: REM(20)
     }
     .article-left-h1{
         text-align: center;

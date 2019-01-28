@@ -5,12 +5,8 @@
       <LayoutFooter></LayoutFooter>
     </layout>
 </template>
-
-<style lang="scss" >
-  @import '../../asset/css/mixin.scss';
-</style>
 <style>
-  @import 'index.css';
+  @import "index.css";
 </style>
 <script type="text/babel">
   import '../../asset/js/rem.js';
@@ -22,16 +18,6 @@
       LayoutHeader,
       LayoutContent,
       LayoutFooter
-    },
-    data: function () {
-      return {
-      }
-    },
-    computed: {
-    },
-    methods: {
-    },
-    created() {
     },
   }
 </script>

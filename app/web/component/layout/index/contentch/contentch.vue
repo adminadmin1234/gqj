@@ -44,16 +44,14 @@
 <style scoped lang="scss">
     @import '../../../../asset/css/mixin.scss';
     @import "./contentch.scss";
+    @import "~element-ui/lib/theme-chalk/popover.css";
 </style>
 <script type="babel">
 import Util from'../../../../asset/js/util.js';
 import request from 'framework/network/request';
 import Vue from 'vue';
-import $ from 'jquery';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
-import moment from 'moment';
+import { Popover } from 'element-ui';
+Vue.component(Popover.name, Popover);
 export default {
 data(){
   return {
@@ -72,8 +70,6 @@ data(){
 props:['dataRes'],
 methods: {
     checkedActive(event){
-        // $(event.currentTarget).parentNode.children[1].removeClass('menu-single-wrap-active');
-        // $(event.currentTarget).addClass('menu-single-wrap-active');
         $(event.currentTarget).siblings().removeClass('menu-single-wrap-active');
         $(event.currentTarget).addClass('menu-single-wrap-active');
     }

@@ -3,6 +3,8 @@
 module.exports = {
   plugins: {
     imagemini: false,
+    cssExtract: false
   },
-  devtool: 'source-map',
+  loaders: { scss: true },
+  lib: [ 'vue' ]// 覆盖掉common.js //还需优化
 };
