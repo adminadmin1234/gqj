@@ -55,7 +55,7 @@
 <script type="babel">
 import request from 'framework/network/request';
 import Vue from 'vue';
-import moment from 'moment';
+import format from 'date-fns/format'
 import { Breadcrumb } from 'element-ui'
 Vue.component(Breadcrumb.name, Breadcrumb);
 export default {
@@ -76,7 +76,7 @@ data(){
 props:['dataRes'],
 filters: {
     formatData(data){
-    return moment(parseInt(data)).format('YYYY-MM-DD');
+    return format(parseInt(data),'YYYY-MM-DD');//moment(parseInt(data)).format('YYYY-MM-DD');
     },
     addHref(data){
     return '/document?id=' + data;

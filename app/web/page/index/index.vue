@@ -17,7 +17,7 @@
     components: {
       LayoutHeader,
       LayoutContent,
-      LayoutFooter
+      LayoutFooter,
     },
   }
 </script>

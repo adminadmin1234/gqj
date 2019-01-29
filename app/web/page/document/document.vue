@@ -55,20 +55,47 @@
   import '../../asset/js/rem.js';
   import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
   import LayoutFooter from '../../component/layout/index/footer/footer';
-  import moment from 'moment';
+  import format from 'date-fns/format'
   import Vue from 'vue';
   import request from 'framework/network/request';
-  // import $ from 'jquery';
+  import $ from 'jquery';
   import store from '../store/app';
   import router from '../router';
   import { Pagination } from 'element-ui'
+  // import element from 'lement-ui'
   Vue.component(Pagination.name, Pagination);
   export default {
     store,
     router,
     components: {
       LayoutHeader,
-      LayoutFooter
+      LayoutFooter,
+      'remoteJquery': {
+      render(createElement) {
+          return createElement(
+            'script',
+            {
+              attrs: {
+                type: 'text/javascript',
+                src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+              },
+            },
+          );
+        },
+      },
+      'remoteElementUI': {
+      render(createElement) {
+          return createElement(
+            'script',
+            {
+              attrs: {
+                type: 'text/javascript',
+                src: 'https://cdn.bootcss.com/element-ui/2.4.11/index.js',
+              },
+            },
+          );
+        },
+      },
     },
     data(){
       return {
@@ -164,7 +191,7 @@
     },
     filters: {
       formatData(data){
-        return moment(parseInt(data)).format('YYYY/MM/DD');
+        return format(parseInt(data),'YYYY-MM-DD');
       },
       addHref(data){
         return '/detail?id=' + data;

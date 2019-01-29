@@ -40,19 +40,18 @@
 @import '../../../../asset/css/mixin.scss';
 @import "./content.scss";
 </style>
+
 <script type='babel'>
-import moment from 'moment';
+// import moment from 'moment';
+import format from 'date-fns/format'
 export default {
     name:'v-content',
     data(){
-      return {
-        title:'博主微信',
-      }
     },
     props:['articleList'],
     filters: {
       formatData(data){
-        return moment(parseInt(data)).format('YYYY-MM-DD');
+        return format(parseInt(data),'YYYY-MM-DD');
       },
       addHref(data){
         return '/detail?id=' + data;

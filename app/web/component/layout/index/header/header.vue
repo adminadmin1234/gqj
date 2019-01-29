@@ -13,8 +13,8 @@
 @import "./header.scss";
 </style>
 <script type="babel">
-import Util from'../../../../asset/js/util.js';
-import $ from 'jquery'
+import Util from '../../../../asset/js/util.js';
+import $ from "jquery";
 export default {
   components: {},
   data() {
