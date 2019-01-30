@@ -73,6 +73,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    body{
+        overflow-x: hidden!important;
+        color: #123458
+    }
     .nav-active{
       color: #ff6601;
     }
@@ -96,5 +100,11 @@
       left: REM(320);
       top:0;
       line-height: REM(200);
+    }
+}
+
+@media screen and (min-width: 769px) {
+    body{
+        overflow: hidden!important;
     }
 }

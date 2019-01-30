@@ -9,11 +9,9 @@
         </div>
         <div class="content-wrap">
             <div class="breadcrumb">
-                <el-breadcrumb separator="/">
-                    <el-breadcrumb-item><a class="breadcrumbFirst" :href="labelData.id | addHref">{{labelData.name}}</a></el-breadcrumb-item>
-                    <span class="separator-span">/</span>
-                    <el-breadcrumb-item class="last-breadcrumb-item">{{dataRes.articleDetail.list[0].atc_title}}</el-breadcrumb-item>
-                </el-breadcrumb>
+                <span><a class="breadcrumb-first" :href="labelData.id | addHref">{{labelData.name}}</a></span>
+                <span class="breadcrumb-middle">/</span>
+                <span class="last-breadcrumb-last">{{dataRes.articleDetail.list[0].atc_title}}</span>
             </div>
             <div class="article-wrap">
                 <div class="article-left-wrap">
@@ -56,8 +54,8 @@
 import request from 'framework/network/request';
 import Vue from 'vue';
 import format from 'date-fns/format'
-import { Breadcrumb } from 'element-ui'
-Vue.component(Breadcrumb.name, Breadcrumb);
+// import { Breadcrumb } from 'element-ui'
+// Vue.component(Breadcrumb.name, Breadcrumb);
 export default {
 data(){
   return {

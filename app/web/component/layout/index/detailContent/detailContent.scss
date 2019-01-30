@@ -1,7 +1,4 @@
-// .last-breadcrumb-item{
-//         margin-left: REM(1)
-//     }
-.separator-span{
+.breadcrumb-middle{
     color: #ccc;
 }
 @media screen and (min-width: 769px) {
@@ -69,23 +66,16 @@
     }
     .breadcrumb{
         margin-top: REM(10);
-    }
-    .el-breadcrumb{
-        height: REM(50);
-        line-height:  REM(50);
         background: #e9ecef;
+        font-size: REM(20);
+        height: REM(50);
+        line-height: REM(50);
         padding: 0 REM(10);
+        .breadcrumb-first{
+            font-weight: 500;
+        }
     }
-    .el-breadcrumb__separator{
-        margin-top: 2px!important;
-    }
-    .el-breadcrumb__item{
-        font-size: REM(20)!important;
-    }
-    .el-breadcrumb__item .el-icon-arrow-right{
-        margin-top: 2px!important;
-    }
-    .breadcrumbFirst{
+    .breadcrumb-first{
         color: #ff6601!important;
     }
     .article-left-wrap{
@@ -225,23 +215,17 @@
         padding: 2%;
     }
     .breadcrumb{
-    }
-    .el-breadcrumb{
-        height: REM(150);
-        line-height:  REM(150);
+        margin-top: REM(1);
         background: #e9ecef;
+        font-size: 16px;
+        height: REM(150);
+        line-height: REM(150);
         padding: 0 REM(10);
+        .breadcrumb-first{
+            font-weight: 500;
+        }
     }
-    .el-breadcrumb__separator{
-        margin-top: 2px!important;
-    }
-    .el-breadcrumb__item{
-        font-size: 13px!important;
-    }
-    .el-breadcrumb__item .el-icon-arrow-right{
-        margin-top: 2px!important;
-    }
-    .breadcrumbFirst{
+    .breadcrumb-first{
         color: #ff6601!important;
     }
     .article-left-wrap{

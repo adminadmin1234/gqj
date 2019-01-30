@@ -20,14 +20,7 @@
                             <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
                             <div class="right-content">
                                 <div class="title">{{docItem.doc_title}}</div>
-                                <el-popover
-                                placement="bottom"
-                                :title="docItem.doc_title"
-                                width="200"
-                                trigger="hover"
-                                :content="docItem.doc_desc">
-                                    <div class="desc" slot="reference">{{docItem.doc_desc}}</div>
-                                </el-popover>
+                                    <div class="desc" data-toggle="popover" title="title" data-content="Right?">{{docItem.doc_desc}}</div>
                                 <div class="icon-wrap">
                                     <a v-if="docItem.doc_github !== null && docItem.doc_github !== ''" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
                                     <a target="block" :href="docItem.doc_address"><img src="../../../../asset/images/home.png" class="home"/></a>
@@ -44,14 +37,10 @@
 <style scoped lang="scss">
     @import '../../../../asset/css/mixin.scss';
     @import "./contentch.scss";
-    @import "~element-ui/lib/theme-chalk/popover.css";
 </style>
 <script type="babel">
 import Util from'../../../../asset/js/util.js';
 import request from 'framework/network/request';
-import Vue from 'vue';
-import { Popover } from 'element-ui';
-Vue.component(Popover.name, Popover);
 export default {
 data(){
   return {
@@ -111,7 +100,6 @@ mounted() {
             'margin-top': marginTop + 10
         })
     }
-    
-}
+},
 }
 </script>

@@ -3,7 +3,7 @@
     <slot name='content'></slot>
     <div class="content-left">
       <div class="content-up">
-        <img src="../../../../asset/images/head-pic.jpg" class="head-pic" alt="凌晨两点半头像">
+        <img src="../../../../asset/images/head-pic.png" class="head-pic" alt="凌晨两点半头像">
         <h1 class="site-name">祝愿每位工程师达到BAT的能力,40岁前财富自由</h1>
       </div>
       <div class="content-left-hr">&nbsp;</div>
@@ -40,14 +40,11 @@
 @import '../../../../asset/css/mixin.scss';
 @import "./content.scss";
 </style>
-
 <script type='babel'>
-// import moment from 'moment';
+import $ from "jquery";
 import format from 'date-fns/format'
 export default {
     name:'v-content',
-    data(){
-    },
     props:['articleList'],
     filters: {
       formatData(data){
@@ -90,7 +87,6 @@ export default {
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(bp, s);
       })();
-
     },
     methods: {
     }

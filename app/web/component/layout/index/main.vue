@@ -18,7 +18,7 @@
             {
               attrs: {
                 type: 'text/javascript',
-                src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+                src: 'http://libs.baidu.com/jquery/2.0.0/jquery.min.js',
               },
             },
           );

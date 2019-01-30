@@ -62,7 +62,6 @@
   import store from '../store/app';
   import router from '../router';
   import { Pagination } from 'element-ui'
-  // import element from 'lement-ui'
   Vue.component(Pagination.name, Pagination);
   export default {
     store,

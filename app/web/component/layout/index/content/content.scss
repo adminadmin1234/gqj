@@ -91,7 +91,6 @@
     }
     .content-left{
       width: 100%;
-      padding: 1%;
       margin-top: REM(200);
       background: white;
       text-align: center;
@@ -115,7 +114,8 @@
     }
     .content-right{
       width: 100%;
-      padding: 2%;
+      padding: 1%;
+      box-sizing: border-box;
       background: white;
       font-size: REM(80);
     }

@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <div class="logo-wrap"><img class="logo" alt="凌晨零点半logo" src="../../../../asset/images/logo.png" @click="onOffChart"></div>
+    <div class="logo-wrap"><img class="logo" alt="凌晨零点半logo" src="../../../../asset/images/logo.png"></div>
     <nav class="header-wrap">
         <a class="nav-link header-nav-link nav-active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
@@ -81,16 +81,20 @@ export default {
   created() {
     
   },
-  beforeMount() {
-    // 只会在浏览器执行  
-    if(!Util.browserRedirect()){
-        //pc端页面
-        this.effect({
-            minSize: 8,		//雪花的最小尺寸
-            maxSize: 40, 	//雪花的最大尺寸
-            newOn: 600		//雪花出现的频率 这个数值越小雪花越多
-        })
-    }
+  beforeMount() { // 只会在浏览器执行  
+    // if(!Util.browserRedirect()){
+    //     //pc端页面
+    //     this.effect({
+    //         minSize: 8,		//雪花的最小尺寸
+    //         maxSize: 40, 	//雪花的最大尺寸
+    //         newOn: 600		//雪花出现的频率 这个数值越小雪花越多
+    //     })
+    // }
+    // if(Util.browserRedirect()){ // 移动端
+    //     $('body').css({
+    //         'overflow-x': 'hidden'
+    //     })
+    // }
   },
 };
 </script>
