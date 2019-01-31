@@ -28,7 +28,7 @@
       LayoutContent,
       LayoutFooter,
     },
-    mounted() {
+    beforeMount() {
       if(Util.browserRedirect()){ // 移动端
         this.footerPosition = false;
       }
