@@ -10,10 +10,10 @@ module.exports = class DetailController extends egg.Controller {
     const rightList = await ctx.service.article.getArtilceRightList(ctx.query.id);
     // seo信息
     const content = this.removeHtml(articleDetail.list[0].atc_content);
-    const description = '凌晨两点半，' + content.substr(0, 60);
+    const description = '钢琴家，' + content.substr(0, 60);
     const seo = {
-      title: '凌晨两点半-' + articleDetail.list[0].atc_title,
-      keywords: '凌晨两点半，' + articleDetail.list[0].atc_title,
+      title: '钢琴家-' + articleDetail.list[0].atc_title,
+      keywords: '钢琴家，' + articleDetail.list[0].atc_title,
       description,
     };
     const dataRes = { labelList, articleDetail, rightList, seo };

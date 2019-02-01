@@ -6,13 +6,13 @@ export default function createLayout(name, components, tpl) {
     components,
     computed: {
       vTitle() {
-        return this.$root.title || this.title || '凌晨两点半_前端网址导航_前端工具集合';
+        return this.$root.title || this.title || '钢琴家_前端网址导航_前端工具集合';
       },
       vKeywords() {
-        return this.$root.keywords || this.keywords || '凌晨两点半，前端中文文档api，前端中转站，前端工具集合，大前端技能，全栈工程师知识，前端网址导航';
+        return this.$root.keywords || this.keywords || '钢琴家，前端中文文档api，前端中转站，前端工具集合，大前端技能，全栈工程师知识，前端网址导航';
       },
       vDescription() {
-        return this.$root.description || this.description || '做最全的前端工程师网址导航，维护实用的前端知识体系，提供实用的前端工具让开发更简单、方便、快捷，祝愿每位工程师达到BAT的能力';
+        return this.$root.description || this.description || '做最全的前端工程师网址导航，维护实用的前端知识体系，提供实用的前端工具让开发更简单、方便、快捷，敲代码像弹钢琴一样优雅';
       },
       baseClass() {
         return this.$root.baseClass;
@@ -21,7 +21,7 @@ export default function createLayout(name, components, tpl) {
     template: EASY_ENV_IS_BROWSER ? tpl : `<!DOCTYPE html>
                   <html lang="en">
                     <head>
-                     <meta name="baidu-site-verification" content="zB7PIlT1gD" />
+                      <meta name="baidu-site-verification" content="oqp2PMKVqM" />
                       <title>{{vTitle}}</title>
                       <meta charset="utf-8">
                       <meta http-equiv="X-UA-Compatible" content="IE=edge">

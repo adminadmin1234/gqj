@@ -3,8 +3,8 @@
     <slot name='content'></slot>
     <div class="content-left">
       <div class="content-up">
-        <img src="../../../../asset/images/head-pic.png" class="head-pic" alt="凌晨两点半头像">
-        <h1 class="site-name">祝愿每位工程师达到BAT的能力,40岁前财富自由</h1>
+        <img src="../../../../asset/images/head-pic.png" class="head-pic" alt="钢琴家主题">
+        <h1 class="site-name">敲代码像弹钢琴一样优雅</h1>
       </div>
       <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down">
@@ -14,7 +14,10 @@
       </ul>
       <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down content-down-mobile">
-        <li>如本站内容侵犯了您的权益，请联系站长:18312710387</li>
+        <li>职业：前端小猿</li>
+        <li>个人微信:lzhlad</li>
+        <li>csdn博客:<a href='https://blog.csdn.net/a419419'>https://blog.csdn.net/a419419</a></li>
+        <li>如本站内容侵犯了您的权益，请联系站长</li>
       </ul>
     </div>
     <div class="content-right">
@@ -41,7 +44,6 @@
 @import "./content.scss";
 </style>
 <script type='babel'>
-import $ from "jquery";
 import format from 'date-fns/format'
 export default {
     name:'v-content',

@@ -1,6 +1,8 @@
 <template>
 <div class="container-fluid">
-    <div class="logo-wrap"><img class="logo" alt="凌晨零点半logo" src="../../../../asset/images/logo.png"></div>
+    <div class="logo-wrap">
+    <div class="logo"></div>
+    </div>
     <nav class="header-wrap">
         <a class="nav-link header-nav-link nav-active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
@@ -14,13 +16,13 @@
 </style>
 <script type="babel">
 import Util from '../../../../asset/js/util.js';
-import $ from "jquery";
 export default {
   components: {},
   data() {
     return {
       interval:null,
       isDown:true,
+      logoUrl:''
     };
   },
   computed: {},

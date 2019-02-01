@@ -1,6 +1,8 @@
 <template>
 <div class="container-fluid">
-    <div class="logo-wrap"><img alt="凌晨两点半logo" class="logo" src="../../../../asset/images/logo.png"></div>
+    <div class="logo-wrap">
+    <div class="logo"></div>
+    </div>
     <nav class="nav header-wrap">
         <a class="nav-link header-nav-link" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" v-bind:class="{'nav-active':activeStr === 'document'}" href="/document">{{$t('menu.component')}}</a>
@@ -16,7 +18,6 @@
   export default{
     props: ['activeStr'],
     mounted() {
-        console.log(this.activeStr,'activeStr')
     },
   };
 </script>

@@ -12,7 +12,7 @@ module.exports = {
   loaders: { scss: true }, // 加载scss文件
   lib: [ 'vue' ], // 覆盖掉common.js //还需优化
   devtool: 'source-map',
-  externals: { // 打包的时候排除掉，不要让它被打包
-    jquery: 'jquery',
-  }
+  // externals: { // 打包的时候排除掉，不要让它被打包
+  //   jquery: 'jquery',
+  // }
 };

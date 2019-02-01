@@ -22,9 +22,9 @@ module.exports = class DocumentchController extends egg.Controller {
     // seo信息
     let keywords = keyword.join(',');
     keywords = keywords.substr(0, 80);
-    const description = '前端中文文档，前端中文工具，大前端知识体系，全栈工程师能力，前端中文api，前端中文开发文档汇总，前端中文编程，凌晨两点半';
+    const description = '前端中文文档，前端中文工具，大前端知识体系，全栈工程师能力，前端中文api，前端中文开发文档汇总，前端中文编程，钢琴家';
     const seo = {
-      title: '前端中文文档API集合，大前端知识体系-凌晨两点半',
+      title: '前端中文文档API集合，大前端知识体系-钢琴家',
       keywords,
       description,
     };

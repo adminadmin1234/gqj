@@ -39,6 +39,7 @@
     @import "./contentch.scss";
 </style>
 <script type="babel">
+import $ from "jquery";
 import Util from'../../../../asset/js/util.js';
 import request from 'framework/network/request';
 export default {

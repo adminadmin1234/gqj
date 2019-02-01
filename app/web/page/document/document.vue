@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="not-content-wrap" v-if="pagination.total==0">
-                <img class="not-content-img" src="../../asset/images/logo.png" alt="">
+                <img class="not-content-img" src="../../asset/images/head-pic.png" alt="">
                 <h2>暂无内容</h2>
               </div>
               <div class="content-pagination" v-if="pagination.total>0">
@@ -69,32 +69,19 @@
     components: {
       LayoutHeader,
       LayoutFooter,
-      'remoteJquery': {
-      render(createElement) {
-          return createElement(
-            'script',
-            {
-              attrs: {
-                type: 'text/javascript',
-                src: 'https://code.jquery.com/jquery-3.3.1.min.js',
-              },
-            },
-          );
-        },
-      },
-      'remoteElementUI': {
-      render(createElement) {
-          return createElement(
-            'script',
-            {
-              attrs: {
-                type: 'text/javascript',
-                src: 'https://cdn.bootcss.com/element-ui/2.4.11/index.js',
-              },
-            },
-          );
-        },
-      },
+      // 'remoteJquery': {
+      // render(createElement) {
+      //     return createElement(
+      //       'script',
+      //       {
+      //         attrs: {
+      //           type: 'text/javascript',
+      //           src: 'https://code.jquery.com/jquery-3.3.1.min.js',
+      //         },
+      //       },
+      //     );
+      //   },
+      // },
     },
     data(){
       return {

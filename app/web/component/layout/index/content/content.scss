@@ -13,7 +13,8 @@
       background: white;
     }
     .head-pic{
-      width: REM(400);
+      width: REM(330);
+      height: REM(230);
       margin-left: REM(90);
     }
     .site-name{
@@ -96,6 +97,7 @@
       text-align: center;
     }
     .head-pic{
+      margin-top: REM(50);
       width: 50%;
     }
     .site-name{
@@ -106,7 +108,6 @@
       padding:2%;
     }
     .content-down{
-      margin-left: REM(90);
       font-size: REM(90);
     }
     .content-down-mobile{
