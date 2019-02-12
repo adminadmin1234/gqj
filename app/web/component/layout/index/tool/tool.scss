@@ -44,6 +44,7 @@
     .menu-single-wrap-active{
         background: #ff6601!important;
     }
+
     .menu-single-a{
         color: white;
     }
@@ -96,7 +97,7 @@
     .single-wrap{
         width: REM(366);
         float: left;
-        height: REM(130);
+        height: REM(110);
         padding: REM(5);
         background: white;
         margin-top: 10px;
@@ -109,29 +110,29 @@
         overflow: hidden;
         box-sizing: border-box;
         .logo{
-            width: REM(120);
-            height: REM(120);
+            width: REM(100);
+            height: REM(100);
             border-radius: 4px;
             float: left;
             margin-left: REM(2)
         }
         .right-content{
             float: left;
-            width: REM(226);
-            height: REM(120);
+            width: REM(246);
+            height: REM(100);
             margin-left: REM(6);
             .title{
-                font-size: REM(22);
-                width: REM(226);
+                font-size: REM(24);
+                width: REM(246);
                 height: REM(30);
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap; 
-                line-height: REM(30);
+                line-height: REM(30)
             }
             .desc{
                 font-size: REM(20);
-                width: REM(226);
+                width: REM(246);
                 height: REM(50);
                 line-height: REM(26);
                 text-overflow: -o-ellipsis-lastline;
@@ -141,24 +142,7 @@
                 -webkit-line-clamp: 2; /*行数*/
                 -webkit-box-orient: vertical;
                 white-space: normal;
-                margin-top: REM(5);
-            }
-            .icon-wrap{
-                font-size: REM(20);
-                width: REM(226);
-                height: REM(32);
-                img{
-                    width: REM(32);
-                    height: REM(32);
-                    float: right;
-                    margin-top: REM(3);
-                    margin-left: REM(10);
-                    cursor: pointer;
-                }
-                .github{
-                    width: REM(30);
-                    height: REM(30);
-                }
+                margin-top: REM(10);
             }
         }
     }
@@ -254,7 +238,7 @@
     .single-wrap{
         width: 49%;
         float: left;
-        height: REM(360);
+        height: REM(300);
         padding: REM(5);
         background: white;
         margin-top: 10px;
@@ -266,29 +250,30 @@
         overflow: hidden;
         box-sizing: border-box;
         .logo{
-            width: REM(360);
-            height: REM(360);
+            width: REM(300);
+            height: REM(300);
             border-radius: 4px;
             float: left;
             margin-left: REM(2)
         }
         .right-content{
             float: left;
-            width: REM(510);
-            height: REM(360);
-            margin-left: REM(6);
+            width: REM(570);
+            height: REM(300);
+            margin-left: REM(20);
             .title{
                 font-size: 14px;
-                width:  REM(510);
+                width:  REM(570);
                 height: REM(80);
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap; 
                 line-height: REM(80);
+                margin-top: REM(5);
             }
             .desc{
-                font-size: 13px;
-                width:  REM(510);
+                font-size: 12px;
+                width:  REM(570);
                 height: REM(160);
                 line-height: REM(80);
                 text-overflow: -o-ellipsis-lastline;
@@ -298,31 +283,11 @@
                 -webkit-line-clamp: 2; /*行数*/
                 -webkit-box-orient: vertical;
                 white-space: normal;
-                margin-top: REM(20);
-            }
-            .icon-wrap{
-                font-size: REM(20);
-                width: REM(510);
-                height: REM(80);
-                margin-top: REM(10);
-                img{
-                    width: REM(84);
-                    height: REM(84);
-                    float: left;
-                    margin-top: REM(3);
-                    margin-left: REM(10);
-                }
-                .github{
-                    width: REM(76);
-                    height: REM(76);
-                }
+                margin-top: REM(25);
             }
         }
     }
     .single-wrap:nth-child(even){
         margin-left: 2%;
-    }
-    .got-out:hover{
-        color: #ff6601;
     }
 }

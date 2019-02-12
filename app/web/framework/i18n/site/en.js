@@ -4,7 +4,8 @@ export default {
     category: 'Catetory',
     about: 'About',
     component: 'Component',
-    documentch: 'Cocumentch',
+    documentch: 'Documentch',
+    tool: 'Tool',
   },
   lang: {
     href: '/?locale=cn',

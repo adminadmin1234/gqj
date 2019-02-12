@@ -7,6 +7,7 @@
         <a class="nav-link header-nav-link" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" v-bind:class="{'nav-active':activeStr === 'document'}" href="/document">{{$t('menu.component')}}</a>
         <a class="nav-link header-nav-link" v-bind:class="{'nav-active':activeStr === 'documentch'}" href="/documentch">{{$t('menu.document')}}</a>
+        <a class="nav-link header-nav-link" v-bind:class="{'nav-active':activeStr === 'tool'}" href="/tool">{{$t('menu.tool')}}</a>
     </nav>
 </div>
 </template>

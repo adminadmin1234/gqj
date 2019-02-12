@@ -1,4 +1,5 @@
 'use strict';
+// 后台接口大全
 const egg = require('egg');
 module.exports = class AdminController extends egg.Controller {
   async login(ctx) {
@@ -57,7 +58,6 @@ module.exports = class AdminController extends egg.Controller {
   }
   // 添加文档
   async documentadd(ctx) {
-    console.log('添加文档添加文档添加文档1');
     const flag = await ctx.service.document.setDocumentList(ctx.request.body);
     this.ctx.body = flag;
   }
@@ -74,6 +74,26 @@ module.exports = class AdminController extends egg.Controller {
   // 修改文档
   async documentmodify(ctx) {
     const flag = await ctx.service.document.modify(ctx.request.body);
+    this.ctx.body = flag;
+  }
+  // 获取工具列表
+  async toollist(ctx) {
+    const toolList = await ctx.service.tool.getToolList(ctx.request.body);
+    this.ctx.body = toolList;
+  }
+  // 添加工具
+  async tooladd(ctx) {
+    const flag = await ctx.service.tool.setToolList(ctx.request.body);
+    this.ctx.body = flag;
+  }
+  // 删除工具
+  async tooldel(ctx) {
+    const { id } = ctx.params;
+    ctx.body = await this.service.tool.deleteTool(id);
+  }
+  // 修改工具
+  async toolmodify(ctx) {
+    const flag = await ctx.service.tool.modify(ctx.request.body);
     this.ctx.body = flag;
   }
 };

@@ -17,6 +17,29 @@ const actions = {
         store.commit(Type.GET_ARTICLE_DETAIL, response.data);
       });
   },
+  // 常用工具
+  SET_TOOL_LIST: (store, json) => {
+    return request.post('/admin/api/tool/list', json, store).then(response => {
+      store.commit(Type.SET_TOOL_LIST, response.data);
+    });
+  },
+  SET_TOOL_SAVE: (store, json) => {
+    return request.post('/admin/api/tool/add', json, store).then(response => {
+      store.commit(Type.SET_TOOL_SAVE, response.data);
+    });
+  },
+  SET_TOOL_MODIFY: (store, json) => {
+    return request.post('/admin/api/tool/modify', json, store).then(response => {
+      store.commit(Type.SET_TOOL_MODIFY, response.data);
+    });
+  },
+  TOOL_DELETE: (store, { id }) => {
+    const { commit, dispatch, state } = store;
+    return request.get(`/admin/api/tool/del/${id}`, store)
+      .then(response => {
+        commit(Type.TOOL_DELETE, { id });
+      });
+  },
   // 中文文档
   SET_DOCUMENT_LIST: (store, json) => {
     return request.post('/admin/api/document/list', json, store).then(response => {

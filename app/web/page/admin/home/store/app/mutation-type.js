@@ -1,6 +1,12 @@
 'use strict';
 
 export const GET_ARTICLE_DETAIL = 'GET_ARTICLE_DETAIL';
+// 常用工具
+export const SET_TOOL_LIST = 'SET_TOOL_LIST';
+export const SET_TOOL_SAVE = 'SET_TOOL_SAVE';
+export const SET_TOOL_MODIFY = 'SET_TOOL_MODIFY';
+export const TOOL_DELETE = 'TOOL_DELETE';
+
 // 中文文档
 export const SET_DOCUMENT_LIST = 'SET_DOCUMENT_LIST';
 export const SET_DOCUMENT_SAVE = 'SET_DOCUMENT_SAVE';

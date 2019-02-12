@@ -3,6 +3,11 @@
 import {
   GET_ARTICLE_DETAIL,
 
+  SET_TOOL_LIST,
+  SET_TOOL_MODIFY,
+  SET_TOOL_SAVE,
+  TOOL_DELETE,
+
   SET_DOCUMENT_LIST,
   SET_DOCUMENT_MODIFY,
   SET_DOCUMENT_SAVE,
@@ -25,6 +30,33 @@ const mutations = {
     if (typeof state.article.atc_fileUrl !== 'undefined' && state.article.atc_fileUrl !== null) {
       const hrefFileUrl = state.article.atc_fileUrl.split('.')[0] + '/index.html';
       state.article.hrefFileUrl = hrefFileUrl;
+    }
+  },
+  // 常用工具
+  [SET_TOOL_LIST](state, { list, total }) {
+    state.toolTotal = total;
+    state.toolList = list;
+  },
+  [SET_TOOL_SAVE](state, data) {
+    if (data.flag === 1) {
+      state.addDialog = false;
+    } else {
+      state.addDialog = true;
+    }
+  },
+  [SET_TOOL_MODIFY](state, data) {
+    if (data.flag === 1) {
+      state.addDialog = false;
+    } else {
+      state.addDialog = true;
+    }
+  },
+  [TOOL_DELETE](state, { id }) {
+    if (id !== null) {
+      state.toolTotal -= 1;
+      state.toolList = state.toolList.filter(item => {
+        return item.doc_id !== id;
+      });
     }
   },
   // 中文文档
@@ -52,7 +84,6 @@ const mutations = {
       state.documentList = state.documentList.filter(item => {
         return item.doc_id !== id;
       });
-      console.log('state.documentList', state.documentList);
     }
   },
   // 标签

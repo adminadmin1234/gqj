@@ -8,22 +8,18 @@
             </div>
         </div>
         <div class="content-wrap">
-            <h1 class="page-title">钢琴家-为你收藏前端程序员常用中文文档</h1>
-            <div class="single-wrap-kuang" v-for="(labeItem,labeIndex) in dataRes.labelList.list" v-if="labeItem.docList.length > 0">
+            <h1 class="page-title">钢琴家-为你收藏程序员常用在线工具</h1>
+            <div class="single-wrap-kuang" v-for="(labeItem,labeIndex) in dataRes.labelList.list" v-if="labeItem.toolList.length > 0">
                 <div class="label-name-wrap">
                     <div class="label-name" :id="labeItem.lb_name">{{labeItem.lb_name}}</div>
                 </div>
                 <div>
-                    <div class="single-wrap" v-for="(docItem,docIndex) in labeItem.docList">
-                        <a class="got-out" target="block" :href="docItem.doc_address">
-                            <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
+                    <div class="single-wrap" v-for="(toolItem,toolIndex) in labeItem.toolList">
+                        <a class="got-out" target="block" :href="toolItem.tl_address">
+                            <img :src="toolItem.tl_logo" class="logo" :alt="toolItem.tl_title"/>
                             <div class="right-content">
-                                <div class="title">{{docItem.doc_title}}</div>
-                                    <div class="desc" data-toggle="popover" title="title" data-content="Right?">{{docItem.doc_desc}}</div>
-                                <div class="icon-wrap">
-                                    <a v-if="docItem.doc_github !== null && docItem.doc_github !== ''" target="block" :href="docItem.doc_github"><img src="../../../../asset/images/github.png" class="github"/></a>
-                                    <a target="block" :href="docItem.doc_address"><img src="../../../../asset/images/home.png" class="home"/></a>
-                                </div>
+                                <div class="title">{{toolItem.tl_title}}</div>
+                                <div class="desc" data-toggle="popover" title="title" data-content="Right?">{{toolItem.tl_desc}}</div>
                             </div>
                         </a>
                     </div>
@@ -35,7 +31,7 @@
 </template>
 <style scoped lang="scss">
     @import '../../../../asset/css/mixin.scss';
-    @import "./contentch.scss";
+    @import "./tool.scss";
 </style>
 <script type="babel">
 import $ from "jquery";

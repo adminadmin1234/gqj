@@ -7,6 +7,7 @@
         <a class="nav-link header-nav-link nav-active" href="/home">{{$t('menu.home')}}</a>
         <a class="nav-link header-nav-link" href="/document">{{$t('menu.component')}}</a>
         <a class="nav-link header-nav-link" href="/documentch">{{$t('menu.document')}}</a>
+        <a class="nav-link header-nav-link" href="/tool">{{$t('menu.tool')}}</a>
     </nav>
 </div>
 </template>

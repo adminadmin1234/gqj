@@ -21,6 +21,7 @@
             <div v-if='props.row.lb_type === 1'>常用组件</div>
             <div v-if='props.row.lb_type === 2'>中文文档</div>
             <div v-if='props.row.lb_type === 3'>个人博客</div>
+            <div v-if='props.row.lb_type === 4'>在线工具</div>
           </template>
         </el-table-column>
         <el-table-column
@@ -61,6 +62,7 @@
                       <el-option :value="1" label="常用组件"></el-option>
                       <el-option :value="2" label="中文文档"></el-option>
                       <el-option :value="3" label="个人博客"></el-option>
+                      <el-option :value="4" label="在线工具"></el-option>
                 </el-select>
           </el-form-item>
           <el-form-item label="标签名：" :required="true" label-width="100px">
@@ -95,7 +97,7 @@ export default {
         categoryId: undefined,
         statusId: undefined,
         pageIndex: 1,
-        pageSize: 10
+        pageSize: 50
       },
     };
   },

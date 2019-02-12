@@ -7,6 +7,7 @@ export default {
     articleadd: '添加文章',
     labelmanage: '标签列表',
     documentmanage: '中文文档',
+    toolmanage: '常用工具',
   },
   lang: {
     href: '/admin?locale=en',

@@ -29,6 +29,11 @@ const menu = {
     name: 'menu.documentmanage',
     path: '/document/list',
     icon: 'el-icon-menu'
+  },
+  tool: {
+    name: 'menu.toolmanage',
+    path: '/tool/list',
+    icon: 'el-icon-menu'
   }
 };
 

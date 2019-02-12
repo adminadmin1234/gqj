@@ -6,6 +6,7 @@ export default {
     about: '关于',
     component: '常用组件',
     document: '中文文档',
+    tool: '在线工具',
   },
   lang: {
     href: '/?locale=en',

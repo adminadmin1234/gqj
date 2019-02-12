@@ -56,7 +56,7 @@ create table atcAndLb(
    al_lb_id int,
    PRIMARY KEY ( al_id )
 );
-#创建参考文档表
+#创建中文文档表
 create table document(
    doc_id INT NOT NULL AUTO_INCREMENT,
    doc_logo VARCHAR(256),
@@ -69,10 +69,29 @@ create table document(
    doc_weight tinyint default 1,
    PRIMARY KEY ( doc_id )
 );
-#创建参考文档标签关联表
+#创建中文文档标签关联表
 create table docAndLb(
    dl_id INT NOT NULL AUTO_INCREMENT,
    dl_doc_id int,
    dl_lb_id int,
    PRIMARY KEY ( dl_id )
+);
+#创建在线工具表
+create table tool(
+   tl_id INT NOT NULL AUTO_INCREMENT,
+   tl_logo VARCHAR(256),
+   tl_title VARCHAR(256),
+   tl_desc VARCHAR(256),
+   tl_address VARCHAR(256),
+   tl_label VARCHAR(256),
+   tl_publish_time VARCHAR(256),
+   tl_weight tinyint default 1,
+   PRIMARY KEY ( tl_id )
+);
+#创建在线工具标签关联表
+create table tlAndLb(
+   tll_id INT NOT NULL AUTO_INCREMENT,
+   tll_tl_id int,
+   tll_lb_id int,
+   PRIMARY KEY ( tll_id )
 );

@@ -11,6 +11,8 @@ Vue.use(Vuex);
 export default function createStore(initState) {
   const state = {
     addDialog: false,
+    toolTotal: 0,
+    toolList: [],
     documentTotal: 0,
     documentList: [],
     labelTotal: 0,
