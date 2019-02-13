@@ -88,6 +88,7 @@ create table tool(
    tl_weight tinyint default 1,
    PRIMARY KEY ( tl_id )
 );
+
 #创建在线工具标签关联表
 create table tlAndLb(
    tll_id INT NOT NULL AUTO_INCREMENT,
