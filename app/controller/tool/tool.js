@@ -22,9 +22,9 @@ module.exports = class ToolController extends egg.Controller {
     // seo信息
     let keywords = keyword.join(',');
     keywords = keywords.substr(0, 80);
-    const description = '前端中文文档，前端中文工具，大前端知识体系，全栈工程师能力，前端中文api，前端中文开发文档汇总，前端中文编程，钢琴家';
+    const description = 'IT在线工具，IT常用工具，IT网站收藏，IT工作工具，程序员工具箱，钢琴家';
     const seo = {
-      title: '前端中文文档API集合，大前端知识体系-钢琴家',
+      title: '大前端、设计师、产品经理、运营人员在线工具、常用工具网站收藏-钢琴家',
       keywords,
       description,
     };

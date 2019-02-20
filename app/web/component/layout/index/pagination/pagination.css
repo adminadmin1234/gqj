@@ -1,0 +1,42 @@
+.pager {
+  text-align: center;
+  font-size: 14px;
+}
+.select-page{
+  float: left;
+  padding: 0px;
+  margin-left: 31px;
+  width: 80px;
+  height: 24px;
+  text-align: center;
+  border:1px solid #CCCCCC;
+  color: #999999;
+  cursor:pointer;
+}
+.btn-pager {
+    display: inline-block;
+    height: 24px;
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 14px;
+    text-align: center;
+    cursor:pointer;
+}
+.page-index {
+  display: inline-block;
+  margin-left: 4px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background-color: #ffffff;
+  cursor: pointer;
+  color: #000000;
+}
+.page-index:hover {
+  background-color: #ff6602;
+  color: #ffffff;
+}
+.active {
+  color: #ffffff;
+  background-color: #ff6602;
+}

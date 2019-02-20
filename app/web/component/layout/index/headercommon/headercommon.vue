@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid">
     <div class="logo-wrap">
-    <div class="logo"></div>
+    <a class="nav-link header-nav-link nav-active" href="/home"><div class="logo"></div></a>
     </div>
     <nav class="nav header-wrap">
         <a class="nav-link header-nav-link" href="/home">{{$t('menu.home')}}</a>

@@ -42,6 +42,7 @@
                   :total="pagination.total">
                 </el-pagination>
               </div>
+              <PaginationPage @current-change="changePaginationIndex" :total="pagination.total" :pageSize="pagination.pagesize"></PaginationPage>
           </div>
           <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
@@ -58,17 +59,19 @@
   import format from 'date-fns/format'
   import Vue from 'vue';
   import request from 'framework/network/request';
-  import $ from 'jquery';
   import store from '../store/app';
   import router from '../router';
   import { Pagination } from 'element-ui'
   Vue.component(Pagination.name, Pagination);
+
+  import PaginationPage from '../../component/layout/index/pagination/pagination';
   export default {
     store,
     router,
     components: {
       LayoutHeader,
       LayoutFooter,
+      PaginationPage,
       // 'remoteJquery': {
       // render(createElement) {
       //     return createElement(
@@ -85,6 +88,8 @@
     },
     data(){
       return {
+        total:100,
+        pageSize:10,
         pagination:{
           index:1,
           pagesize:12,
@@ -103,6 +108,7 @@
     watch:{
     },
     mounted() {
+      console.log('pagination',this.pagination)
       const _this = this;
       this.labelId = this.$route.query.id;
       this.getLabelList();
@@ -116,6 +122,11 @@
       }
     },
     methods: {
+      changePaginationIndex(currentIndex){
+        console.log('currentIndex',currentIndex)
+        this.pagination.index = currentIndex;
+        this.loadData(this.labelId);
+      },
       changePagination(index){
         this.pagination.index = index;
         this.loadData(this.labelId);

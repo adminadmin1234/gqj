@@ -104,7 +104,7 @@ mounted() {
     // a锚点
     const marginHeader = $('.container-fluid').height()+$('.menu-nav-wrap-full').height()+$('.page-title').height();
     $('.menu-single-a').click(function(){
-        $('html,body').animate({scrollTop: ($($(this).attr('href')).offset().top - marginHeader )},1000);
+        $('html,body').animate({scrollTop: ($($(this).attr('href')).offset().top - (marginTop+8) )},1000);
     });
 },
 }

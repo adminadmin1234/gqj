@@ -28,15 +28,15 @@ module.exports = class LabelService extends egg.Service {
     let sql;
     if (type === 0) {
       if (name === null || typeof name === 'undefined') {
-        sql = `select ${QUERY_STR} from ${TABLE_NAME}`;
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} order by lb_weight desc`;
       } else {
-        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%"`;
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_name like "%${name}%" order by lb_weight desc`;
       }
     } else {
       if (name === null || typeof name === 'undefined') {
-        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type}`;
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} and lb_weight > 0 order by lb_weight desc`;
       } else {
-        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} and lb_name like "%${name}%"`;
+        sql = `select ${QUERY_STR} from ${TABLE_NAME} where lb_type = ${type} and lb_name like "%${name}%" and lb_weight > 0 order by lb_weight desc`;
       }
     }
     const labelList = await this.app.mysql.query(sql);
