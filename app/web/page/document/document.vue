@@ -4,7 +4,7 @@
           <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
             <div class="menu-nav-wrap">
                 <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-default' : (item.lb_id==labelId)}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in labelList" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
-                  {{item.lb_name}} 
+                  {{item.lb_name}}
                 </div>
             </div>
           </div>
