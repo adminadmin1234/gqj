@@ -1,6 +1,7 @@
 .pager {
   text-align: center;
   font-size: 14px;
+  margin: 0;
 }
 .select-page{
   float: left;
