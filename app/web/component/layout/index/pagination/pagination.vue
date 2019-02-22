@@ -2,12 +2,14 @@
   <div class="pager">
     <span>共&nbsp;{{total}}&nbsp;条</span>
     <span class="btn-pager" :disabled="currentNow == 1" @click="prePage">上一页</span>
-    <span v-if="eachSize !== 1" class="page-index" v-bind:class="{'active':1 == currentNow}" @click="goPage(1)">1</span>
-    <span v-if="preClipped" class="page-index">...</span>
-    <span v-for="index in paginationNums" class="page-index" v-bind:class="{'active':index == currentNow}" @click="goPage(index)">{{index}}</span>
-    <span v-if="backClipped" class="page-index">...</span>
-    <span class="page-index" v-bind:class="{'active':eachSize == currentNow}" @click="goPage(eachSize)">{{eachSize}}</span>
-    <span class="btn-pager" :disabled="currentNow == eachSize" @click="nextPage">下一页</span>
+    <span id="page_index_warp">
+      <span v-if="eachSize !== 1" class="page-index" v-bind:class="{'active':1 == currentNow}" @click="goPage(1)">1</span>
+      <span v-if="preClipped" class="page-index">...</span>
+      <span v-for="index in paginationNums" class="page-index" v-bind:class="{'active':index == currentNow}" @click="goPage(index)">{{index}}</span>
+      <span v-if="backClipped" class="page-index">...</span>
+      <span class="page-index" v-bind:class="{'active':eachSize == currentNow}" @click="goPage(eachSize)">{{eachSize}}</span>
+    </span>
+      <span class="btn-pager" :disabled="currentNow == eachSize" @click="nextPage">下一页</span>
   </div>
 </template>
 <style>
@@ -38,9 +40,6 @@ export default {
     }
   },
   mounted() {
-      if(this.total >= this.pageSize && this.pageSize != 0){
-          this.eachSize = Math.ceil(this.total/this.pageSize);
-      }
       this.setPaginationNums();
   },
   methods: {
@@ -66,6 +65,10 @@ export default {
       this.$emit('current-change',this.currentNow);
     },
     setPaginationNums (){
+        // 确定有多少页
+        if(this.total >= this.pageSize && this.pageSize != 0){
+              this.eachSize = Math.ceil(this.total/this.pageSize);
+          }
         let ret = []
         if (this.currentNow > 3) {
             // 当前页码大于三时，显示当前页码的前2个
@@ -98,6 +101,7 @@ export default {
             ret.push(i)
             }
         }
+        // $('#page_index_warp').empty();
         this.paginationNums = ret;
     }
   },
@@ -108,9 +112,7 @@ export default {
     },
     // 父组件异步获取数据后触发
     total(){
-        if(this.total >= this.pageSize && this.pageSize != 0){
-            this.eachSize = Math.ceil(this.total/this.pageSize);
-        }
+        
         this.setPaginationNums();
     },
   },

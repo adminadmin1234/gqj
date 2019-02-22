@@ -16,11 +16,7 @@
   import LayoutHeader from '../../component/layout/index/headercommon/headercommon';
   import Document from '../../component/layout/index/document/document';
   import LayoutFooter from '../../component/layout/index/footer/footer';
-  import format from 'date-fns/format'
   import Vue from 'vue';
-  import request from 'framework/network/request';
-
-  import PaginationPage from '../../component/layout/index/pagination/pagination';
   export default {
     components: {
       LayoutHeader,
@@ -29,119 +25,8 @@
     },
     data(){
       return {
-        total:100,
-        pageSize:10,
-        pagination:{
-          index:1,
-          pagesize:12,
-          total:0,
-        },
-        labelId:null,
-        hrefFileUrl:'',
-        articleList:[],
-        labelList:[],
-        menuShow:false,
-        keyword:null,
         footerPosition:true,
         document:'document',
-      }
-    },
-    watch:{
-    },
-    mounted() {
-      const _this = this;
-      this.labelId = this.$route.query.id;
-      // this.getLabelList();
-      document.onkeydown = function (e) { // 回车提交表单
-      // 兼容FF和IE和Opera
-          var theEvent = window.event || e;
-          var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-          if (code == 13) {
-              _this.search();
-          }
-      }
-    },
-    methods: {
-      changePaginationIndex(currentIndex){
-        this.pagination.index = currentIndex;
-        // this.loadData(this.labelId);
-      },
-      onPreview(atcid){
-          request.get(`/detail/api/article/countPreview?atcid=${atcid}`).then(response => {
-          });
-      },
-      menuToLoad(lbId,index){
-        this.defaultIndex=index;
-        this.labelId = lbId;
-        // this.loadData(lbId);
-      },
-      search(){
-        request.get(`/document/api/article/search?keyword=${this.keyword}`).then(response => {
-          this.articleList = response.data.temp;
-          if(this.articleList.length >= 12){
-            this.footerPosition = false;
-            }else{
-              this.footerPosition = true;
-            }
-          this.pagination.total = response.data.total;
-        });
-      },
-      getLabelList(store){
-          request.post(`/admin/api/label/list`,{lb_type:1},this.$store).then(response => {
-              this.labelList = response.data.list;
-              if(this.labelId != null){
-                this.loadData(this.labelId);
-              } else {
-                this.labelId = this.labelList[0].lb_id;
-                this.loadData(this.labelId);
-              }
-              if(this.labelList.length > 10){
-                  this.menuShow = true;
-              }else{
-                  this.menuShow =false;
-              }
-          });
-      },
-      loadData(lbId) {
-        request.get(`/document/api/article/list?id=${lbId}&index=${this.pagination.index}&pagesize=${this.pagination.pagesize}`).then(response => {
-          this.articleList = response.data.temp;
-          this.pagination.total = response.data.total;
-        });
-      },
-      menuSingleShow(event){
-        $(event.currentTarget).addClass('menu-single-wrap-active');
-      },
-      menuSingleHide(event){
-        $(event.currentTarget).removeClass('menu-single-wrap-active');
-      },
-      dataMiddle(event){
-        $(event.currentTarget).find('.content-single-middle').fadeIn("slow");
-      },
-      hiddenMiddle(event){
-        $(event.currentTarget).find('.content-single-middle').fadeOut("slow");
-      },
-    },
-    filters: {
-      formatData(data){
-        return format(parseInt(data),'YYYY-MM-DD');
-      },
-      addHref(data){
-        return '/detail?id=' + data;
-      },
-      preview(data){
-        if(data){
-          return data.split('.')[0] + '/index.html';
-        }
-      },
-      imgUrlFun(str){
-        let data = '';
-            str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
-                  data =  capture;
-            });
-            if(data==null || data==''){
-              data = '/public/img/default.jpeg'
-            }
-        return data
       }
     },
   }

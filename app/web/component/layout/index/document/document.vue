@@ -2,7 +2,7 @@
     <div>
         <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
                     <div class="menu-nav-wrap">
-                        <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : index===0}" @click="menuToLoad(item.lb_id,index)" v-for="(item,index) in dataRes.labelList.list" v-on:mouseenter="menuSingleShow($event)" v-on:mouseleave="menuSingleHide($event)">
+                        <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : index===0}" @click="menuToLoad(item.lb_id,index,$event)" v-for="(item,index) in dataRes.labelList.list">
                         {{item.lb_name}}
                         </div>
                     </div>
@@ -13,7 +13,7 @@
                         <div @click="search" class="search-sub">搜索</div>
                     </div>
                     <div class="content-single-wrap">
-                        <div class="content-single" v-for="(item,index) in dataRes.articleList.temp" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
+                        <div class="content-single" v-for="(item,index) in articleList" v-on:mouseenter="dataMiddle($event)" v-on:mouseleave="hiddenMiddle($event)">
                         <a :href="item.atc_id | addHref">
                             <img :src="item.atc_content | imgUrlFun" class="content-single-preview" :alt="item.atc_title">
                             <div class="content-single-middle">
@@ -29,13 +29,13 @@
                         </a>
                         </div>
                     </div>
-                    <div class="not-content-wrap" v-if="dataRes.articleList.total==0">
+                    <div class="not-content-wrap" v-if="pagination.total==0">
                         <img class="not-content-img" src="../../../../asset/images/head-pic.png" alt="">
                         <h2>暂无内容</h2>
                     </div>
                 </div>
-            <div class="pagination_wrap" v-if="dataRes.articleList.total>0">
-                <PaginationPage @current-change="changePaginationIndex" :total="dataRes.articleList.total" :pageSize="pagination.pagesize"></PaginationPage>
+            <div class="pagination_wrap" v-if="pagination.total>0">
+                <PaginationPage @current-change="changePaginationIndex" :total="pagination.total" :pageSize="pagination.pagesize"></PaginationPage>
               </div>
     </div>
 </template>
@@ -53,18 +53,16 @@
     components: {
       PaginationPage
     },
+    props:['dataRes'],
     data(){
       return {
-        total:100,
-        pageSize:10,
         pagination:{
           index:1,
           pagesize:12,
-          total:0,
+          total:this.dataRes.articleList.total || 0,
         },
-        labelId:null,
         hrefFileUrl:'',
-        articleList:[],
+        articleList:this.dataRes.articleList.temp || [],
         labelList:[],
         menuShow:false,
         keyword:null,
@@ -72,13 +70,10 @@
         document:'document',
       }
     },
-    props:['dataRes'],
     watch:{
     },
     mounted() {
       const _this = this;
-      this.labelId = this.$route.query.id;
-      // this.getLabelList();
       document.onkeydown = function (e) { // 回车提交表单
       // 兼容FF和IE和Opera
           var theEvent = window.event || e;
@@ -90,17 +85,17 @@
     },
     methods: {
       changePaginationIndex(currentIndex){
-        this.pagination.index = currentIndex;
-        this.loadData(1);
+        this.loadData(1,currentIndex);
       },
       onPreview(atcid){
           request.get(`/detail/api/article/countPreview?atcid=${atcid}`).then(response => {
           });
       },
-      menuToLoad(lbId,index){
+      menuToLoad(lbId,index,event){
         this.defaultIndex=index;
-        this.labelId = lbId;
-        // this.loadData(lbId);
+        this.loadData(lbId,1);
+        $(event.currentTarget).siblings().removeClass('menu-single-wrap-active');
+        $(event.currentTarget).addClass('menu-single-wrap-active');
       },
       search(){
         request.get(`/document/api/article/search?keyword=${this.keyword}`).then(response => {
@@ -113,33 +108,11 @@
           this.pagination.total = response.data.total;
         });
       },
-      getLabelList(store){
-          request.post(`/admin/api/label/list`,{lb_type:1},this.$store).then(response => {
-              this.labelList = response.data.list;
-              if(this.labelId != null){
-                this.loadData(this.labelId);
-              } else {
-                this.labelId = this.labelList[0].lb_id;
-                this.loadData(this.labelId);
-              }
-              if(this.labelList.length > 10){
-                  this.menuShow = true;
-              }else{
-                  this.menuShow =false;
-              }
-          });
-      },
-      loadData(lbId) {
-        request.get(`/document?id=${lbId}&index=${this.pagination.index}`).then(response => {
+      loadData(lbId,index) {
+        request.get(`/document/api/article/list?id=${lbId}&index=${index}`).then(response => {
           this.articleList = response.data.temp;
           this.pagination.total = response.data.total;
         });
-      },
-      menuSingleShow(event){
-        $(event.currentTarget).addClass('menu-single-wrap-active');
-      },
-      menuSingleHide(event){
-        $(event.currentTarget).removeClass('menu-single-wrap-active');
       },
       dataMiddle(event){
         $(event.currentTarget).find('.content-single-middle').fadeIn("slow");
