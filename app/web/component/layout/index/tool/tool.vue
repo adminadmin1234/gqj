@@ -16,7 +16,7 @@
                 <div>
                     <div class="single-wrap" v-for="(toolItem,toolIndex) in labeItem.toolList">
                         <a class="got-out" target="block" :href="toolItem.tl_address">
-                            <img :src="toolItem.tl_logo" class="logo" :alt="toolItem.tl_title"/>
+                            <img :picAddress="toolItem.tl_logo" :src="toolItem.tl_logo" class="logo lazyLoadImg" :alt="toolItem.tl_title"/>
                             <div class="right-content">
                                 <div class="title">{{toolItem.tl_title}}</div>
                                 <div class="desc" data-toggle="popover" title="title" data-content="Right?">{{toolItem.tl_desc}}</div>
@@ -36,6 +36,7 @@
 <script type="babel">
 import $ from "jquery";
 import Util from'../../../../asset/js/util.js';
+import lazyLoadImages from'../../../../asset/js/lazyLoadImages.js';
 import request from 'framework/network/request';
 export default {
 data(){
@@ -65,6 +66,7 @@ filters:{
     }
 },
 mounted() {
+    lazyLoadImages.initConfig();
     // 百度统计代码
     var _hmt = _hmt || [];
     (function() {

@@ -2,7 +2,7 @@
 <layout :title="dataRes.seo.title" :description="dataRes.seo.description" :keywords="dataRes.seo.keywords">
        <div class='main'>
           <LayoutHeader :activeStr="document"></LayoutHeader>
-          <Document :dataRes="dataRes"></Document>
+          <Document  @totalC="totalChange" :dataRes="dataRes"></Document>
           <LayoutFooter :footerPosition="footerPosition"></LayoutFooter>
        </div>
 </layout>
@@ -29,5 +29,17 @@
         document:'document',
       }
     },
+    mounted() {
+      this.totalChange(this.dataRes.articleList.temp.length);
+    },
+    methods: {
+      totalChange(total) {
+        if(total >= 12){
+          this.footerPosition = false;
+        }else{
+          this.footerPosition = true;
+        }
+      }
+    }
   }
 </script>

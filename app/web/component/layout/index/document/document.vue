@@ -34,7 +34,7 @@
                         <h2>暂无内容</h2>
                     </div>
                 </div>
-            <div class="pagination_wrap" v-if="pagination.total>0">
+              <div class="pagination_wrap" v-if="pagination.total>0">
                 <PaginationPage @current-change="changePaginationIndex" :total="pagination.total" :pageSize="pagination.pagesize"></PaginationPage>
               </div>
     </div>
@@ -96,15 +96,12 @@
         this.loadData(lbId,1);
         $(event.currentTarget).siblings().removeClass('menu-single-wrap-active');
         $(event.currentTarget).addClass('menu-single-wrap-active');
+        
       },
       search(){
         request.get(`/document/api/article/search?keyword=${this.keyword}`).then(response => {
           this.articleList = response.data.temp;
-          if(this.articleList.length >= 12){
-            this.footerPosition = false;
-            }else{
-              this.footerPosition = true;
-            }
+          this.$emit('totalC',this.articleList.length);
           this.pagination.total = response.data.total;
         });
       },
@@ -112,6 +109,7 @@
         request.get(`/document/api/article/list?id=${lbId}&index=${index}`).then(response => {
           this.articleList = response.data.temp;
           this.pagination.total = response.data.total;
+          this.$emit('totalC',this.articleList.length);
         });
       },
       dataMiddle(event){

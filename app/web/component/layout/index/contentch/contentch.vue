@@ -16,7 +16,7 @@
                 <div>
                     <div class="single-wrap" v-for="(docItem,docIndex) in labeItem.docList">
                         <a class="got-out" target="block" :href="docItem.doc_address">
-                            <img :src="docItem.doc_logo" class="logo" :alt="docItem.doc_title"/>
+                            <img class="logo lazyLoadImg" src="" :picAddress="docItem.doc_logo" :alt="docItem.doc_title"/>
                             <div class="right-content">
                                 <div class="title">{{docItem.doc_title}}</div>
                                     <div class="desc" data-toggle="popover" title="title" data-content="Right?">{{docItem.doc_desc}}</div>
@@ -40,6 +40,7 @@
 <script type="babel">
 import $ from "jquery";
 import Util from'../../../../asset/js/util.js';
+import lazyLoadImages from'../../../../asset/js/lazyLoadImages.js';
 import request from 'framework/network/request';
 export default {
 data(){
@@ -69,6 +70,7 @@ filters:{
     }
 },
 mounted() {
+    lazyLoadImages.initConfig();
     // 百度统计代码
     var _hmt = _hmt || [];
     (function() {

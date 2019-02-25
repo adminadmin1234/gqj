@@ -68,6 +68,8 @@ export default {
         // 确定有多少页
         if(this.total >= this.pageSize && this.pageSize != 0){
               this.eachSize = Math.ceil(this.total/this.pageSize);
+          } else {
+            this.eachSize = 1;
           }
         let ret = []
         if (this.currentNow > 3) {
@@ -81,7 +83,7 @@ export default {
         } else {
             this.preClipped = false
             for (let i = 2; i < this.currentNow; i++) {
-            ret.push(i)
+            ret.push(i);
             }
         }
         if (this.currentNow !== this.eachSize && this.currentNow !== 1) {
@@ -101,7 +103,6 @@ export default {
             ret.push(i)
             }
         }
-        // $('#page_index_warp').empty();
         this.paginationNums = ret;
     }
   },
@@ -110,9 +111,13 @@ export default {
     currentNow() {
         this.setPaginationNums();
     },
+    // 
+    pageSize() {
+        this.setPaginationNums();
+    },
     // 父组件异步获取数据后触发
     total(){
-        
+        this.currentNow = 1;
         this.setPaginationNums();
     },
   },

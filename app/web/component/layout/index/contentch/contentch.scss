@@ -113,7 +113,8 @@
             height: REM(120);
             border-radius: 4px;
             float: left;
-            margin-left: REM(2)
+            margin-left: REM(2);
+            object-fit: cover;
         }
         .right-content{
             float: left;
@@ -270,7 +271,8 @@
             height: REM(360);
             border-radius: 4px;
             float: left;
-            margin-left: REM(2)
+            margin-left: REM(2);
+            object-fit: cover;
         }
         .right-content{
             float: left;
