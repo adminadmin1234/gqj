@@ -1,5 +1,6 @@
 .DS_Store
 .happypack/
+easywebpack/
 node_modules/
 npm-debug.log
 .idea/
