@@ -8,7 +8,6 @@
 import $ from "jquery";
 export default  {
     initConfig() {
-      console.log('122222222')
       const self = this;
       self.srcFlag = 'picAddress'; // 图片地址
       self.class = 'lazyLoadImg'; // 惰性加载的图片需要添加的class

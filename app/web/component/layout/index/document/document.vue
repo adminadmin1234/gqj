@@ -2,7 +2,7 @@
     <div>
         <div class="menu-nav-wrap-full" v-bind:class="{ 'menu-nav-wrap-full-h2' : menuShow}">
                     <div class="menu-nav-wrap">
-                        <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : index===0}" @click="menuToLoad(item.lb_id,index,$event)" v-for="(item,index) in dataRes.labelList.list">
+                        <div class="menu-single-wrap" v-bind:class="{ 'menu-single-wrap-active' : dataRes.lbId==item.lb_id}" @click="menuToLoad(item.lb_id,index,$event)" v-for="(item,index) in dataRes.labelList.list">
                         {{item.lb_name}}
                         </div>
                     </div>

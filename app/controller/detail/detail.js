@@ -3,7 +3,7 @@ const egg = require('egg');
 module.exports = class DetailController extends egg.Controller {
   async index(ctx) {
     // 获取标签
-    const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name,1);
+    const labelList = await ctx.service.label.getLabelList(ctx.request.body.lb_name, 1);
     // 获取文章详情
     const articleDetail = await ctx.service.article.getArticleDetail(ctx.query.id);
     // 获取右边的两个列表

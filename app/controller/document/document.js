@@ -2,10 +2,8 @@
 module.exports = app => {
   return class DocumentController extends app.Controller {
     async index(ctx) {
-      const lbId = ctx.query.id || null;
+      let lbId = ctx.query.id || null;
       const paginationIndex = ctx.query.index || null;
-      console.log('ctx.queryctx.queryctx.queryctx.query', lbId);
-      console.log('ctx.queryctx.queryctx.queryctx.query', paginationIndex);
       const keyword = [];
       let articleList = [];
       // 获取文档标签
@@ -14,8 +12,9 @@ module.exports = app => {
         // 获取插件列表
         if (lbId === null && paginationIndex === null) {
           articleList = await ctx.service.article.getArtilceListDoc(labelList.list[0].lb_id, 1, 12);
+          lbId = labelList.list[0].lb_id;
         } else {
-          articleList = await ctx.service.article.getArtilceListDoc(lbId, paginationIndex, 12);
+          articleList = await ctx.service.article.getArtilceListDoc(lbId, 1, 12);
         }
       }
       if (articleList !== null && articleList.temp !== undefined && articleList.temp.length > 0) {
@@ -32,8 +31,8 @@ module.exports = app => {
         keywords,
         description,
       };
-      const dataRes = { labelList, articleList, seo };
-      console.log('dataRes', dataRes);
+      const dataRes = { labelList, articleList, seo, lbId };
+      console.log('dataRes1', dataRes);
       await this.ctx.render('document/document.js', { dataRes });
     }
     async list(ctx) {

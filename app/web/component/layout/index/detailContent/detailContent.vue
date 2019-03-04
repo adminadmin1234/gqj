@@ -22,7 +22,7 @@
                         <span>阅读：{{dataRes.articleDetail.list[0].atc_read}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                         <span>发布：{{dataRes.articleDetail.list[0].atc_publish_time | formatData}}</span>
                     </div>
-                    <div class="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
+                    <div class="article-left-content" id="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
                     <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" :href="dataRes.articleDetail.list[0].atc_fileUrl"><span @click="onDownload" class="article-btn">下载</span></a> 
                     <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" target="blank" :href="hrefFileUrl"><span @click="onPreview" class="article-btn">预览</span></a>
                 </div>
@@ -47,15 +47,11 @@
 <style scoped lang="scss">
     @import '../../../../asset/css/mixin.scss';
     @import "./detailContent.scss";
-    @import "~element-ui/lib/theme-chalk/breadcrumb-item.css";
-    @import "~element-ui/lib/theme-chalk/breadcrumb.css";
 </style>
 <script type="babel">
 import request from 'framework/network/request';
 import Vue from 'vue';
 import format from 'date-fns/format'
-// import { Breadcrumb } from 'element-ui'
-// Vue.component(Breadcrumb.name, Breadcrumb);
 export default {
 data(){
   return {
@@ -74,7 +70,7 @@ data(){
 props:['dataRes'],
 filters: {
     formatData(data){
-    return format(parseInt(data),'YYYY-MM-DD');//moment(parseInt(data)).format('YYYY-MM-DD');
+    return format(parseInt(data),'YYYY-MM-DD');
     },
     addHref(data){
     return '/document?id=' + data;

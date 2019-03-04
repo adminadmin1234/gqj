@@ -110,12 +110,11 @@ hr.large {
   border-width: 4px;
   border-color: white;
 }
-@media screen and (max-width: 500px) {
-  pre code {
-    display: block;
-    width: 500px;
+pre{
+    background: #f0eff0;
+    padding: 10px;
+    display: block;overflow: auto;
   }
-}
 .post-container a {
   color: #2B4180;
 }
