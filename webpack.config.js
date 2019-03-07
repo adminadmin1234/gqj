@@ -1,7 +1,6 @@
 'use strict';
 const webpack = require('webpack');
 const path = require('path');
-console.log('__dirname', __dirname);
 // 过滤自己本地的文件
 // Document：https://www.yuque.com/easy-team/easywebpack 和 https://www.yuque.com/easy-team/egg-vue 
 module.exports = {

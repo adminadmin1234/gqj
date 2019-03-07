@@ -22,9 +22,10 @@
                         <span>阅读：{{dataRes.articleDetail.list[0].atc_read}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                         <span>发布：{{dataRes.articleDetail.list[0].atc_publish_time | formatData}}</span>
                     </div>
-                    <div class="article-left-content" id="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
                     <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" :href="dataRes.articleDetail.list[0].atc_fileUrl"><span @click="onDownload" class="article-btn">下载</span></a> 
                     <a class="el-button-a" v-if="dataRes.articleDetail.list[0].atc_fileUrl != null" target="blank" :href="hrefFileUrl"><span @click="onPreview" class="article-btn">预览</span></a>
+                    <div class="article-left-content" id="article-left-content" v-html='dataRes.articleDetail.list[0].atc_content'></div>
+                    
                 </div>
                 <div class="article-right-wrap">
                     <div class="kuang-wrap">
@@ -107,14 +108,6 @@ methods: {
       }
 },
 mounted() {
-    // 百度统计代码
-    var _hmt = _hmt || [];
-    (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?f1114bf2679a9e797610cd8a52541da1";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-    })();
     // 自动爬虫（百度）
     (function(){
         var bp = document.createElement('script');

@@ -38,6 +38,15 @@ export default function createLayout(name, components, tpl) {
                       <meta name="apple-mobile-web-app-title" content="Weather PWA">
                       <link rel="apple-touch-icon" href="/logo.png">
                       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+                      <script>
+                        var _hmt = _hmt || [];
+                        (function() {
+                          var hm = document.createElement('script');
+                          hm.src = 'https://hm.baidu.com/hm.js?34e7e3da8b7c8ba1430d3d1aa3156363';
+                          var s = document.getElementsByTagName('script')[0]; 
+                          s.parentNode.insertBefore(hm, s);
+                        })();
+                      </script>
                     </head>
                     <body :class="baseClass">
                       ${tpl}

@@ -106,6 +106,7 @@
         padding: 0 REM(10);
         padding-bottom: REM(15);
         font-size: REM(22);
+        clear: both;
     }
     .article-btn{
         float:right;
@@ -251,13 +252,14 @@
         padding: 0 REM(10);
         padding-bottom: REM(15);
         font-size: 15px;
+        clear: both;
     }
     .article-btn{
         float:right;
         margin-left: REM(15);
         width: REM(200);
         height: REM(100);
-        margin-top: REM(80);
+        margin-top: REM(10);
         line-height: REM(100);
         font-size: 12px;
         text-align: center;

@@ -34,15 +34,6 @@ data(){
   }
 },
 mounted() {
-     // 百度统计代码
-      var _hmt = _hmt || [];
-      (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?f1114bf2679a9e797610cd8a52541da1";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-      })();
-
       // 自动爬虫（百度）
       (function(){
           var bp = document.createElement('script');
