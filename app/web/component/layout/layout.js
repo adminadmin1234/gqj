@@ -42,7 +42,7 @@ export default function createLayout(name, components, tpl) {
                         var _hmt = _hmt || [];
                         (function() {
                           var hm = document.createElement('script');
-                          hm.src = 'https://hm.baidu.com/hm.js?34e7e3da8b7c8ba1430d3d1aa3156363';
+                          hm.src = 'https://hm.baidu.com/hm.js?d997646fe48d2c0cb237b3fbc1676b99';
                           var s = document.getElementsByTagName('script')[0]; 
                           s.parentNode.insertBefore(hm, s);
                         })();
