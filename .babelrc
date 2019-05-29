@@ -3,7 +3,7 @@
   "plugins": [
     "transform-object-rest-spread",
     "syntax-dynamic-import",
-    "transform-object-assign"
+    "transform-object-assign",
   ],
-  "comments": false
+  "comments": false,
 }

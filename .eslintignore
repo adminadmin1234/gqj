@@ -5,7 +5,6 @@ test/client
 coverage/
 private/
 run/
-
 public/
 node_modules/
 app/mocks

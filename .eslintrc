@@ -43,4 +43,5 @@
     "vue"
   ],
   "parser": "babel-eslint"
+  
 }

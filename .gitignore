@@ -22,4 +22,5 @@ app/view/*
 !app/view/layout.html
 !app/view/README.md
 !app/view/.gitkeep
+
 package-lock.json
