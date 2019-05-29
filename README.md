@@ -1,38 +1,34 @@
 ## 1. 背景
 该项目为一个学习型的案例，适合初中级前端工程师；项目已经部署在阿里云上，已经比较完整了，本地下载代码和安装好对应的环境，运行即可以获得线上的效果。
+#### 1.1 技术栈
+mysql、nodejs、eggjs、vue、vuex、webpack
 ## 2.效果
 [网站首页gqj.cn](http://gqj.cn)
-###首页效果
+#### 首页效果
 ![](/gitImages/index.png)
 ![](/gitImages/index1.png)
 ![](/gitImages/index2.png)
-###后台
+#### 后台
 ![](/gitImages/admin.png)
 ![](/gitImages/admin1.png)
 ## 3. 使用
+#### 3.1 环境要求(版本号没有强制要求)
+- nodejs(v8.15.0)
+- mysql(5.6)
 
-#### 1.1 安装cli(非必需)
-
-```bash
-npm install easywebpack-cli -g
-```
-
-^3.5.0 开始， `easywebpack-cli` 已内置 `devDependencies` 中, 无需安装。如果你需要在命令行使用 `easy` 命令, 可以单独全局安装。
-
-#### 1.2 安装依赖
+#### 3.2 安装依赖
 
 ```bash
 npm install
 ```
 
-
-#### 1.3 本地开发启动应用
+#### 3.3 本地开发启动应用
 
 ```bash
-sudo npm run dev
+sudo npm run dev // sudo只是mac下的权限命令，其他系统并不需要
 ```
 
-#### 1.4 发布模式启动应用
+#### 3.4 发布模式启动应用
 
 - 首先在本地或者ci构建好jsbundle文件
 
