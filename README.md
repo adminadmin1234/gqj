@@ -71,7 +71,7 @@ sudo npm start
 - [vue](https://cn.vuejs.org/)
 - [vuex](https://vuex.vuejs.org/)
 - [easywebpack](https://www.yuque.com/easy-team/easywebpack)
-- [https://www.webpackjs.com/](https://www.webpackjs.com/)
+- [webpack](https://www.webpackjs.com/)
 
 ## 5. 声明
 - 项目用于学习，不适合商业活动
