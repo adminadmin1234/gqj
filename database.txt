@@ -1,0 +1,98 @@
+drop database blog;
+use blog;
+#创建表
+create table user(
+   user_id INT NOT NULL AUTO_INCREMENT,
+   user_name VARCHAR(100),
+   PRIMARY KEY ( user_id )
+);
+#查看表结构
+desc user;
+#向表中插入数据
+INSERT INTO user(user_id, user_name)
+VALUES(1, '姚明'), (2, '比尔.盖茨'), (3, '火星人');
+#查看表数据
+select * from user;
+
+# 删除表
+DROP TABLE table_name;
+
+#向表中插入数据
+INSERT INTO label(lb_id, lb_name)
+VALUES(1, '微信小程序'), (7, '3d特效'), (6, 'canvas'), (9, '日期钟表'), (5, '焦点图'), (10, 'h5游戏');
+——————————————————————————————————————————————————————————————————————————————
+#创建数据库
+create database blog;
+#选择数据库
+use blog;
+#创建标签表
+create table label(
+    lb_id INT NOT NULL AUTO_INCREMENT,
+    lb_name VARCHAR(100) unique,
+    lb_type tinyint default 1, #类型
+    lb_weight tinyint default 1, #权重
+    PRIMARY KEY ( lb_id )
+);
+#创建文章表
+create table article(
+   atc_id INT NOT NULL AUTO_INCREMENT,
+   atc_title VARCHAR(256),
+   atc_fileUrl VARCHAR(256),
+   atc_type tinyint default 1,
+   atc_weight tinyint default 0,
+   atc_read int,
+   atc_preview int,
+   atc_download int,
+   atc_like int,
+   atc_enabled tinyint,
+   atc_content text,
+   atc_publish_time VARCHAR(256),
+   PRIMARY KEY ( atc_id )
+);
+#创建文章标签关联表
+create table atcAndLb(
+   al_id INT NOT NULL AUTO_INCREMENT,
+   al_atc_id int,
+   al_lb_id int,
+   PRIMARY KEY ( al_id )
+);
+#创建中文文档表
+create table document(
+   doc_id INT NOT NULL AUTO_INCREMENT,
+   doc_logo VARCHAR(256),
+   doc_title VARCHAR(256),
+   doc_desc VARCHAR(256),
+   doc_address VARCHAR(256),
+   doc_github VARCHAR(256),
+   doc_label VARCHAR(256),
+   doc_publish_time VARCHAR(256),
+   doc_weight tinyint default 1,
+   PRIMARY KEY ( doc_id )
+);
+#创建中文文档标签关联表
+create table docAndLb(
+   dl_id INT NOT NULL AUTO_INCREMENT,
+   dl_doc_id int,
+   dl_lb_id int,
+   PRIMARY KEY ( dl_id )
+);
+#创建在线工具表
+create table tool(
+   tl_id INT NOT NULL AUTO_INCREMENT,
+   tl_logo VARCHAR(256),
+   tl_title VARCHAR(256),
+   tl_desc VARCHAR(256),
+   tl_address VARCHAR(256),
+   tl_label VARCHAR(256),
+   tl_publish_time VARCHAR(256),
+   tl_weight tinyint default 1,
+   PRIMARY KEY ( tl_id )
+);
+
+#创建在线工具标签关联表
+create table tlAndLb(
+   tll_id INT NOT NULL AUTO_INCREMENT,
+   tll_tl_id int,
+   tll_lb_id int,
+   PRIMARY KEY ( tll_id )
+);
