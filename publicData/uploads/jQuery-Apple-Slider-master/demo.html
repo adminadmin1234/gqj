@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>demo</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/jquery-apple-slider.css">
+</head>
+<body>
+<div class="slide_wrapper">
+	<div class="gallery_slide_wrapper">
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>iPhone 7</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>
+		</a>
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>Mac Book</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>	
+		</a>
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>Watch</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>
+		</a>
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>Mac Book2</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>
+		</a>
+	</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/jquery-apple-slider.min.js" charset="UTF-8"></script>
+<script>
+$(function(){
+	var win_w = $(window).width(),
+		wrapper_h = $('.slide_wrapper').height();
+	$(window).resize(function(){
+		win_w = $(window).width();
+		$('.slide_wrapper').height(wrapper_h);
+	})
+	$(window).load(function () {
+		$(".slide_wrapper").AppleSlider({
+			imgItem:'.gallery_item',
+			imgNum:4,
+			autoPlay:true
+		});	
+	})
+})
+</script>
+</body>
+</html>

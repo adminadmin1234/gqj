@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(100.000000, 100.000000)">
+            <polygon id="Shape" fill="#E44D26" points="0 0 307.923542 0 189.772913 400 69.7271688 400 157.686653 102.4 0 102.4"></polygon>
+            <polygon id="Shape" fill="#332C2B" points="176.049665 158.577778 400 158.577778 396.144421 201.244444 224.407777 201.244444 227.740565 245.155556 392.158144 245.155556 380.591407 373.511111 286.946577 400 192.386865 370.42963 187.681751 309.333333 232.707074 309.333333 235.255677 342.162963 285.966345 358.222222 337.591897 343.407407 342.819801 285.925926 185.851985 285.925926"></polygon>
+        </g>
+    </g>
+</svg>

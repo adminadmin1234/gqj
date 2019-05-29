@@ -1,0 +1,40 @@
+@import "compass/css3";
+
+/**************************************************/ 
+/* INSTRUCTIONS: DRAG OVER THE IMAGE TO TWIST IT */
+/**************************************************/
+
+/*based original css on simple cube @  http://dabblet.com/gist/4576285 then just experiemented */
+body { perspective: 50em;background-color:#333333;}
+.cube {
+position: relative;
+margin: 0em auto 0;
+padding: 0px;
+width: 20em; height: 3.0em;
+list-style: none;
+transform-style: preserve-3d;
+/*animation: ani 8s infinite linear;*/
+}
+.face {
+	box-sizing: border-box;
+position: absolute;
+top: 180px; left: 50%;
+/*border: 1px solid #f0f0f0;*/
+margin: -8em;
+padding: 1.6em;
+width: 20em; height:2em;
+opacity: .85;
+background: lightblue;
+ /*Creative Commons image from http://www.flickr.com/photos/37825670@N07/3562600154/sizes/z/in/photostream/ */
+background:url(http://i.imgur.com/k6dbiLv.jpg) -115px -900px;
+background-repeat: no-repeat;
+backface-visibility: hidden;
+}
+.face:nth-child(1) { transform: translateZ(10em); }
+.face:nth-child(2) { transform: rotateY(180deg) translateZ(10em); }
+.face:nth-child(3) { transform: rotateY(90deg) translateZ(10em); }
+.face:nth-child(4) { transform: rotateY(-90deg) translateZ(10em); }
+
+a{
+ color:#ccc; 
+}

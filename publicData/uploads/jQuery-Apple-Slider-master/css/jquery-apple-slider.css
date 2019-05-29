@@ -1,0 +1,45 @@
+@charset 'utf-8';
+a.block:after,a.block:before{content:' ';display:table}
+/*轮播图样式*/
+.slide_wrapper{position:relative;width:100%;height:calc(100vh - 200px);overflow:hidden}
+.gallery_slide_wrapper{position:relative;width:100%;height:100%;transition:all .7s ease-in-out}
+.gallery_item{display:block;position:absolute;left:0;top:0;z-index:1;overflow:hidden;width:100%;height:100%;color:#333;will-change:transform;transition:all .7s ease-in-out;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}
+.gallery_item[data-idx="0"]{background-color:#000}
+.gallery_item[data-idx="2"],.gallery_item[data-idx="4"],.gallery_item[data-idx="6"],.gallery_item[data-idx="8"]{background-color:#F3F3F3}
+.gallery_item[data-idx="0"] .gallery_image{background-image:url(../images/iphone_xlarge.jpg)}
+.gallery_item[data-idx="1"] .gallery_image{background-image:url(../images/macbookpro_xlarge.jpg)}
+.gallery_item[data-idx="2"] .gallery_image{background-image:url(../images/watch_large.jpg);background-position:center center}
+.gallery_item[data-idx="3"] .gallery_image{background-image:url(../images/macbookpro_xlarge.jpg)}
+.gallery_item[data-idx="4"] .gallery_image{background-image:url(../images/watch_alt_large.jpg)}
+.gallery_item[data-idx="5"] .gallery_image{background-image:url(../images/macbookpro_xlarge.jpg)}
+.gallery_item[data-idx="6"] .gallery_image{background-image:url(../images/watch_large.jpg)}
+.gallery_item[data-idx="7"] .gallery_image{background-image:url(../images/macbookpro_xlarge.jpg)}
+.gallery_item[data-idx="8"] .gallery_image{background-image:url(../images/watch_alt_large.jpg)}
+.gallery_item.zIndex{z-index:0}
+.gallery_item.zIndexTop{z-index:3}
+.gallery_item .gallery_image{position:absolute;z-index:1;width:100%;height:110%;background-repeat:no-repeat;background-size:contain;background-position:bottom center}
+.gallery_item_content{position:absolute;z-index:1000;top:0;height:100%;width:100%;text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.gallery_item_lockup_wrapper{position:absolute;top:14%;width:100%;text-align:center;z-index:2}
+.gallery_item_lockup_wrapper span{font-size:30px;color:#000}
+.gallery_item[data-idx="0"] .gallery_item_lockup_wrapper span{color:#fff}
+.nav_btn{opacity:0;top:0;position:absolute;cursor:pointer;width:20%;height:100%;z-index:3}
+.nav_btn:hover{opacity:.5}
+.nav_btn.left{left:0;}
+.nav_btn.left .btn_left{position: absolute;top:50%;left:50px;width: 60px;height: 100px;margin-left: -30px;margin-top: -50px;background: url(../images/btn_left.png) no-repeat center;}
+.nav_btn.right{right:0;}
+.nav_btn.right .btn_right{position: absolute;top:50%;right:50px;width: 60px;height: 100px;margin-left: -30px;margin-top: -50px;background: url(../images/btn_right.png) no-repeat center;}
+.nav{position:absolute;bottom:25px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);list-style-type:none;z-index:10}
+.nav_slide{position:relative;display:inline-block;width:50px;height:2px;background:#fff;background:rgba(128,128,128,.2);margin-left:10px;cursor:pointer}
+.nav_slide:before{content:'';position:absolute;left:0;top:0;width:0;height:2px;background:0 0;-webkit-transition:all .5s ease-in-out;-moz-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.nav_slide.active:before{width:100%}
+.nav_slide:after{content:'';position:absolute;left:0;top:-9px;width:100%;height:20px}
+.nav_slide:first-child{margin-left:0}
+.nav_slide .slide_btn{width:100%;height:2px;background-color:transparent}
+.nav_slide.active .slide_btn{background:gray}
+.nav_slide.autoplay .slide_btn{background:gray;-webkit-animation:scaleX 5s linear;-webkit-animation-fill-mode:forwards;transform-origin:0;-moz-animation:scaleX 5s linear;-moz-animation-fill-mode:forwards;transform-origin:0}
+@-webkit-keyframes scaleX{0%{-webkit-transform:scaleX(0)}
+100%{-webkit-transform:scaleX(1)}
+}
+@-moz-keyframes scaleX{0%{-moz-transform:scaleX(0)}
+100%{-moz-transform:scaleX(1)}
+}

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery焦点图3D翻转轮播切换特效</title>
+
+<link rel='stylesheet'  href='css/style.css' type='text/css' />
+
+<script type='text/javascript' src='js/jquery.min.js'></script>
+
+</head>
+<body><script src="/demos/googlegg.js"></script>
+
+<div style="height:100px;"></div>
+
+<div class="warper">
+	<div id="wowslider-container1">
+	  <div class="ws_images">
+		<ul>
+		  <li><a target="_blank" href="#"><img title="高级职位都在这里" src="images/bimg1.jpg" /></a></li>
+		  <li><a target="_blank" href="#"><img title="互联网设计布道者冯铁看诊把脉" src="images/bimg2.jpg" /></a></li>
+		  <li><a target="_blank" href="#"><img title="颜值不高别装“表”" src="images/bimg3.jpg" /></a></li>
+		  <li><a target="_blank" href="#"><img title="高级职位都在这里" src="images/bimg1.jpg" /></a></li>
+		  <li><a target="_blank" href="#"><img title="互联网设计布道者冯铁看诊把脉" src="images/bimg2.jpg" /></a></li>
+		  <li><a target="_blank" href="#"><img title="颜值不高别装“表”" src="images/bimg3.jpg" /></a></li>
+		</ul>
+	  </div>
+	  <div class="ws_thumbs">
+		<div>
+		<a target="_blank" href="#"><img src="images/simg1.jpg" /></a>
+		<a target="_blank" href="#"><img src="images/simg2.jpg" /></a>
+		<a target="_blank" href="#"><img src="images/simg3.jpg" /></a>
+		<a target="_blank" href="#"><img src="images/simg1.jpg" /></a>
+		<a target="_blank" href="#"><img src="images/simg2.jpg" /></a>
+		<a target="_blank" href="#"><img src="images/simg3.jpg" /></a>
+		</div>
+	  </div>
+	  <div class="ws_shadow"></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript">
+jQuery("#wowslider-container1").wowSlider({effect:"cube",prev:"",next:"",duration:20*100,delay:20*100,width:716,height:297,autoPlay:true,playPause:true,stopOnHover:false,loop:false,bullets:0,caption:true,captionEffect:"slide",controls:true,onBeforeStep:0,images:0});
+</script>
+
+</div>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+</div>
+</body>
+</html>

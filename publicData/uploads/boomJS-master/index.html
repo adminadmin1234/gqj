@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="./css/Boom.css" />
+	<title>BoomJS演示Demo-凌晨两点半</title>
+</head>
+<style>
+*{
+	cursor: url(./cd_glowsword.cur),auto !important;
+}
+*:active{
+	cursor: url(./cd_glaive.cur),auto !important;
+}
+
+.wrap{
+	position:absolute;
+	top:100px;
+	left: 100px;
+}
+
+.pic1{
+	width:300px;
+}
+
+.pic2{
+	width:116px;
+}
+.btn-click{
+	width:100px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	cursor:pointer;
+	border:1px solid #b6b6b6;
+	border-radius:5px;
+	color:#666;
+	box-shadow:0 0 2px #e6e6e6;
+	margin-bottom:5px;
+}
+</style>
+
+<body>
+<div class="wrap">
+	<img class='pic1' src="./images/images2.jpg">
+	<img class='pic2' src="./images/images.jpg">
+</div>
+
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/Boom.js"></script>
+<div class="btn-click">点我BOOM</div>
+<script>
+	$('.btn-click').on('click', function(event) {
+		boom($('img'));
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5/CSS3 3D立方体拼图DEMO演示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class="body-wrapper">
+
+  <div class="cubetwo-help-component">
+    <div class="cubetwo-row">
+      <div class="cubetwo-device-info">
+        <i class="material-icons">touch_app</i>
+        <div>tap or swipe with fingers</div>
+      </div>
+
+      <div class="cubetwo-device-info">
+        <i class="material-icons">mouse</i>
+        <div>click or swipe with mouse</div>
+      </div>
+
+      <div class="cubetwo-device-info cubetwo-device-info--keyboard">
+        <i class="material-icons">keyboard</i>
+        <div>keyboard keys</div>
+        <div class="cubetwo-device-info-groups">
+          <div class="cubetwo-device-info-group">
+            <div>
+              <i class="material-icons">keyboard_tab</i>
+              <i class="material-icons">keyboard_arrow_up</i>
+            </div>
+            <div>
+              <i class="material-icons">keyboard_arrow_left</i>
+              <i class="material-icons">keyboard_arrow_down</i>
+              <i class="material-icons">keyboard_arrow_right</i>
+            </div>
+          </div>
+
+          <div class="cubetwo-device-info-group">
+            <div>
+              <span>q</span>
+              <span>w</span>
+              <span>e</span>
+            </div>
+            <div>
+              <span>a</span>
+              <span>s</span>
+              <span>d</span>
+            </div>
+            <div>
+              <span>x</span>
+              <span>y</span>
+              <span>z</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <a href="https://github.com/kunukn/cube-two" target="_blank" class="cubetwo-github-link">github project</a>
+  </div>
+
+  <div class="cubetwo-menu-component">
+    <div class="cubetwo-row">
+      <button class="cubetwo-js cubetwo-btn cubetwo-btn-scramble">scramble</button>
+      <button class="cubetwo-js cubetwo-btn cubetwo-btn-spin">spin</button>
+      <button class="cubetwo-js cubetwo-btn cubetwo-btn-solve">solve</button>
+    </div>
+  </div>
+
+
+  <div class="cubetwo-component" id="cubetwo-component-1">
+
+    <div class="cubetwo-rotation-view">
+
+      <div class="cubetwo-cube-group cubetwo-cube-group--1">
+
+        <div class="cubetwo-cube-1" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="1">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="front">touch front</div>
+            <div data-type="up">touch up</div>
+            <div data-type="left">touch left</div>
+          </div>
+        </div>
+
+        <div class="cubetwo-cube-2" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="2">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="front">touch front</div>
+            <div data-type="up">touch up</div>
+            <div data-type="right">touch right</div>
+          </div>
+        </div>
+
+        <div class="cubetwo-cube-3" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="3">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="front">touch front</div>
+            <div data-type="left">touch left</div>
+            <div data-type="down">touch down</div>
+          </div>
+        </div>
+
+        <div class="cubetwo-cube-4" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="4">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="front">touch front</div>
+            <div data-type="right">touch right</div>
+            <div data-type="down">touch down</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cubetwo-cube-group cubetwo-cube-group--2">
+
+        <div class="cubetwo-cube-5" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="5">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="up">touch up</div>
+            <div data-type="left">touch left</div>
+            <div data-type="back">touch back</div>
+          </div>
+        </div>
+
+
+        <div class="cubetwo-cube-6" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="6">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="up">touch up</div>
+            <div data-type="right">touch right</div>
+            <div data-type="back">touch back</div>
+          </div>
+        </div>
+
+
+        <div class="cubetwo-cube-7" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="7">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="left">touch left</div>
+            <div data-type="back">touch back</div>
+            <div data-type="down">touch down</div>
+          </div>
+        </div>
+
+
+        <div class="cubetwo-cube-8" tabindex="0" data-type="cubetwo">
+
+          <div class="cubetwo-cube" data-type="cubetwo-display" data-index="8">
+            <div data-type="front">
+              <div>front</div>
+            </div>
+            <div data-type="up">
+              <div>up</div>
+            </div>
+            <div data-type="right">
+              <div>right</div>
+            </div>
+            <div data-type="back">
+              <div>back</div>
+            </div>
+            <div data-type="down">
+              <div>down</div>
+            </div>
+            <div data-type="left">
+              <div>left</div>
+            </div>
+          </div>
+          <div class="cubetwo-cube" data-type="cubetwo-touch">
+            <div data-type="right">touch right</div>
+            <div data-type="back">touch back</div>
+            <div data-type="down">touch down</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cubetwo-button-grid cubetwo-row-top">
+      <button class="cubetwo-js cubetwo-btn-top-left cubetwo-btn-adjust"><i class="material-icons" aria-hidden="true">adjust</i></button>
+      <button class="cubetwo-js cubetwo-btn-top-center" aria-label="rotate up"><i class="material-icons" aria-hidden="true">&#xE5D8;</i></button>
+      <button class="cubetwo-js cubetwo-btn-top-right cubetwo-btn-adjust"><i class="material-icons" aria-hidden="true">adjust</i></button>
+    </div>
+    <div class="cubetwo-button-grid cubetwo-column-left">
+      <div></div>
+      <div>
+        <button class="cubetwo-js cubetwo-btn-rotate-left-2x" aria-label="rotate left 2"><i class="material-icons" aria-hidden="true">rotate_left</i></button>
+        <button class="cubetwo-js cubetwo-btn-rotate-left" aria-label="rotate left"><i class="material-icons" aria-hidden="true">&#xE5C4;</i></button>
+        <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-help"><i class="material-icons">help_outline</i></button>
+      </div>
+      <div></div>
+    </div>
+    <div class="cubetwo-button-grid cubetwo-column-right">
+      <div></div>
+      <div>
+        <button class="cubetwo-js cubetwo-btn-rotate-right-2x" aria-label="rotate right 2"><i class="material-icons" aria-hidden="true">rotate_right</i></button>
+        <button class="cubetwo-js cubetwo-btn-rotate-right" aria-label="rotate right"><i class="material-icons" aria-hidden="true">arrow_forward</i></button>
+        <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-menu" aria-label="menu"><i class="material-icons" aria-hidden="true">menu</i></button>
+      </div>
+      <div></div>
+    </div>
+
+
+    <div class="cubetwo-button-grid cubetwo-row-bottom">
+      <button class="cubetwo-js cubetwo-btn-bottom-left cubetwo-btn-adjust"><i class="material-icons" aria-hidden="true">adjust</i></button>
+      <button class="cubetwo-js cubetwo-btn-bottom-center" aria-label="rotate down"><i class="material-icons" aria-hidden="true">&#xE5DB;</i></button>
+      <button class="cubetwo-js cubetwo-btn-bottom-right cubetwo-btn-adjust"><i class="material-icons" aria-hidden="true">adjust</i></button>
+    </div>
+
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
+<script src='https://codepen.io/kunukn/pen/81d2a0d609b2dd7ade6aeb5d5be42e24.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>

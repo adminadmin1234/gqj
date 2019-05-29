@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>苹果官网轮播图</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/jquery-apple-slider.css">
+</head>
+<body>
+<h1 class="title">仿苹果官网轮播插件</h1>
+<h1>
+	该插件为无限轮播插件，轮播方式为横向滚动（仅支持此方式）<br><br>
+	作者：弦云孤赫(David Yang)<br><br>
+	温馨提示：作者开源不易，希望使用本插件时，能署名作者，感谢支持。<br><br>
+	注意：由于本插件使用了大量CSS3属性，对于低版本浏览器（如ie9以下版本等不支持CSS3属性的浏览器）不兼容。
+</h1>
+<div class="slide_wrapper">
+	<div class="gallery_slide_wrapper">
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>iPhone 7</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>
+		</a>
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>Mac Book</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>	
+		</a>
+		<a class="gallery_item" href="javascript:;">
+			<div class="gallery_item_content">
+				<div class="gallery_item_lockup_wrapper">
+					<span>Watch</span>
+				</div>
+			</div>
+			<div class="gallery_image"></div>
+		</a>
+	</div>
+</div>
+<div class="code">
+	<pre>
+调用轮播插件：
+Javascript：
+$(".slide_wrapper").AppleSlider({
+	imgItem:'.gallery_item',  //轮播图容器Class
+	imgNum:3,  //轮播图数量
+	autoPlay:true  //是否为自动轮播
+});
+Html：
+&lt;div class="slide_wrapper"&gt;
+	&lt;div class="gallery_slide_wrapper"&gt;
+		&lt;a class="gallery_item" href="javascript:;"&gt;
+			&lt;div class="gallery_item_content"&gt;
+				&lt;div class="gallery_item_lockup_wrapper"&gt;
+					&lt;span&gt;iPhone 7&lt;/span&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="gallery_image"&gt;&lt;/div&gt;
+		&lt;/a&gt;
+		...
+	&lt;/div&gt;
+&lt;/div&gt;	
+	</pre>
+</div>
+<div class="example">
+	<h2> options参数</h2>
+	<div class="code">
+		<p>常用参数调用示例</p><br>
+		<pre>
+$("#id").AppleSlider({
+	imgItem:'.garllery_item',
+	autoPlay : true, 
+	imgNum : 3, 
+	autoTime : 5000 
+})
+		</pre>	
+	</div>
+	<table class="options_table">
+		<thead>
+	    <tr>
+        <th style="width:150px">参数</th>
+        <th style="width:100px">默认值</th>
+        <th>说明</th>
+	    </tr>
+    </thead>
+	  <tbody>
+			<tr>
+        <td>imgItem</td>
+        <td>'gallery_item'</td>
+        <td>轮播内容列表的class</td>
+      </tr>
+			<tr>
+        <td>autoPlay</td>
+        <td>true</td>
+        <td>是否为自动轮播</td>
+      </tr>
+			<tr>
+        <td>imgNum</td>
+        <td>3</td>
+        <td>轮播图数量，默认值为3，没有最大值限制</td>
+      </tr>
+			<tr>
+        <td>autoTime</td>
+        <td>5000</td>
+        <td>自动轮播时间间隔</td>
+      </tr>
+	  </tbody>
+	</table>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/jquery-apple-slider.min.js" charset="UTF-8"></script>
+<script>
+$(function(){
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {	// 移动端设备，跳转至移动端展示页面
+		window.location.href = "mobile.html";
+	}
+	var win_w = $(window).width(),
+			wrapper_h = $('.slide_wrapper').height();
+	$(window).resize(function(){
+		win_w = $(window).width();
+		$('.slide_wrapper').height(wrapper_h);
+	})
+	//调用轮播插件,传入轮播图数量：3
+	$(".slide_wrapper").AppleSlider({
+		imgItem:'.gallery_item',
+		imgNum:3,
+		autoPlay:true
+	});
+})
+</script>
+</body>
+</html>

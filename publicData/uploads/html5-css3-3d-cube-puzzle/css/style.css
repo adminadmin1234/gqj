@@ -1,0 +1,624 @@
+*,
+:after,
+:before {
+  box-sizing: border-box
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer
+}
+
+button {
+  margin: 0;
+  padding: 4px;
+  background: #111;
+  border: 1px solid #add8e6;
+  border: 0;
+  color: #add8e6;
+  box-shadow: 2px 2px 4px gray;
+  outline: none;
+  -webkit-transition: background .2s;
+  transition: background .2s;
+  border-radius: 0;
+  font-size: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 50%
+}
+
+button:focus {
+  box-shadow: 2px 2px 1rem #add8e6
+}
+
+button.cubetwo-active {
+  background: hsla(0, 0%, 100%, .2)
+}
+
+button.cubetwo-btn-adjust {
+  opacity: .2
+}
+
+.cubetwo-help-component,
+.cubetwo-menu-component {
+  z-index: 2;
+  -webkit-transition: -webkit-transform .2s;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translateY(-50vh);
+          transform: translateY(-50vh);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 25vh;
+  border-bottom: 1px solid hsla(0, 0%, 100%, .2);
+  padding: .5em 0 4em;
+  color: #fff;
+  background: hsla(0, 0%, 7%, .96);
+  font-size: .8rem
+}
+
+.cubetwo-help-component.cubetwo-show-dialog,
+.cubetwo-menu-component.cubetwo-show-dialog {
+  -webkit-transform: translateY(0);
+          transform: translateY(0)
+}
+
+@media (min-width:600px) {
+  .cubetwo-help-component,
+  .cubetwo-menu-component {
+    font-size: 1.2rem
+  }
+}
+
+.cubetwo-help-component>.cubetwo-github-link,
+.cubetwo-menu-component>.cubetwo-github-link {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  -webkit-transition: .2s;
+  transition: .2s;
+  color: hsla(0, 0%, 100%, .5)
+}
+
+.cubetwo-help-component>.cubetwo-github-link:focus,
+.cubetwo-menu-component>.cubetwo-github-link:focus {
+  color: #add8e6
+}
+
+.cubetwo-help-component .cubetwo-row,
+.cubetwo-menu-component .cubetwo-row {
+  padding: .1em 0;
+  margin: 0 auto;
+  max-width: 40rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-size: .8em
+}
+
+.cubetwo-help-component .cubetwo-device-info,
+.cubetwo-menu-component .cubetwo-device-info {
+  text-align: center
+}
+
+.cubetwo-help-component .cubetwo-device-info--keyboard .cubetwo-device-info-groups,
+.cubetwo-menu-component .cubetwo-device-info--keyboard .cubetwo-device-info-groups {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex
+}
+
+.cubetwo-help-component .cubetwo-device-info--keyboard .cubetwo-device-info-group,
+.cubetwo-menu-component .cubetwo-device-info--keyboard .cubetwo-device-info-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column
+}
+
+.cubetwo-help-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div,
+.cubetwo-menu-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row
+}
+
+.cubetwo-help-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div i,
+.cubetwo-help-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div span,
+.cubetwo-menu-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div i,
+.cubetwo-menu-component .cubetwo-device-info--keyboard .cubetwo-device-info-group>div span {
+  font-size: inherit;
+  display: inline-block;
+  position: relative;
+  min-width: 1.4em
+}
+
+.cubetwo-menu-component .cubetwo-row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
+
+.cubetwo-menu-component .cubetwo-btn {
+  font-size: 1rem;
+  border-radius: 0;
+  border: 1px solid #add8e6;
+  margin: 0 1rem;
+  padding: .5rem;
+  border-radius: 2px
+}
+
+.cubetwo-component {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vmin;
+  height: 100vmin;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden
+}
+
+.cubetwo-component.cubetwo-border-on-display-cubes [data-type=cubetwo] [data-type=cubetwo-display]>div {
+  border: 1px solid #111
+}
+
+.cubetwo-component.cubetwo-backface-visibility-hidden-on-display-cubes [data-type=cubetwo] [data-type=cubetwo-display]>div {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden
+}
+
+.cubetwo-component.cubetwo-background-blend-mode-on-display-cubes [data-type=cubetwo] [data-type=cubetwo-display]>div>div {
+  background-blend-mode: multiply
+}
+
+.cubetwo-component>.cubetwo-button-grid {
+  padding: .5rem
+}
+
+.cubetwo-component>.cubetwo-button-grid button {
+  display: block
+}
+
+.cubetwo-component>.cubetwo-button-grid .cubetwo-button-space {
+  min-height: 32px;
+  margin-bottom: 1rem
+}
+
+.cubetwo-component>.cubetwo-column-left,
+.cubetwo-component>.cubetwo-column-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
+
+.cubetwo-component>.cubetwo-column-left button,
+.cubetwo-component>.cubetwo-column-right button {
+  margin-bottom: 1rem
+}
+
+@media (min-width:600px) {
+  .cubetwo-component>.cubetwo-column-left button,
+  .cubetwo-component>.cubetwo-column-right button {
+    margin-bottom: 2rem
+  }
+}
+
+.cubetwo-component>.cubetwo-column-right {
+  left: auto;
+  right: 0
+}
+
+.cubetwo-component>.cubetwo-row-bottom,
+.cubetwo-component>.cubetwo-row-top {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
+
+.cubetwo-component>.cubetwo-row-bottom {
+  top: auto;
+  bottom: 0
+}
+
+.cubetwo-rotation-view {
+  -webkit-transition: -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: transform .19s cubic-bezier(.4, 0, .2, 1), -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  width: 50vmin;
+  height: 50vmin;
+  max-width: 100%;
+  -webkit-perspective: 5000px;
+          perspective: 5000px;
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-20deg) rotateY(-30deg) rotate(0deg);
+          transform: rotateX(-20deg) rotateY(-30deg) rotate(0deg)
+}
+
+.cubetwo-rotation-view.spin {
+  -webkit-animation: spin-animation 16s linear infinite;
+          animation: spin-animation 16s linear infinite
+}
+
+.cubetwo-rotation-view .cubetwo-cube-group {
+  width: 50vmin;
+  height: 50vmin;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d
+}
+
+.cubetwo-cube-1,
+.cubetwo-cube-5 {
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+.cubetwo-cube-2,
+.cubetwo-cube-6 {
+  position: absolute;
+  top: 0;
+  right: 0
+}
+
+.cubetwo-cube-3,
+.cubetwo-cube-7 {
+  position: absolute;
+  bottom: 0;
+  left: 0
+}
+
+.cubetwo-cube-4,
+.cubetwo-cube-8 {
+  position: absolute;
+  bottom: 0;
+  right: 0
+}
+
+[data-type=cubetwo] {
+  width: 25vmin;
+  height: 25vmin;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  font-size: 1rem
+}
+
+[data-type=cubetwo]:focus {
+  outline: none
+}
+
+[data-type=cubetwo]:focus .cubetwo-cube[data-type=cubetwo-display]>div {
+  border-color: #add8e6
+}
+
+[data-type=cubetwo] .cubetwo-cube {
+  width: inherit;
+  height: inherit;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=front] {
+  -webkit-transform: translateZ(25vmin);
+          transform: translateZ(25vmin)
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=up] {
+  -webkit-transform: rotateX(-90deg) rotateY(180deg) rotate(180deg);
+          transform: rotateX(-90deg) rotateY(180deg) rotate(180deg);
+  -webkit-transform-origin: top center;
+          transform-origin: top center
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=right] {
+  -webkit-transform: rotateY(-270deg);
+          transform: rotateY(-270deg);
+  -webkit-transform-origin: top right;
+          transform-origin: top right
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=back] {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg)
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=down] {
+  -webkit-transform: rotateX(90deg) rotateY(180deg) rotate(180deg);
+          transform: rotateX(90deg) rotateY(180deg) rotate(180deg);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center
+}
+
+[data-type=cubetwo] .cubetwo-cube [data-type=left] {
+  -webkit-transform: rotateY(270deg);
+          transform: rotateY(270deg);
+  -webkit-transform-origin: center left;
+          transform-origin: center left
+}
+
+[data-type=cubetwo] .cubetwo-cube[data-type=cubetwo-display] {
+  -webkit-transition: -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: transform .19s cubic-bezier(.4, 0, .2, 1);
+  transition: transform .19s cubic-bezier(.4, 0, .2, 1), -webkit-transform .19s cubic-bezier(.4, 0, .2, 1);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  position: relative
+}
+
+[data-type=cubetwo] .cubetwo-cube[data-type=cubetwo-display]>div {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 0;
+  color: transparent
+}
+
+[data-type=cubetwo] .cubetwo-cube[data-type=cubetwo-display]>div>div {
+  color: #111;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: hsla(0, 0%, 100%, .9);
+  background-position: 50%;
+  background-size: contain;
+  background-repeat: no-repeat
+}
+
+[data-type=cubetwo] .cubetwo-cube[data-type=cubetwo-touch] {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
+[data-type=cubetwo] .cubetwo-cube[data-type=cubetwo-touch]>div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  color: #222;
+  color: transparent;
+  cursor: pointer;
+  background: transparent;
+  font-size: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=front],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=front],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=front],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=front] {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0)
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=up],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=up],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=up],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=up] {
+  -webkit-transform: translateZ(-25vmin) rotateX(-90deg) rotateY(180deg) rotate(180deg);
+          transform: translateZ(-25vmin) rotateX(-90deg) rotateY(180deg) rotate(180deg);
+  -webkit-transform-origin: top center;
+          transform-origin: top center
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=right],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=right],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=right],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=right] {
+  -webkit-transform: translateZ(-25vmin) rotateY(-270deg);
+          transform: translateZ(-25vmin) rotateY(-270deg);
+  -webkit-transform-origin: top right;
+          transform-origin: top right
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=back],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=back],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=back],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=back] {
+  -webkit-transform: translateZ(-25vmin) rotateY(180deg);
+          transform: translateZ(-25vmin) rotateY(180deg)
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=down],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=down],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=down],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=down] {
+  -webkit-transform: translateZ(-25vmin) rotateX(90deg) rotateY(180deg) rotate(180deg);
+          transform: translateZ(-25vmin) rotateX(90deg) rotateY(180deg) rotate(180deg);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center
+}
+
+[data-type=cubetwo].cubetwo-cube-5 .cubetwo-cube [data-type=left],
+[data-type=cubetwo].cubetwo-cube-6 .cubetwo-cube [data-type=left],
+[data-type=cubetwo].cubetwo-cube-7 .cubetwo-cube [data-type=left],
+[data-type=cubetwo].cubetwo-cube-8 .cubetwo-cube [data-type=left] {
+  -webkit-transform: translateZ(-25vmin) rotateY(270deg);
+          transform: translateZ(-25vmin) rotateY(270deg);
+  -webkit-transform-origin: center left;
+          transform-origin: center left
+}
+
+@-webkit-keyframes spin-animation {
+  0% {
+    -webkit-transform: rotateY(0turn) rotateX(0turn) rotate(0);
+            transform: rotateY(0turn) rotateX(0turn) rotate(0)
+  }
+  to {
+    -webkit-transform: rotateY(3turn) rotateX(2turn) rotate(0);
+            transform: rotateY(3turn) rotateX(2turn) rotate(0)
+  }
+}
+
+@keyframes spin-animation {
+  0% {
+    -webkit-transform: rotateY(0turn) rotateX(0turn) rotate(0);
+            transform: rotateY(0turn) rotateX(0turn) rotate(0)
+  }
+  to {
+    -webkit-transform: rotateY(3turn) rotateX(2turn) rotate(0);
+            transform: rotateY(3turn) rotateX(2turn) rotate(0)
+  }
+}
+
+html {
+  font-size: 100%
+}
+
+body,
+html {
+  min-height: 100%;
+  min-height: 100vh
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  color: #fff;
+  margin: 0;
+  background-color: #111
+}
+
+.body-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-blend-mode: multiply;
+  -webkit-animation: page-fade-in 2s;
+          animation: page-fade-in 2s
+}
+
+@-webkit-keyframes page-fade-in {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes page-fade-in {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}

@@ -1,0 +1,24 @@
+'use strict';
+
+export const GET_ARTICLE_DETAIL = 'GET_ARTICLE_DETAIL';
+// 常用工具
+export const SET_TOOL_LIST = 'SET_TOOL_LIST';
+export const SET_TOOL_SAVE = 'SET_TOOL_SAVE';
+export const SET_TOOL_MODIFY = 'SET_TOOL_MODIFY';
+export const TOOL_DELETE = 'TOOL_DELETE';
+
+// 中文文档
+export const SET_DOCUMENT_LIST = 'SET_DOCUMENT_LIST';
+export const SET_DOCUMENT_SAVE = 'SET_DOCUMENT_SAVE';
+export const SET_DOCUMENT_MODIFY = 'SET_DOCUMENT_MODIFY';
+export const DOCUMENT_DELETE = 'DOCUMENT_DELETE';
+// 标签
+export const SET_LABEL_LIST = 'SET_LABEL_LIST';
+export const SET_LABEL_SAVE = 'SET_LABEL_SAVE';
+export const SET_LABEL_MODIFY = 'SET_LABEL_MODIFY';
+export const LABEL_DELETE = 'LABEL_DELETE';
+// 文章
+export const SET_ARTICLE_LIST = 'SET_ARTICLE_LIST';
+export const SET_ARTICLE_DETAIL = 'SET_ARTICLE_DETAIL';
+export const SET_SAVE_ARTICLE = 'SET_SAVE_ARTICLE';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';

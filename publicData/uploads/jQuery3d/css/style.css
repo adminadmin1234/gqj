@@ -1,0 +1,122 @@
+﻿@charset "utf-8";
+/*基本框架CSS*/
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {margin:0;padding:0;-webkit-text-size-adjust: none}
+h1, h2, h3, h4, h5, h6{font-size:12px;font-weight:normal}
+body>div{margin:0 auto}
+div {text-align:left}
+a img {border:0}
+body { color: #333; text-align: center; font: 12px "微软雅黑"; }
+ul, ol, li {list-style-type:none;vertical-align:0}
+a {outline-style:none;color:#535353;text-decoration:none}
+a:hover { color: #D40000; text-decoration: none}
+.clear{height:0; overflow:hidden; clear:both}
+
+/*基本框架CSS结束，应用特效时，以上样式可删除*/
+.warper{ width: 860px; height: 300px; border: 2px solid #efefef; margin: 0 auto; padding: 3px 3px 0px 0px; }
+#wowslider-container1 { zoom: 1; position: relative; max-width: 716px; float:right; z-index: 90 }
+* html #wowslider-container1 { width: 716px }
+#wowslider-container1 .ws_images ul { position: relative; width: 10000%; height: auto; left: 0; list-style: none; margin: 0; padding: 0; border-spacing: 0; overflow: visible }
+#wowslider-container1 .ws_images ul li { width: 1%; line-height: 0; float: left; font-size: 0; padding: 0!important; margin: 0!important }
+#wowslider-container1 .ws_images { position: relative; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden }
+#wowslider-container1 .ws_images a { width: 100%; display: block; color: transparent }
+#wowslider-container1 img { max-width: none!important }
+#wowslider-container1 .ws_images img { width: 100%; border: none 0; max-width: none; padding: 0; margin: 0 }
+#wowslider-container1 a { text-decoration: none; outline: 0; border: 0 }
+#wowslider-container1 a.ws_next, #wowslider-container1 a.ws_prev { position: absolute; display: none; top: 50%; margin-top: -3.5em; z-index: 60; height: 7.1em; width: 7.1em; background-image: url(../images/arrows.png); background-size: 200% }
+#wowslider-container1 a.ws_next { background-position: 100% 0; right: 1em }
+#wowslider-container1 a.ws_prev { left: 1em; background-position: 0 0 }
+#wowslider-container1 a.ws_next:hover { background-position: 100% 100% }
+#wowslider-container1 a.ws_prev:hover { background-position: 0 100% }
+* html #wowslider-container1 a.ws_next, * html #wowslider-container1 a.ws_prev { display: block }
+#wowslider-container1:hover a.ws_next, #wowslider-container1:hover a.ws_prev { display: block }
+#wowslider-container1 .ws_playpause { display: none; width: 7.1em; height: 7.1em; position: absolute; top: 50%; left: 50%; margin-left: -3.5em; margin-top: -3.5em; z-index: 59; background-size: 100% }
+#wowslider-container1:hover .ws_playpause { display: block }
+#wowslider-container1 .ws_pause { background-image: url(../images/pause.png) }
+#wowslider-container1 .ws_play { background-image: url(../images/play.png) }
+#wowslider-container1 .ws_pause:hover, #wowslider-container1 .ws_play:hover { background-position: 100% 100%!important }
+#wowslider-container1 .ws-title { position: absolute; display: block; bottom: 3.5em; left: 1em; margin-right: 1em; padding: 1em .9em .9em .9em; background-color: rgba(0,0,0,0.4); color: #fff; z-index: 50; font-weight: bold; text-transform: uppercase; border-radius: .2em; -moz-border-radius: .2em; -webkit-border-radius: .2em }
+#wowslider-container1 .ws-title div { margin-top: .3em; font-size: 1.6em; line-height: 1.15em; font-weight: normal; text-transform: none; color: #fff }
+#wowslider-container1 .ws-title span { font-size: 2.4em }
+#wowslider-container1 .ws_thumbs { font-size: 0; position: absolute; overflow: auto; z-index: 70; left: -19.51%; top: 0; width: 18.72%; height: 100% }
+#wowslider-container1 .ws_thumbs img { text-decoration: none; border: 0; width: 100% }
+#wowslider-container1 .ws_thumbs a { position: relative; text-indent: -4000px; color: transparent; opacity: .85; text-decoration: none; display: inline-block; border: 0; margin-bottom: 4%; text-indent: 0; padding: 2.99%; width: 89.54%; background-color: #fff }
+#wowslider-container1 .ws_thumbs a:hover { opacity: 1 }
+#wowslider-container1 .ws_thumbs a:hover img { visibility: visible }
+#wowslider-container1 .ws_thumbs div { position: relative; width: 100% }
+#wowslider-container1 .ws_thumbs a.ws_selthumb { background-color: #ff6600 }
+#wowslider-container1 .ws_images ul { animation: wsBasic 16s infinite; -moz-animation: wsBasic 16s infinite; -webkit-animation: wsBasic 16s infinite }
+@keyframes wsBasic { 0% {
+left:-0%
+}
+12.5% {
+left:-0%
+}
+25% {
+left:-100%
+}
+37.5% {
+left:-100%
+}
+50% {
+left:-200%
+}
+62.5% {
+left:-200%
+}
+75% {
+left:-300%
+}
+87.5% {
+left:-300%
+}
+}
+@-moz-keyframes wsBasic { 0% {
+left:-0%
+}
+12.5% {
+left:-0%
+}
+25% {
+left:-100%
+}
+37.5% {
+left:-100%
+}
+50% {
+left:-200%
+}
+62.5% {
+left:-200%
+}
+75% {
+left:-300%
+}
+87.5% {
+left:-300%
+}
+}
+@-webkit-keyframes wsBasic { 0% {
+left:-0%
+}
+12.5% {
+left:-0%
+}
+25% {
+left:-100%
+}
+37.5% {
+left:-100%
+}
+50% {
+left:-200%
+}
+62.5% {
+left:-200%
+}
+75% {
+left:-300%
+}
+87.5% {
+left:-300%
+}
+}

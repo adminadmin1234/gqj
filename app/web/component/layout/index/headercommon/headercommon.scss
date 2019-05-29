@@ -1,0 +1,110 @@
+.container-fluid{
+  height: REM(70);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: white;
+}
+.nav-active{
+  color: #ff6601!important;
+}
+.container-fluid:after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            -webkit-transform: scale(1, 0.5);
+            transform: scale(1, 0.5);
+            border-bottom: 1px solid #DDDDDD;;
+        }
+.logo-wrap{
+  position: absolute;
+  left: REM(70);
+  top:0;
+  width: REM(231);
+  height: REM(69);
+  transform-origin: center center;
+  // animation: btnRotate 10s infinite linear;
+  z-index: 999;
+  cursor:pointer;
+  .logo{
+    width: REM(231);
+    height: REM(68);
+    font-size: 12px;
+    background-image:url(../../../../asset/images/gqj.png); 
+    background-repeat:no-repeat; 
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+  }
+}
+@-webkit-keyframes btnRotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes btnRotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.header-wrap{
+  background: white;
+  height: REM(68);
+  position: absolute;
+  left: REM(300);
+  top:0;
+  line-height: REM(68);
+  z-index: 9990;
+}
+.header-nav-link{
+  color: #aaaaaa;
+  font-size: 15px;
+}
+.header-nav-link:hover{
+  color:#ff6601
+}
+
+@media screen and (max-width: 768px) {
+    .nav-active{
+      color: #ff6601!important;
+    }
+    .container-fluid{
+      height: REM(200);
+    }
+    .logo-wrap{
+      left: REM(80);
+      top:0px;
+      width: REM(231);
+      height: REM(198);
+      transform-origin: center center;
+      // animation: btnRotate 10s infinite linear;
+      .logo{
+        width: REM(198);
+        height: REM(198);
+        background-image:url(../../../../asset/images/icon.png); 
+        background-repeat:no-repeat; 
+        background-size:100% 100%;
+        -moz-background-size:100% 100%;
+        border-radius: 100%;
+      }
+    }
+    .header-wrap{
+      height: REM(198);
+      left: REM(320);
+      top:0px;
+      line-height: REM(198);
+    }
+}
