@@ -55,7 +55,7 @@ module.exports = app => {
   exports.cluster = {
     listen: {
       path: '',
-      port: 90,
+      port: 80,
     }
   };
   exports.keys = '123456789';
