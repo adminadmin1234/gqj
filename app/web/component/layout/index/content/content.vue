@@ -14,7 +14,7 @@
       </ul>
       <div class="content-left-hr">&nbsp;</div>
       <ul class="content-down content-down-mobile">
-        <li>职业：前端小猿</li>
+        <li>职业：前端程序员</li>
         <li>个人微信:lzhlad</li>
         <li>csdn博客:<a href='https://blog.csdn.net/a419419'>https://blog.csdn.net/a419419</a></li>
         <li>如本站内容侵犯了您的权益，请联系站长</li>
